@@ -116,7 +116,7 @@
             display: block;
         }
         
-        /* Active Unit Card / Quiz Card */
+        /* Active Unit Card */
         .unit-card {
             background: white;
             border: 1px solid #e2ece9;
@@ -224,44 +224,85 @@
             display: inline-block;
         }
 
-        /* 🎛️ Quiz Range Selector Dropdown Styles */
+        /* 🎛️ NEW: Checkbox list style for customized quizzes */
         .quiz-config-container {
             background: #fafbfc;
-            border: 1px solid #d1e2dd;
+            border: 1px solid #cbdcd6;
             border-radius: 12px;
             padding: 25px;
             margin-top: 20px;
-            max-width: 600px;
-            box-shadow: 0 4px 15px rgba(46, 90, 68, 0.05);
+            max-width: 650px;
+            box-shadow: 0 4px 15px rgba(46, 90, 68, 0.03);
         }
         .quiz-select-label {
             display: block;
             font-weight: bold;
-            color: #2e5a44;
-            margin-bottom: 10px;
+            color: #117a65;
+            margin-bottom: 15px;
             font-size: 1.1rem;
         }
-        .quiz-select {
-            width: 100%;
+        .quiz-options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        /* Checkbox Option Row */
+        .quiz-option-item {
+            display: flex;
+            align-items: center;
             padding: 12px 15px;
-            font-size: 1rem;
+            background: white;
+            border: 2px solid #e2ece9;
             border-radius: 8px;
-            border: 2px solid #cbdcd6;
-            background-color: white;
-            color: #2c3e50;
-            outline: none;
             cursor: pointer;
-            transition: border-color 0.2s;
+            transition: all 0.2s ease;
+            user-select: none;
         }
-        .quiz-select:focus {
-            border-color: #2e5a44;
+        .quiz-option-item:hover:not(.locked-option) {
+            border-color: #117a65;
+            background-color: #f4faf8;
         }
+        
+        /* Modernized Checkbox */
+        .quiz-option-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: #117a65;
+        }
+        
+        .option-text {
+            font-size: 0.95rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Locked Checkbox Rows */
+        .quiz-option-item.locked-option {
+            background-color: #f6f8f7;
+            border-color: #e6ecea;
+            color: #9cb2a8;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        .quiz-option-item.locked-option .option-text {
+            color: #9cb2a8;
+        }
+        .quiz-option-item.locked-option input[type="checkbox"] {
+            cursor: not-allowed;
+        }
+
+        /* Dynamic Start Button */
         .quiz-start-btn {
             display: block;
             width: 100%;
-            margin-top: 20px;
-            padding: 14px;
-            background-color: #2e5a44;
+            padding: 15px;
+            background-color: #117a65;
             color: white;
             border: none;
             border-radius: 8px;
@@ -270,18 +311,21 @@
             cursor: pointer;
             text-align: center;
             text-decoration: none;
-            transition: background 0.2s, transform 0.1s;
+            transition: all 0.2s ease;
         }
         .quiz-start-btn:hover {
-            background-color: #214030;
+            background-color: #0e6251;
+            box-shadow: 0 4px 12px rgba(17, 122, 101, 0.2);
         }
         .quiz-start-btn:active {
-            transform: scale(0.98);
+            transform: scale(0.99);
         }
         .quiz-start-btn.disabled {
             background-color: #bdc3c7 !important;
+            color: #fff !important;
             cursor: not-allowed;
             pointer-events: none;
+            box-shadow: none !important;
         }
 
         @keyframes fadeIn {
@@ -374,32 +418,49 @@
 
         </div>
 
-        <!-- ================= 2. Review Quizzes Section ================= -->
+        <!-- ================= 2. Review Quizzes Section (Dynamic Tick Boxes!) ================= -->
         <div id="level-quizzes" class="level-content">
             <div class="unit-card" style="border-left: 4px solid #117a65; background: #fafbfc; margin-bottom: 25px;">
-                <h3 style="color: #117a65; margin-top: 0;">🧩 Dynamic Review Center</h3>
+                <h3 style="color: #117a65; margin-top: 0;">🧩 Custom Review Center</h3>
                 <p style="color: #555; line-height: 1.5; font-size: 0.95rem; margin-bottom: 0;">
-                    Don't let older lessons fade away! Customize your practice by choosing exactly which episodes you want to compile into your practice session.
+                    Tailor your practice session. Tick the episodes you want to cover, and we will compile an instant challenge pool just for you!
                 </p>
             </div>
 
-            <!-- Dynamic Selector Console -->
+            <!-- 🎛️ Checkbox Selection Console -->
             <div class="quiz-config-container">
-                <label for="quiz-range" class="quiz-select-label">Select review coverage range:</label>
-                <select id="quiz-range" class="quiz-select" onchange="updateQuizButton()">
-                    <!-- Active range options -->
-                    <option value="ep1">Episode 1 (Airport Greetings & Basics)</option>
-                    
-                    <!-- Locked/Upcoming ranges (clearly disabled & marked) -->
-                    <option value="ep1-2" disabled>🔒 Episode 1 - 2 (Requires Episode 2 Unlock)</option>
-                    <option value="ep1-3" disabled>🔒 Episode 1 - 3 (Requires Episode 3 Unlock)</option>
-                    <option value="all-intro" disabled>🔒 All Introductory Units (Coming Soon)</option>
-                </select>
+                <span class="quiz-select-label">Choose episodes to include:</span>
+                
+                <div class="quiz-options-list">
+                    <!-- Unlocked Option: Episode 1 -->
+                    <label class="quiz-option-item">
+                        <input type="checkbox" name="quiz-episode" value="ep1" checked onchange="updateQuizSelection()">
+                        <span class="option-text">
+                            <strong>Ep 1:</strong> Hej Sweden! ✈️ (Greetings & Airport)
+                        </span>
+                    </label>
 
-                <!-- Dynamic Button -->
-                <a href="quizzes/quiz_ep1.html" id="start-quiz-btn" class="quiz-start-btn">
-                    🚀 Start Quiz: Episode 1
-                </a>
+                    <!-- Locked Option: Episode 2 -->
+                    <label class="quiz-option-item locked-option">
+                        <input type="checkbox" name="quiz-episode" value="ep2" disabled onchange="updateQuizSelection()">
+                        <span class="option-text">
+                            🔒 <strong>Ep 2:</strong> My Family 🏡 (Requires Unit 1 Progression)
+                        </span>
+                    </label>
+
+                    <!-- Locked Option: Episode 3 -->
+                    <label class="quiz-option-item locked-option">
+                        <input type="checkbox" name="quiz-episode" value="ep3" disabled onchange="updateQuizSelection()">
+                        <span class="option-text">
+                            🔒 <strong>Ep 3:</strong> Counting Fika! ☕️ (Requires Unit 2 Unlock)
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Dynamic CTA Button -->
+                <button id="start-quiz-btn" class="quiz-start-btn" onclick="launchQuiz()">
+                    🚀 Start Quiz (1 Episode Selected)
+                </button>
             </div>
         </div>
 
@@ -542,24 +603,36 @@
             document.getElementById('level-' + levelId).classList.add('active');
         }
 
-        // 3. Dynamic Dropdown Action for Quizzes
-        function updateQuizButton() {
-            const selector = document.getElementById('quiz-range');
+        // 3. Dynamic Checkbox Action for Quizzes
+        function updateQuizSelection() {
+            const checkboxes = document.querySelectorAll('input[name="quiz-episode"]:checked');
             const button = document.getElementById('start-quiz-btn');
-            const selectedValue = selector.value;
+            const count = checkboxes.length;
 
-            if (selectedValue === 'ep1') {
-                button.href = "quizzes/quiz_ep1.html";
-                button.innerText = "🚀 Start Quiz: Episode 1";
-                button.classList.remove('disabled');
-            } else if (selectedValue === 'ep1-2') {
-                button.href = "#";
-                button.innerText = "🔒 Locked: Requires Episode 2";
+            if (count === 0) {
+                button.innerText = "⚠️ Please select at least one episode";
                 button.classList.add('disabled');
             } else {
-                button.href = "#";
-                button.innerText = "🔒 Locked";
-                button.classList.add('disabled');
+                button.innerText = `🚀 Start Quiz (${count} Episode${count > 1 ? 's' : ''} Selected)`;
+                button.classList.remove('disabled');
+            }
+        }
+
+        // 4. Dynamic Redirect Logic (Routes users depending on selections)
+        function launchQuiz() {
+            const checkboxes = document.querySelectorAll('input[name="quiz-episode"]:checked');
+            if (checkboxes.length === 0) return;
+
+            const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+
+            // Simple routing:
+            // - If only Ep 1 is selected, send to Ep 1's dedicated quiz file.
+            // - In the future, you can send multiple IDs as URL parameters: custom_quiz.html?episodes=ep1,ep2
+            if (selectedValues.length === 1 && selectedValues[0] === 'ep1') {
+                window.location.href = "quizzes/quiz_ep1.html";
+            } else {
+                // Future generic multi-episode quiz handler
+                window.location.href = `quizzes/custom_quiz.html?episodes=${selectedValues.join(',')}`;
             }
         }
     </script>
