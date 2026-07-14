@@ -1,23 +1,180 @@
-<!-- 课程列表板块 -->
-<h2>Start Learning 🇸🇪</h2>
-<p>Choose an episode below to start your Swedish journey with AnAn and NiuNiu!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Swedish with AnAn</title>
+    <!-- 引入外部样式表 -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 确保页面整体拥有图一温馨的暖米色背景 */
+        body {
+            background-color: #f7f4eb;
+            margin: 0;
+            padding: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+        }
 
-<ul style="list-style: none; padding: 0;">
-    <!-- 第一章：加上了生动的标题和Emoji -->
-    <li style="background: #f9f9f9; padding: 15px; margin-bottom: 12px; border-radius: 8px; border-left: 5px solid #2e5a44; display: flex; justify-content: space-between; align-items: center;">
-        <div>
-            <strong style="font-size: 1.1rem; color: #2e5a44;">Episode 1: Hej Sweden! ✈️</strong>
-            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #666;">Learn basic greetings, names, and origins at Arlanda airport.</p>
-        </div>
-        <a href="episodes/episode1.html" class="btn" style="padding: 6px 12px; font-size: 0.9rem; background-color: #2e5a44; color: white; text-decoration: none; border-radius: 4px;">Start 🚀</a>
-    </li>
+        /* 图一标志性的白色友好容器（圆角、微阴影、精致内边距） */
+        .main-container {
+            background-color: #ffffff;
+            max-width: 800px;
+            width: 100%;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            box-sizing: border-box;
+        }
 
-    <!-- 预留的第二章（灰显，提示即将到来） -->
-    <li style="background: #f5f5f5; padding: 15px; margin-bottom: 12px; border-radius: 8px; border-left: 5px solid #bdc3c7; display: flex; justify-content: space-between; align-items: center; opacity: 0.7;">
-        <div>
-            <strong style="font-size: 1.1rem; color: #7f8c8d;">Episode 2: Coming Soon... 🍎</strong>
-            <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #888;">AnAn and NiuNiu will explore a Swedish supermarket!</p>
+        /* 统一标题颜色 */
+        .brand-title {
+            color: #2e5a44;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 0;
+            font-size: 2rem;
+        }
+
+        .section-title {
+            color: #2e5a44;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        /* 分割线样式 */
+        .divider {
+            border: 0;
+            border-top: 1px solid #eef2f0;
+            margin: 30px 0;
+        }
+
+        /* 关卡列表卡片样式 */
+        .episode-card {
+            background: #fafafa;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .episode-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .episode-active {
+            border-left: 5px solid #2e5a44;
+        }
+
+        .episode-locked {
+            border-left: 5px solid #bdc3c7;
+            opacity: 0.75;
+        }
+
+        /* 按钮样式 */
+        .btn-start {
+            background-color: #f1c40f; /* 继承图一醒目的瑞典黄 */
+            color: #2c3e50;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .btn-start:hover {
+            background-color: #f39c12;
+        }
+
+        /* 人物卡片样式（还原图一） */
+        .character-card {
+            background-color: #f9f9f9;
+            padding: 18px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .char-anan {
+            border-left: 4px solid #2e5a44; /* 安安的森林绿边框 */
+        }
+
+        .char-niuniu {
+            border-left: 4px solid #f39c12; /* 妞妞的暖橙黄边框 */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 外层白色卡片容器 -->
+    <div class="main-container">
+        
+        <!-- 头部：图一的品牌标题与介绍 -->
+        <h1 class="brand-title">🐻 Learn Swedish with AnAn</h1>
+        <p style="color: #555; line-height: 1.6; font-size: 1.05rem; margin-bottom: 25px;">
+            Hej! Welcome to Sweden! Follow AnAn and his family as they start a new, exciting life in Sweden and learn Swedish naturally through stories.
+        </p>
+
+        <hr class="divider">
+
+        <!-- 中部：图二升级后的关卡列表（完美融入白色容器内） -->
+        <h2 class="section-title">Start Learning 🇸🇪</h2>
+        <p style="color: #666; margin-bottom: 20px;">Choose an episode below to start your Swedish journey with AnAn and NiuNiu!</p>
+
+        <div style="margin-bottom: 35px;">
+            <!-- 第一章关卡卡片 -->
+            <div class="episode-card episode-active">
+                <div>
+                    <strong style="font-size: 1.15rem; color: #2e5a44;">Episode 1: Hej Sweden! ✈️</strong>
+                    <p style="margin: 6px 0 0 0; font-size: 0.95rem; color: #666;">Learn basic greetings, names, and origins at Arlanda airport.</p>
+                </div>
+                <a href="episodes/episode1.html" class="btn-start">Start Episode 1 🚀</a>
+            </div>
+
+            <!-- 第二章锁关卡片 -->
+            <div class="episode-card episode-locked">
+                <div>
+                    <strong style="font-size: 1.15rem; color: #7f8c8d;">Episode 2: Coming Soon... 🍎</strong>
+                    <p style="margin: 6px 0 0 0; font-size: 0.95rem; color: #888;">AnAn and NiuNiu will explore a Swedish supermarket!</p>
+                </div>
+                <span style="color: #7f8c8d; font-size: 0.95rem; font-style: italic; font-weight: bold; padding-right: 10px;">Locked 🔒</span>
+            </div>
         </div>
-        <span style="color: #7f8c8d; font-size: 0.9rem; font-style: italic;">Locked 🔒</span>
-    </li>
-</ul>
+
+        <hr class="divider">
+
+        <!-- 底部：图一中非常加分、友好的“Meet the Family”板块 -->
+        <h2 class="section-title">Meet the Family</h2>
+        <p style="color: #666; margin-bottom: 20px;">Get to know the characters you will meet in the stories:</p>
+
+        <div>
+            <!-- 安安卡片 -->
+            <div class="character-card char-anan">
+                <strong style="font-size: 1.1rem; color: #2e5a44;">🐻 AnAn (10 years old)</strong>
+                <p style="margin: 8px 0 0 0; color: #555; line-height: 1.5; font-size: 0.95rem;">
+                    A boy from China who just moved to Sweden. He is kind, a bit shy, and loves playing football, basketball, and frisbee.
+                </p>
+            </div>
+
+            <!-- 妞妞卡片 -->
+            <div class="character-card char-niuniu">
+                <strong style="font-size: 1.1rem; color: #e67e22;">👧 NiuNiu (6 years old)</strong>
+                <p style="margin: 8px 0 0 0; color: #555; line-height: 1.5; font-size: 0.95rem;">
+                    AnAn's sweet little sister. She is curious, energetic, loves drawing, and is very excited to make new friends in Sweden!
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
