@@ -2,103 +2,237 @@
 <html lang="sv">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Episode 1: Hej Sverige! | Learn Swedish with AnAn</title>
+    <title>Episode 1: Hej Sverige! | Learning Swedish</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        .container { max-width: 800px; margin: 20px auto; padding: 30px; background: white; border-radius: 15px; border: 1px solid #e2ece9; }
-        .nav-back { display: inline-block; margin-bottom: 20px; color: #2e5a44; text-decoration: none; font-weight: bold; }
-        
-        /* Audio Player Styling */
-        .audio-section { background: #f4f7f6; padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
-        .sentence { margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #f0f0f0; }
-        .audio-player { vertical-align: middle; margin-left: 10px; height: 30px; }
-
-        /* Vocabulary Section */
-        .word-category { margin-top: 30px; }
-        .word-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
-        .word-item { padding: 10px; background: #fafafa; border: 1px solid #eef2f0; border-radius: 6px; font-size: 0.95rem; }
+        /* 保持你原本简洁优雅的 UI 设计 */
+        .container { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .audio-hero { background: #f0f4f2; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+        .story-line { margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+        .text-content { flex-grow: 1; }
+        .speaker-icon { cursor: pointer; margin-left: 15px; font-size: 1.5rem; }
+        .vocab-section { margin-top: 40px; }
+        .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .vocab-item { padding: 15px; background: #fafafa; border-left: 5px solid #2e5a44; border-radius: 4px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <a href="../index.html" class="nav-back">← Back to Course Selection</a>
-    
+    <a href="../index.html" style="color: #2e5a44; font-weight: bold; text-decoration: none;">← Back to Home</a>
     <h1>Episode 1: Hej Sverige! ✈️</h1>
+    <p><em>跟随安安一家人，开启在瑞典的第一天！</em></p>
 
-    <!-- 课文顶部音频 -->
-    <div class="audio-section">
-        <h3>🎧 听完整段课文</h3>
-        <audio controls src="../assets/audio/ep1/full_dialogue.mp3"></audio>
+    <div class="audio-hero">
+        <button onclick="playAll()">Listen to Whole Story 🔊</button>
     </div>
 
-    <!-- 课文内容 -->
+    <!-- 课文正文 -->
     <section>
-        <h2>📖 课文 (Dialog)</h2>
+        <h2>The Story 📖</h2>
         
-        <h3>序幕：Ankomst på Kastrup</h3>
-        <div class="sentence"><b>妞妞:</b> Mamma, pappa! Var är vi? <audio controls class="audio-player" src="../assets/audio/ep1/n1.mp3"></audio></div>
-        <div class="sentence"><b>妈妈:</b> Vi är på Kastrup, flygplatsen i Köpenhamn. <audio controls class="audio-player" src="../assets/audio/ep1/m1.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Titta, NiuNiu! Här är skylten: "Tåg". Vi ska åka till Malmö. <audio controls class="audio-player" src="../assets/audio/ep1/a1.mp3"></audio></div>
+        <!-- 序幕 -->
+        <h4>序幕：Ankomst på Kastrup</h4>
+        <div class="story-line">
+            <div class="text-content">
+                <b>妞妞:</b> Mamma, pappa! Var är vi?<br>
+                <small>(妈妈，爸爸！我们在哪儿？ / Mom, dad! Where are we?)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('n1')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>妈妈:</b> Vi är på Kastrup, flygplatsen i Köpenhamn.<br>
+                <small>(我们在哥本哈根机场。 / We are at Kastrup, the airport in Copenhagen.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('m1')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Titta, NiuNiu! Här är skylten: "Tåg". Vi ska åka till Malmö.<br>
+                <small>(看，妞妞！指示牌在这儿：“火车”。我们要去马尔默。 / Look, NiuNiu! Here is the sign: "Train". We are going to Malmö.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a1')">🔊</span>
+        </div>
 
-        <h3>第一幕：I Passkontrollen</h3>
-        <div class="sentence"><b>海关:</b> God dag. Varifrån kommer ni? <audio controls class="audio-player" src="../assets/audio/ep1/h1.mp3"></audio></div>
-        <div class="sentence"><b>爸爸:</b> God dag. Vi kommer från Kina. <audio controls class="audio-player" src="../assets/audio/ep1/p1.mp3"></audio></div>
-        <div class="sentence"><b>海关:</b> Trevligt. Vad heter du? <audio controls class="audio-player" src="../assets/audio/ep1/h2.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Jag heter AnAn. <audio controls class="audio-player" src="../assets/audio/ep1/a2.mp3"></audio></div>
-        <div class="sentence"><b>海关:</b> Och var ska ni bo? <audio controls class="audio-player" src="../assets/audio/ep1/h3.mp3"></audio></div>
-        <div class="sentence"><b>爸爸:</b> Vi ska bo i Malmö. <audio controls class="audio-player" src="../assets/audio/ep1/p2.mp3"></audio></div>
-        <div class="sentence"><b>海关:</b> Välkomna till Sverige! <audio controls class="audio-player" src="../assets/audio/ep1/h4.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Tack! <audio controls class="audio-player" src="../assets/audio/ep1/a3.mp3"></audio></div>
-        <div class="sentence"><b>海关:</b> Hej då! <audio controls class="audio-player" src="../assets/audio/ep1/h5.mp3"></audio></div>
+        <!-- 第一幕 -->
+        <h4>第一幕：I Passkontrollen</h4>
+        <div class="story-line">
+            <div class="text-content">
+                <b>海关:</b> God dag. Varifrån kommer ni?<br>
+                <small>(您好。你们从哪里来？ / Good day. Where do you come from?)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('h1')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>爸爸:</b> God dag. Vi kommer från Kina.<br>
+                <small>(您好。我们从中国来。 / Good day. We come from China.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('p1')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>海关:</b> Trevligt. Vad heter du?<br>
+                <small>(很高兴。你叫什么名字？ / Nice. What is your name?)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('h2')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Jag heter AnAn.<br>
+                <small>(我叫安安。 / My name is AnAn.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a2')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>海关:</b> Och var ska ni bo?<br>
+                <small>(你们打算住哪？ / And where will you live?)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('h3')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>爸爸:</b> Vi ska bo i Malmö.<br>
+                <small>(我们要住在马尔默。 / We are going to live in Malmö.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('p2')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>海关:</b> Välkomna till Sverige!<br>
+                <small>(欢迎来到瑞典！ / Welcome to Sweden!)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('h4')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Tack!<br>
+                <small>(谢谢。 / Thanks!)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a3')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>海关:</b> Hej då!<br>
+                <small>(再见。 / Goodbye!)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('h5')">🔊</span>
+        </div>
 
-        <h3>第二幕：Bagageutlämning</h3>
-        <div class="sentence"><b>妞妞:</b> AnAn, titta! Var är våra väskor? <audio controls class="audio-player" src="../assets/audio/ep1/n2.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Vänta, NiuNiu. Vi måste titta på skärmen. Band nummer fem. <audio controls class="audio-player" src="../assets/audio/ep1/a4.mp3"></audio></div>
-        <div class="sentence"><b>妞妞:</b> Där är min rosa väska! Den rullar! <audio controls class="audio-player" src="../assets/audio/ep1/n3.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Bra! Jag tar den. <audio controls class="audio-player" src="../assets/audio/ep1/a5.mp3"></audio></div>
+        <!-- 第二幕 -->
+        <h4>第二幕：Bagageutlämning</h4>
+        <div class="story-line">
+            <div class="text-content">
+                <b>妞妞:</b> AnAn, titta! Var är våra väskor?<br>
+                <small>(安安，看！我们的包包在哪里？ / AnAn, look! Where are our bags?)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('n2')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Vänta, NiuNiu. Vi måste titta på skärmen. Band nummer fem.<br>
+                <small>(等一下，妞妞。我们得看屏幕。五号转盘。 / Wait, NiuNiu. We must check the screen. Belt number five.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a4')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>妞妞:</b> Där är min rosa väska! Den rullar!<br>
+                <small>(我的粉色箱子在那！它在转呢！ / There is my pink bag! It's rolling!)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('n3')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Bra! Jag tar den.<br>
+                <small>(太棒了！我来拿它。 / Great! I'll take it.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a5')">🔊</span>
+        </div>
 
-        <h3>第三幕：Köp biljett & Hitta till tåget</h3>
-        <div class="sentence"><b>妞妞:</b> Kan vi använda kort? <audio controls class="audio-player" src="../assets/audio/ep1/n4.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Ja, vi kan betala med kort. Men vi måste välja rätt zon. <audio controls class="audio-player" src="../assets/audio/ep1/a6.mp3"></audio></div>
-        <div class="sentence"><b>妞妞:</b> Finns det någon rabatt för barn? <audio controls class="audio-player" src="../assets/audio/ep1/n5.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Rakt fram, NiuNiu. Det är inte svårt, följ skyltarna! <audio controls class="audio-player" src="../assets/audio/ep1/a7.mp3"></audio></div>
+        <!-- 第三幕 -->
+        <h4>第三幕：Köp biljett & Hitta till tåget</h4>
+        <div class="story-line">
+            <div class="text-content">
+                <b>妞妞:</b> Kan vi använda kort?<br>
+                <small>(我们可以刷卡吗？ / Can we use a card?)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('n4')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Ja, vi kan betala med kort. Men vi måste välja rätt zon.<br>
+                <small>(可以，我们得选对区域。 / Yes, we can pay with card. But we must choose the right zone.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a6')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>妞妞:</b> Finns det någon rabatt för barn?<br>
+                <small>(有儿童折扣吗？ / Is there any discount for children?)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('n5')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Rakt fram, NiuNiu. Det är inte svårt, följ skyltarna!<br>
+                <small>(直走，妞妞。这不难，跟着指示牌走！ / Straight ahead, NiuNiu. It's not hard, follow the signs!)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a7')">🔊</span>
+        </div>
 
-        <h3>第四幕：På tåget mot Malmö</h3>
-        <div class="sentence"><b>妞妞:</b> När går tåget? <audio controls class="audio-player" src="../assets/audio/ep1/n6.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Klockan är fjorton noll noll. Spår två. <audio controls class="audio-player" src="../assets/audio/ep1/a8.mp3"></audio></div>
-        <div class="sentence"><b>妞妞:</b> Måste vi byta tåg? <audio controls class="audio-player" src="../assets/audio/ep1/n7.mp3"></audio></div>
-        <div class="sentence"><b>安安:</b> Nej, det står "Direkt". Titta, NiuNiu! Nu är vi i Sverige! <audio controls class="audio-player" src="../assets/audio/ep1/a9.mp3"></audio></div>
+        <!-- 第四幕 -->
+        <h4>第四幕：På tåget mot Malmö</h4>
+        <div class="story-line">
+            <div class="text-content">
+                <b>妞妞:</b> När går tåget? Jag är jättetrött.<br>
+                <small>(火车几点开？我超级累了。 / When does the train leave? I'm super tired.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('n6')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Klockan är fjorton noll noll. Spår två.<br>
+                <small>(现在是14点。二号站台。 / It is 14:00. Track two.)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a8')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>妞妞:</b> Måste vi byta tåg?<br>
+                <small>(我们要换乘吗？ / Must we change trains?)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('n7')">🔊</span>
+        </div>
+        <div class="story-line">
+            <div class="text-content">
+                <b>安安:</b> Nej, det står "Direkt". Nu är vi i Sverige!<br>
+                <small>(不，直达。我们现在在瑞典了！ / No, it says "Direct". Now we are in Sweden!)</small>
+            </div>
+            <span class="speaker-icon" onclick="play('a9')">🔊</span>
+        </div>
     </section>
 
     <!-- 词汇表 -->
-    <section>
-        <h2>📚 核心词汇表 (Ordlista)</h2>
-        
-        <div class="word-category">
-            <h4>1. 机场与交通</h4>
-            <div class="word-grid">
-                <div class="word-item">Flygplats (机场)</div>
-                <div class="word-item">Tåg (火车)</div>
-                <div class="word-item">Skylt (指示牌)</div>
-                <div class="word-item">Spår (站台)</div>
-                <div class="word-item">Väska (行李)</div>
-            </div>
-        </div>
-
-        <div class="word-category">
-            <h4>2. 旅行与票务</h4>
-            <div class="word-grid">
-                <div class="word-item">Biljett (票)</div>
-                <div class="word-item">Enkelbiljett (单程票)</div>
-                <div class="word-item">Rabatt (折扣)</div>
-                <div class="word-item">Direkt (直达)</div>
-                <div class="word-item">Försenat (晚点)</div>
-            </div>
+    <section class="vocab-section">
+        <h2>Vocabulary List 💡</h2>
+        <div class="vocab-grid">
+            <div class="vocab-item"><strong>Flygplats</strong> (机场)</div>
+            <div class="vocab-item"><strong>Tåg</strong> (火车)</div>
+            <div class="vocab-item"><strong>Biljett</strong> (票)</div>
+            <div class="vocab-item"><strong>Rabatt</strong> (折扣)</div>
+            <div class="vocab-item"><strong>Direkt</strong> (直达)</div>
+            <div class="vocab-item"><strong>Skylt</strong> (指示牌)</div>
         </div>
     </section>
 </div>
+
+<script>
+    function play(id) { new Audio(`../assets/audio/ep1/${id}.mp3`).play(); }
+    function playAll() { new Audio(`../assets/audio/ep1/full.mp3`).play(); }
+</script>
 
 </body>
 </html>
