@@ -23,7 +23,16 @@
         .btn-home { background: #dcdcdc; color: #333; }
         .btn-next { background: #2e5a44; color: white; }
     </style>
-</head>
+</head> 
+    <script>
+    function play(audioId) {
+        // 构建音频文件的完整路径
+        var audio = new Audio('../assets/audio/ep1/' + audioId + '.mp3');
+        audio.play().catch(function(error) {
+            console.log("播放失败，请检查文件是否存在: " + error);
+        });
+    }
+</script> 
 <body>
 
 <div class="container">
