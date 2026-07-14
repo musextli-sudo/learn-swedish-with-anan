@@ -21,10 +21,17 @@
         <hr style="border: 0; border-top: 1px solid #e2ece9; margin: 25px 0;">
 
         <!-- 1. 故事对话板块 -->
-        <h2>The Story 📖</h2>
-        <p style="font-size: 0.9rem; color: #666;">💡 Click the speaker icon 🔊 to hear the Swedish pronunciation!</p>
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+            <h2>The Story 📖</h2>
+            <!-- 🔊 听整段故事的新增按钮 -->
+            <button onclick="playFullStory()" style="background-color: #2e5a44; color: white; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+                Listen to Whole Story 🔊
+            </button>
+        </div>
         
-        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 4px solid #f1c40f;">
+        <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">💡 Click individual 🔊 for single lines, or the button above to hear the whole conversation!</p>
+        
+        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 4px solid #f1c40f; margin-top: 15px;">
             
             <p>
                 <strong>Officer:</strong> Hej! Vad heter du? 
@@ -76,7 +83,7 @@
 
         </div>
 
-        <!-- 2. 核心单词卡片（已更新） -->
+        <!-- 2. 核心单词卡片 -->
         <h2>Vocabulary List 💡</h2>
         <p>Click the speaker icon 🔊 to hear how each word sounds:</p>
         
