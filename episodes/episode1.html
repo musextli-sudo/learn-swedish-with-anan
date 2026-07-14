@@ -129,6 +129,53 @@
             </li>
         </ul>
 
+        <li>
+                <strong>Hej då</strong> 
+                <span onclick="speakSwedish('Hej då')" style="cursor: pointer; margin-left: 8px; font-size: 1rem;">🔊</span>
+                <span style="color: #7f8c8d; margin-left: 10px;">/hey doh/</span>
+                <p style="margin: 5px 0 0 0; color: #2e5a44; font-weight: bold;">Goodbye</p>
+            </li>
+        </ul>
+
+        <!-- ================== 在这里插入：开始练习按钮 & 练习容器 ================== -->
+        <!-- Practice Button -->
+        <div style="text-align: center; margin: 40px 0;">
+            <button id="start-practice-btn" style="background-color: #2e5a44; color: white; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 8px; cursor: pointer; font-weight: bold; transition: background 0.2s;">
+                Start Practice 📝
+            </button>
+        </div>
+
+        <!-- 练习主容器 (默认隐藏) -->
+        <div id="practice-section" style="display: none; background: #fafafa; border: 2px solid #eef2f0; border-radius: 12px; padding: 30px; margin-top: 20px; box-sizing: border-box;">
+            <!-- 进度条 -->
+            <div style="background-color: #eee; border-radius: 10px; height: 8px; width: 100%; margin-bottom: 25px; overflow: hidden;">
+                <div id="quiz-progress" style="background-color: #2e5a44; height: 100%; width: 0%; transition: width 0.3s;"></div>
+            </div>
+
+            <!-- 题目内容显示区 -->
+            <div id="quiz-question-container">
+                <!-- JS 会动态把题目塞到这里 -->
+            </div>
+
+            <!-- 反馈提示区（对/错解释） -->
+            <div id="quiz-feedback" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none; font-size: 1rem; line-height: 1.5;"></div>
+
+            <!-- 下一步操作按钮 -->
+            <div style="margin-top: 25px; text-align: right;">
+                <button id="quiz-next-btn" style="background-color: #f1c40f; color: #2c3e50; border: none; padding: 10px 25px; font-size: 1rem; border-radius: 6px; cursor: pointer; font-weight: bold; display: none;">
+                    Continue ➔
+                </button>
+            </div>
+        </div>
+        <!-- ========================================================================= -->
+
+        <!-- 3. 返回与下一步按钮 -->
+        <div style="margin-top: 40px; display: flex; gap: 15px;">
+            <a href="../index.html" class="btn" style="background-color: #bdc3c7; color: #2c3e50; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Back to Home</a>
+            <a href="#" class="btn" onclick="alert('Episode 2 is coming soon!'); return false;" style="background-color: #2e5a44; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Next Episode ➡️</a>
+        </div>
+
+    </div> <!-- 这个是整个大容器的最外层闭合 </div> -->
         <!-- 3. 返回与下一步按钮 -->
         <div style="margin-top: 40px; display: flex; gap: 15px;">
             <a href="../index.html" class="btn" style="background-color: #bdc3c7; color: #2c3e50; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Back to Home</a>
@@ -139,5 +186,266 @@
 
     <!-- 引入 JS 脚本 -->
     <script src="../js/script.js"></script>
+
+<!-- ================== 在这里插入：控制逻辑的 JS 代码 ================== -->
+    <script>
+        // 1. 题库数据设计 (纯英文对照，防劝退)
+        const episode1Quiz = [
+            {
+                type: "listening",
+                instruction: "Listen to the Swedish sentence and choose the correct English meaning:",
+                audioText: "Vi kommer från Kina.",
+                options: [
+                    { text: "Welcome to Sweden.", isCorrect: false },
+                    { text: "We come from China.", isCorrect: true },
+                    { text: "What is your name?", isCorrect: false }
+                ],
+                explanation: "💡 <b>Vi kommer från Kina</b> means <i>'We come from China'</i>. (Vi = We, kommer från = come from, Kina = China)"
+            },
+            {
+                type: "blank",
+                instruction: "Fill in the blank to complete the conversation:",
+                dialogue: "<b>Officer:</b> Vad _________ du?<br><b>AnAn:</b> Jag heter AnAn.",
+                options: [
+                    { text: "heter", isCorrect: true },
+                    { text: "kommer", isCorrect: false },
+                    { text: "tack", isCorrect: false }
+                ],
+                explanation: "💡 <b>Vad heter du?</b> means <i>'What is your name?'</i>. <b>heter</b> is the verb used to state what one is called."
+            },
+            {
+                type: "matching",
+                instruction: "Match all the Swedish words with their correct English meanings:",
+                pairs: [
+                    { swedish: "Hej då", english: "Goodbye" },
+                    { swedish: "Tack", english: "Thank you" },
+                    { swedish: "Sverige", english: "Sweden" },
+                    { swedish: "Välkommen", english: "Welcome" }
+                ]
+            }
+        ];
+
+        // 2. 状态变量
+        let currentQuestionIndex = 0;
+        let selectedMatchLeft = null;
+        let selectedMatchRight = null;
+        let matchedPairsCount = 0;
+
+        // 3. 元素绑定
+        const startBtn = document.getElementById("start-practice-btn");
+        const practiceSection = document.getElementById("practice-section");
+        const questionContainer = document.getElementById("quiz-question-container");
+        const feedbackBox = document.getElementById("quiz-feedback");
+        const nextBtn = document.getElementById("quiz-next-btn");
+        const progressBar = document.getElementById("quiz-progress");
+
+        // 4. 点击 Start Practice 展开面板
+        startBtn.addEventListener("click", () => {
+            startBtn.style.display = "none";
+            practiceSection.style.display = "block";
+            practiceSection.scrollIntoView({ behavior: 'smooth' });
+            loadQuestion();
+        });
+
+        // 5. 渲染题目主逻辑
+        function loadQuestion() {
+            feedbackBox.style.display = "none";
+            nextBtn.style.display = "none";
+            
+            // 更新进度条
+            const progressPercent = (currentQuestionIndex / episode1Quiz.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+
+            // 如果全部做完
+            if (currentQuestionIndex >= episode1Quiz.length) {
+                progressBar.style.width = "100%";
+                questionContainer.innerHTML = `
+                    <div style="text-align: center; padding: 20px;">
+                        <h3 style="color: #2e5a44; font-size: 1.5rem; margin-bottom: 10px;">Bra jobbat! 🎉</h3>
+                        <p style="color: #555; font-size: 1.1rem; line-height: 1.6;">
+                            You have successfully completed the practice for Episode 1!<br>
+                            You are now fully ready for Sweden.
+                        </p>
+                        <button onclick="restartQuiz()" style="margin-top: 20px; background-color: #2e5a44; color: white; border: none; padding: 8px 20px; border-radius: 6px; cursor: pointer; font-weight: bold;">
+                            Practice Again ↺
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            const q = episode1Quiz[currentQuestionIndex];
+            let html = `<h4 style="color: #2e5a44; margin-top: 0; margin-bottom: 15px;">Question ${currentQuestionIndex + 1} of ${episode1Quiz.length}</h4>`;
+            html += `<p style="font-size: 1.05rem; color: #333; margin-bottom: 20px;">${q.instruction}</p>`;
+
+            if (q.type === "listening") {
+                html += `
+                    <div style="margin-bottom: 20px; display: flex; align-items: center; gap: 15px;">
+                        <button id="quiz-audio-btn" style="background-color: #eef2f0; border: 1px solid #ccc; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 1.2rem;">🔊</button>
+                        <span style="color: #666; font-style: italic;">Click to listen to the phrase</span>
+                    </div>
+                    <div id="quiz-options-box" style="display: flex; flex-direction: column; gap: 10px;">
+                        ${q.options.map((opt, i) => `<button class="quiz-opt" onclick="checkChoiceOption(${i}, ${opt.isCorrect})" style="background: white; border: 1px solid #ddd; padding: 12px; border-radius: 8px; text-align: left; cursor: pointer; font-size: 1rem; transition: background 0.2s;">${opt.text}</button>`).join('')}
+                    </div>
+                `;
+                questionContainer.innerHTML = html;
+
+                // 绑定语音播放
+                document.getElementById("quiz-audio-btn").addEventListener("click", () => {
+                    speakSwedish(q.audioText); // 这里会自动调用你在前面已经写好的speakSwedish(text)
+                });
+
+            } else if (q.type === "blank") {
+                html += `
+                    <div style="background: white; border: 1px solid #eee; padding: 20px; border-radius: 8px; margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8;">
+                        ${q.dialogue}
+                    </div>
+                    <div id="quiz-options-box" style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        ${q.options.map((opt, i) => `<button class="quiz-opt" onclick="checkChoiceOption(${i}, ${opt.isCorrect})" style="background: white; border: 1px solid #ddd; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.2s;">${opt.text}</button>`).join('')}
+                    </div>
+                `;
+                questionContainer.innerHTML = html;
+
+            } else if (q.type === "matching") {
+                matchedPairsCount = 0;
+                selectedMatchLeft = null;
+                selectedMatchRight = null;
+
+                // 打乱左右列表以进行配对
+                const leftSide = [...q.pairs].sort(() => Math.random() - 0.5);
+                const rightSide = [...q.pairs].sort(() => Math.random() - 0.5);
+
+                html += `
+                    <div style="display: flex; gap: 40px; justify-content: space-between;">
+                        <!-- 左边瑞典语 -->
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                            ${leftSide.map(p => `<button class="match-left" data-val="${p.swedish}" onclick="selectLeft(this)" style="background: white; border: 1px solid #ddd; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 1rem; font-weight: bold; text-align: center; transition: background 0.2s;">${p.swedish}</button>`).join('')}
+                        </div>
+                        <!-- 右边英文 -->
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 10px;">
+                            ${rightSide.map(p => `<button class="match-right" data-val="${p.english}" onclick="selectRight(this)" style="background: white; border: 1px solid #ddd; padding: 12px; border-radius: 6px; cursor: pointer; font-size: 1rem; text-align: center; transition: background 0.2s;">${p.english}</button>`).join('')}
+                        </div>
+                    </div>
+                `;
+                questionContainer.innerHTML = html;
+            }
+        }
+
+        // 6. 判定：选择题/填空题
+        function checkChoiceOption(index, isCorrect) {
+            const buttons = document.querySelectorAll(".quiz-opt");
+            buttons.forEach(btn => btn.disabled = true); // 防重复点击
+
+            const clickedBtn = buttons[index];
+            const q = episode1Quiz[currentQuestionIndex];
+
+            if (isCorrect) {
+                clickedBtn.style.backgroundColor = "#d4edda";
+                clickedBtn.style.borderColor = "#c3e6cb";
+                clickedBtn.style.color = "#155724";
+                showFeedback(true, q.explanation);
+            } else {
+                clickedBtn.style.backgroundColor = "#f8d7da";
+                clickedBtn.style.borderColor = "#f5c6cb";
+                clickedBtn.style.color = "#721c24";
+                showFeedback(false, q.explanation);
+            }
+        }
+
+        // 7. 判定：单词配对题
+        function selectLeft(btn) {
+            document.querySelectorAll(".match-left").forEach(b => b.style.borderColor = "#ddd");
+            if (btn.classList.contains("matched")) return;
+            selectedMatchLeft = btn;
+            btn.style.borderColor = "#2980b9";
+            checkMatch();
+        }
+
+        function selectRight(btn) {
+            document.querySelectorAll(".match-right").forEach(b => b.style.borderColor = "#ddd");
+            if (btn.classList.contains("matched")) return;
+            selectedMatchRight = btn;
+            btn.style.borderColor = "#2980b9";
+            checkMatch();
+        }
+
+        function checkMatch() {
+            if (selectedMatchLeft && selectedMatchRight) {
+                const swedishVal = selectedMatchLeft.getAttribute("data-val");
+                const englishVal = selectedMatchRight.getAttribute("data-val");
+
+                // 检查这一对在题库里是否匹配
+                const q = episode1Quiz[currentQuestionIndex];
+                const isMatch = q.pairs.some(p => p.swedish === swedishVal && p.english === englishVal);
+
+                if (isMatch) {
+                    // 配对成功：变绿、标记为已匹配
+                    selectedMatchLeft.style.backgroundColor = "#d4edda";
+                    selectedMatchLeft.style.borderColor = "#c3e6cb";
+                    selectedMatchLeft.classList.add("matched");
+
+                    selectedMatchRight.style.backgroundColor = "#d4edda";
+                    selectedMatchRight.style.borderColor = "#c3e6cb";
+                    selectedMatchRight.classList.add("matched");
+
+                    matchedPairsCount++;
+                    if (matchedPairsCount === q.pairs.length) {
+                        showFeedback(true, "💡 Beautiful matching! You've successfully paired all the vocabulary!");
+                    }
+                } else {
+                    // 配对失败：变红后恢复灰色
+                    const left = selectedMatchLeft;
+                    const right = selectedMatchRight;
+                    left.style.backgroundColor = "#f8d7da";
+                    right.style.backgroundColor = "#f8d7da";
+                    setTimeout(() => {
+                        if (!left.classList.contains("matched")) {
+                            left.style.backgroundColor = "white";
+                            left.style.borderColor = "#ddd";
+                        }
+                        if (!right.classList.contains("matched")) {
+                            right.style.backgroundColor = "white";
+                            right.style.borderColor = "#ddd";
+                        }
+                    }, 500);
+                }
+
+                // 清空选择缓存
+                selectedMatchLeft = null;
+                selectedMatchRight = null;
+            }
+        }
+
+        // 8. 显示反馈盒子
+        function showFeedback(isSuccess, text) {
+            feedbackBox.style.display = "block";
+            feedbackBox.innerHTML = text;
+            if (isSuccess) {
+                feedbackBox.style.backgroundColor = "#e8f5e9";
+                feedbackBox.style.color = "#2e7d32";
+                feedbackBox.style.borderLeft = "4px solid #2e7d32";
+            } else {
+                feedbackBox.style.backgroundColor = "#ffebee";
+                feedbackBox.style.color = "#c62828";
+                feedbackBox.style.borderLeft = "4px solid #c62828";
+            }
+            nextBtn.style.display = "inline-block";
+        }
+
+        // 9. 点击 Continue 按钮
+        nextBtn.addEventListener("click", () => {
+            currentQuestionIndex++;
+            loadQuestion();
+        });
+
+        // 10. 重试逻辑
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            loadQuestion();
+        }
+    </script>
 </body>
+</html>
+
+    
 </html>
