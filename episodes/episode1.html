@@ -11,11 +11,10 @@
         .text-content { flex-grow: 1; }
         .speaker-icon { cursor: pointer; margin-left: 10px; font-size: 1.2rem; vertical-align: middle; }
         
-        /* 单词列表新样式 */
         .vocab-item { padding: 15px; margin-bottom: 10px; border-left: 5px solid #2e5a44; background: #fafafa; }
         .vocab-word { font-weight: bold; font-size: 1.1rem; }
         .vocab-ipa { color: #666; margin-left: 10px; font-style: italic; }
-        .vocab-trans { display: block; margin-top: 5px; color: #2e5a44; }
+        .vocab-trans { display: block; margin-top: 5px; color: #2e5a44; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -28,7 +27,7 @@
         <button onclick="playAll()">Listen to Whole Story 🔊</button>
     </div>
 
-    <!-- 课文部分（保持不变） -->
+    <!-- 课文部分 -->
     <section>
         <h2>The Story 📖</h2>
         <h4>Prologue: Ankomst på Kastrup</h4>
@@ -66,32 +65,37 @@
         <div class="story-line"><div class="text-content"><b>AnAn:</b> Nej, det står "Direkt". Nu är vi i Sverige!<br><small>No, it says "Direct". Now we are in Sweden!</small></div><span class="speaker-icon" onclick="play('a9')">🔊</span></div>
     </section>
 
-    <!-- 单词列表部分（完全依照你的图片要求更新） -->
+    <!-- 完整词汇表 -->
     <section class="vocab-section">
         <h2>Vocabulary List 💡</h2>
         <p>Click the speaker icon 🔊 to hear how each word sounds:</p>
         
-        <!-- 示例：你可以按此格式填充完整单词 -->
-        <div class="vocab-item">
-            <span class="vocab-word">Flygplats</span>
-            <span class="speaker-icon" onclick="play('w_flygplats')">🔊</span>
-            <span class="vocab-ipa">/fleeg-plats/</span>
-            <span class="vocab-trans">Airport</span>
-        </div>
-        
-        <div class="vocab-item">
-            <span class="vocab-word">Tåg</span>
-            <span class="speaker-icon" onclick="play('w_tag')">🔊</span>
-            <span class="vocab-ipa">/tog/</span>
-            <span class="vocab-trans">Train</span>
-        </div>
-        
-        <div class="vocab-item">
-            <span class="vocab-word">Skylt</span>
-            <span class="speaker-icon" onclick="play('w_skylt')">🔊</span>
-            <span class="vocab-ipa">/shylt/</span>
-            <span class="vocab-trans">Sign</span>
-        </div>
+        <!-- 填充所有词汇 -->
+        <div class="vocab-item"><span class="vocab-word">Flygplats</span><span class="speaker-icon" onclick="play('v_flygplats')">🔊</span><span class="vocab-ipa">/fleeg-plats/</span><span class="vocab-trans">Airport</span></div>
+        <div class="vocab-item"><span class="vocab-word">Tåg</span><span class="speaker-icon" onclick="play('v_tag')">🔊</span><span class="vocab-ipa">/tog/</span><span class="vocab-trans">Train</span></div>
+        <div class="vocab-item"><span class="vocab-word">Station / Centralstationen</span><span class="speaker-icon" onclick="play('v_station')">🔊</span><span class="vocab-ipa">/sta-shon/</span><span class="vocab-trans">Station / Central Station</span></div>
+        <div class="vocab-item"><span class="vocab-word">Skylt</span><span class="speaker-icon" onclick="play('v_skylt')">🔊</span><span class="vocab-ipa">/shylt/</span><span class="vocab-trans">Sign</span></div>
+        <div class="vocab-item"><span class="vocab-word">Skärm</span><span class="speaker-icon" onclick="play('v_skarm')">🔊</span><span class="vocab-ipa">/sharm/</span><span class="vocab-trans">Screen</span></div>
+        <div class="vocab-item"><span class="vocab-word">Band</span><span class="speaker-icon" onclick="play('v_band')">🔊</span><span class="vocab-ipa">/band/</span><span class="vocab-trans">Belt / Conveyor</span></div>
+        <div class="vocab-item"><span class="vocab-word">Spår</span><span class="speaker-icon" onclick="play('v_spar')">🔊</span><span class="vocab-ipa">/spor/</span><span class="vocab-trans">Track / Platform</span></div>
+        <div class="vocab-item"><span class="vocab-word">Väska</span><span class="vocab-ipa">/ves-ka/</span><span class="vocab-trans">Bag / Suitcase</span><span class="speaker-icon" onclick="play('v_vaska')">🔊</span></div>
+        <div class="vocab-item"><span class="vocab-word">Biljett</span><span class="speaker-icon" onclick="play('v_biljett')">🔊</span><span class="vocab-ipa">/bil-yet/</span><span class="vocab-trans">Ticket</span></div>
+        <div class="vocab-item"><span class="vocab-word">Enkelbiljett</span><span class="speaker-icon" onclick="play('v_enkel')">🔊</span><span class="vocab-ipa">/en-kel-bil-yet/</span><span class="vocab-trans">Single ticket</span></div>
+        <div class="vocab-item"><span class="vocab-word">Dagsbiljett</span><span class="speaker-icon" onclick="play('v_dags')">🔊</span><span class="vocab-ipa">/dags-bil-yet/</span><span class="vocab-trans">Day ticket</span></div>
+        <div class="vocab-item"><span class="vocab-word">Zon</span><span class="speaker-icon" onclick="play('v_zon')">🔊</span><span class="vocab-ipa">/son/</span><span class="vocab-trans">Zone</span></div>
+        <div class="vocab-item"><span class="vocab-word">Rabatt</span><span class="speaker-icon" onclick="play('v_rabatt')">🔊</span><span class="vocab-ipa">/ra-bat/</span><span class="vocab-trans">Discount</span></div>
+        <div class="vocab-item"><span class="vocab-word">Pris / Prisvärt</span><span class="speaker-icon" onclick="play('v_pris')">🔊</span><span class="vocab-ipa">/prees/</span><span class="vocab-trans">Price / Worth the price</span></div>
+        <div class="vocab-item"><span class="vocab-word">Direkt</span><span class="speaker-icon" onclick="play('v_direkt')">🔊</span><span class="vocab-ipa">/di-rekt/</span><span class="vocab-trans">Direct</span></div>
+        <div class="vocab-item"><span class="vocab-word">Byte / Byten</span><span class="speaker-icon" onclick="play('v_byte')">🔊</span><span class="vocab-ipa">/by-te/</span><span class="vocab-trans">Transfer</span></div>
+        <div class="vocab-item"><span class="vocab-word">Försenat</span><span class="speaker-icon" onclick="play('v_forsenat')">🔊</span><span class="vocab-ipa">/for-se-nat/</span><span class="vocab-trans">Delayed</span></div>
+        <div class="vocab-item"><span class="vocab-word">Rakt fram</span><span class="speaker-icon" onclick="play('v_rakt')">🔊</span><span class="vocab-ipa">/rakt-fram/</span><span class="vocab-trans">Straight ahead</span></div>
+        <div class="vocab-item"><span class="vocab-word">Åka</span><span class="speaker-icon" onclick="play('v_aka')">🔊</span><span class="vocab-ipa">/o-ka/</span><span class="vocab-trans">To ride/go</span></div>
+        <div class="vocab-item"><span class="vocab-word">Bo</span><span class="speaker-icon" onclick="play('v_bo')">🔊</span><span class="vocab-ipa">/boo/</span><span class="vocab-trans">To live</span></div>
+        <div class="vocab-item"><span class="vocab-word">Vänta</span><span class="speaker-icon" onclick="play('v_vanta')">🔊</span><span class="vocab-ipa">/ven-ta/</span><span class="vocab-trans">To wait</span></div>
+        <div class="vocab-item"><span class="vocab-word">God dag</span><span class="speaker-icon" onclick="play('v_goddag')">🔊</span><span class="vocab-ipa">/good-dag/</span><span class="vocab-trans">Good day</span></div>
+        <div class="vocab-item"><span class="vocab-word">Hej då</span><span class="speaker-icon" onclick="play('v_hejda')">🔊</span><span class="vocab-ipa">/hey-doh/</span><span class="vocab-trans">Goodbye</span></div>
+        <div class="vocab-item"><span class="vocab-word">Tack</span><span class="speaker-icon" onclick="play('v_tack')">🔊</span><span class="vocab-ipa">/tahk/</span><span class="vocab-trans">Thanks</span></div>
+        <div class="vocab-item"><span class="vocab-word">Välkommen</span><span class="speaker-icon" onclick="play('v_valkommen')">🔊</span><span class="vocab-ipa">/vel-ko-men/</span><span class="vocab-trans">Welcome</span></div>
     </section>
 </div>
 
