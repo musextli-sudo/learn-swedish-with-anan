@@ -24,15 +24,6 @@
         .btn-next { background: #2e5a44; color: white; }
     </style>
 </head> 
-    <script>
-    function play(audioId) {
-        // 构建音频文件的完整路径
-        var audio = new Audio('../assets/audio/ep1/' + audioId + '.mp3');
-        audio.play().catch(function(error) {
-            console.log("播放失败，请检查文件是否存在: " + error);
-        });
-    }
-</script> 
 <body>
 
 <div class="container">
@@ -80,7 +71,7 @@
         <div class="story-line"><div class="text-content"><b>AnAn:</b> Nej, det står "Direkt". Nu är vi i Sverige!<br><small>No, it says "Direct". Now we are in Sweden!</small></div><span class="speaker-icon" onclick="play('a9')">🔊</span></div>
     </section>
 
- <!-- 词汇表 -->
+   <!-- 词汇表 -->
     <section class="vocab-section">
         <h2>Vocabulary List 💡</h2>
         
