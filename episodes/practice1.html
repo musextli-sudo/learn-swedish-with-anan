@@ -3,80 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <title>Practice: Episode 1 | Learning Swedish</title>
-    <link rel="stylesheet" href="../css/style.css">
     <style>
+        body { font-family: sans-serif; background: #f9f7f2; color: #333; line-height: 1.6; }
         .container { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        .quiz-section { margin-bottom: 40px; border-bottom: 2px solid #eee; padding-bottom: 20px; }
-        .question { margin-bottom: 15px; font-weight: bold; }
-        .options { margin-left: 20px; margin-bottom: 20px; }
-        .nav-footer { display: flex; justify-content: space-between; margin-top: 40px; }
-        .nav-btn { padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; background: #2e5a44; color: white; }
+        .quiz-section { margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 20px; }
+        input[type="text"] { border: 1px solid #ccc; padding: 5px; width: 120px; }
+        .correct { background-color: #d4edda !important; color: #155724; }
+        .wrong { background-color: #f8d7da !important; color: #721c24; }
+        button#check-btn { display: block; margin: 20px auto; padding: 15px 30px; background: #2e5a44; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; }
+        .nav-footer { margin-top: 40px; text-align: center; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Practice: Episode 1 📝</h1>
-    
-    <!-- 1) Listening Quiz -->
+
+    <!-- 1) Listening (保持) -->
     <section class="quiz-section">
         <h3>1) Listening Comprehension</h3>
-        <div class="question">1. Officer: "Varifrån kommer ni?"</div>
-        <div class="options">
-            <input type="radio" name="q1"> A. Where are you going?<br>
-            <input type="radio" name="q1"> B. Where are you from?
-        </div>
-        <div class="question">2. AnAn: "Vi ska åka till Malmö."</div>
-        <div class="options">
-            <input type="radio" name="q2"> A. We are going to Malmö.<br>
-            <input type="radio" name="q2"> B. We live in Malmö.
-        </div>
-        <div class="question">3. NiuNiu: "Finns det någon rabatt för barn?"</div>
-        <div class="options">
-            <input type="radio" name="q3"> A. Is there a discount for adults?<br>
-            <input type="radio" name="q3"> B. Is there a discount for children?
-        </div>
-        <div class="question">4. NiuNiu: "Måste vi byta tåg?"</div>
-        <div class="options">
-            <input type="radio" name="q4"> A. Do we have to change trains?<br>
-            <input type="radio" name="q4"> B. Do we have to buy tickets?
-        </div>
-        <div class="question">5. AnAn: "Titta, nu är vi i Sverige!"</div>
-        <div class="options">
-            <input type="radio" name="q5"> A. Look, we are in Denmark now!<br>
-            <input type="radio" name="q5"> B. Look, we are in Sweden now!
-        </div>
+        <p>1. Officer: "Varifrån kommer ni?"</p>
+        <label><input type="radio" name="q1" value="A"> A. Where are you going?</label><br>
+        <label><input type="radio" name="q1" value="B"> B. Where are you from?</label>
     </section>
 
-    <!-- 2) Fill in the blanks -->
+    <!-- 2) Fill in the blanks (改为可输入) -->
     <section class="quiz-section">
         <h3>2) Fill in the blanks</h3>
-        <p>1. Officer: Vad _______ du? AnAn: Jag heter AnAn.</p>
-        <p>2. NiuNiu: Måste vi köpa en _______ här? AnAn: Ja, vi behöver en enkelbiljett.</p>
-        <p>3. AnAn: Titta på _______ där borta: "Tåg". NiuNiu: Okej, jag ser den.</p>
-        <p>4. Pappa: Vi kommer _______ Kina. Officer: Välkomna till Sverige!</p>
-        <p>5. AnAn: Nej, det står "Direkt". Det betyder att vi åker hela vägen _______ stopp.</p>
+        <p>1. Officer: Vad <input type="text" class="fill" data-ans="heter"> du? AnAn: Jag heter AnAn.</p>
+        <p>2. NiuNiu: Måste vi köpa en <input type="text" class="fill" data-ans="biljett"> här?</p>
+        <p>3. AnAn: Titta på <input type="text" class="fill" data-ans="skylten"> där borta.</p>
     </section>
 
-    <!-- 3) Matching -->
+    <!-- 3) Matching (改为下拉选择) -->
     <section class="quiz-section">
         <h3>3) Matching</h3>
-        <p>Flygplats — ? | Skylt — ? | Biljett — ? | Vänta — ? | Direkt — ?</p>
-        <p>Station — ? | Försenat — ? | Rabatt — ? | Tåg — ? | Zon — ?</p>
+        <p>Flygplats: 
+            <select class="match" data-ans="C">
+                <option value="">--Select--</option>
+                <option value="A">Ticket</option><option value="C">Airport</option>
+            </select>
+        </p>
+        <p>Skylt: 
+            <select class="match" data-ans="D">
+                <option value="">--Select--</option>
+                <option value="D">Sign</option><option value="I">Train</option>
+            </select>
+        </p>
     </section>
 
-    <!-- 4) Vocabulary Translation -->
+    <!-- 4) Vocabulary (改为可输入) -->
     <section class="quiz-section">
         <h3>4) Swedish Vocabulary</h3>
-        <p>Airport: ________ | Train: ________ | Passport: ________ | Bag: ________</p>
-        <p>One-way ticket: ________ | Platform: ________ | Change trains: ________</p>
-        <p>Go straight: ________ | Child: ________ | Goodbye: ________</p>
+        <p>Airport: <input type="text" class="vocab" data-ans="flygplats"></p>
+        <p>Train: <input type="text" class="vocab" data-ans="tåg"></p>
     </section>
 
+    <button id="check-btn" onclick="checkAnswers()">Check Answers</button>
+    
     <div class="nav-footer">
-        <a href="episode1.html" class="nav-btn">Back to Episode 1</a>
+        <a href="episode1.html">Back to Episode 1</a>
     </div>
 </div>
+
+<script>
+    function checkAnswers() {
+        document.querySelectorAll('input[type="text"], select').forEach(el => {
+            if(el.value.toLowerCase() === el.getAttribute('data-ans').toLowerCase()) {
+                el.className = 'correct';
+            } else {
+                el.className = 'wrong';
+            }
+        });
+        alert('Check complete! Green is correct, Red is incorrect.');
+    }
+</script>
 
 </body>
 </html>
