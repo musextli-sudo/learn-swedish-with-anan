@@ -1,8 +1,61 @@
+/* 基础页面设置：北欧简约风 */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f5ef;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f1ea; /* 温暖的沙色背景，护眼 */
+    color: #2c3e50; /* 深灰文字，比纯黑更高级 */
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
 }
 
+/* 主容器：让内容在网页中间居中，像书本一样 */
+.container {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 12px; /* 圆角 */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* 淡淡的阴影 */
+}
+
+/* 标题样式：瑞典森林绿 */
 h1 {
-    color: #2f5d50;
+    color: #1e4620; /* 森林绿 */
+    border-bottom: 2px solid #e2ece9;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #2e5a44;
+    margin-top: 30px;
+}
+
+/* 按钮样式：带有瑞典黄的活力 */
+.btn {
+    display: inline-block;
+    background-color: #f1c40f; /* 瑞典国旗黄 */
+    color: #1a252f;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #f39c12; /* 鼠标悬停时变深 */
+}
+
+/* 角色列表样式 */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: #f9f9f9;
+    margin: 10px 0;
+    padding: 15px;
+    border-left: 4px solid #1e4620; /* 绿色的侧边条 */
+    border-radius: 4px;
 }
