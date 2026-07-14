@@ -1,74 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Episode 1: Hej Sweden! - Learn Swedish with AnAn</title>
-    <!-- 注意：因为这个文件在 episodes 文件夹里，所以引入 CSS 时要用 ../ 爬回根目录 -->
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-
-    <div class="container">
-        <!-- 面包屑导航，方便返回首页 -->
-        <p style="font-size: 0.9rem;"><a href="../index.html" style="color: #2e5a44; text-decoration: none;">🏠 Back to Home</a></p>
-
-        <h1>🇸🇪 Episode 1: Hej Sweden!</h1>
-        <p style="font-style: italic; color: #666;">
-            AnAn and his sister NiuNiu have just landed at Arlanda Airport in Stockholm. Let's join them as they say their very first Swedish words!
-        </p>
-
-        <hr style="border: 0; border-top: 1px solid #e2ece9; margin: 25px 0;">
-
-        <!-- 故事对话板块 -->
+<!-- 故事对话板块 -->
         <h2>The Story 📖</h2>
+        <p style="font-size: 0.9rem; color: #666;">💡 Click the speaker icon 🔊 to hear the Swedish pronunciation!</p>
+        
         <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 4px solid #f1c40f;">
-            <p><strong>AnAn:</strong> Hej! Jag heter AnAn. 👋</p>
+            <!-- 增加了 onclick 事件，点击喇叭就会调用我们刚才写的发音函数 -->
+            <p>
+                <strong>AnAn:</strong> Hej! Jag heter AnAn. 
+                <span onclick="speakSwedish('Hej! Jag heter AnAn.')" style="cursor: pointer; margin-left: 8px; font-size: 1.1rem;">🔊</span>
+            </p>
             <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: -10px; margin-bottom: 15px;">(Hello! My name is AnAn.)</p>
 
-            <p><strong>NiuNiu:</strong> Hej! Jag heter NiuNiu. 👧</p>
+            <p>
+                <strong>NiuNiu:</strong> Hej! Jag heter NiuNiu. 
+                <span onclick="speakSwedish('Hej! Jag heter NiuNiu.')" style="cursor: pointer; margin-left: 8px; font-size: 1.1rem;">🔊</span>
+            </p>
             <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: -10px; margin-bottom: 15px;">(Hello! My name is NiuNiu.)</p>
 
-            <p><strong>Airport Staff:</strong> Välkommen till Sverige! 🇸🇪</p>
+            <p>
+                <strong>Airport Staff:</strong> Välkommen till Sverige! 
+                <span onclick="speakSwedish('Välkommen till Sverige!')" style="cursor: pointer; margin-left: 8px; font-size: 1.1rem;">🔊</span>
+            </p>
             <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: -10px; margin-bottom: 15px;">(Welcome to Sweden!)</p>
         </div>
-
-        <!-- 核心单词卡片 -->
-        <h2>Vocabulary List 💡</h2>
-        <p>Click on the words to see what they mean (we will add interaction here later!):</p>
-        
-        <ul>
-            <li>
-                <strong>Hej</strong> 
-                <span style="color: #7f8c8d; margin-left: 10px;">/hey/</span>
-                <p style="margin: 5px 0 0 0; color: #2e5a44; font-weight: bold;">Hello / Hi</p>
-            </li>
-            <li>
-                <strong>Jag</strong> 
-                <span style="color: #7f8c8d; margin-left: 10px;">/yahg/</span>
-                <p style="margin: 5px 0 0 0; color: #2e5a44; font-weight: bold;">I</p>
-            </li>
-            <li>
-                <strong>Heter</strong> 
-                <span style="color: #7f8c8d; margin-left: 10px;">/hea-ter/</span>
-                <p style="margin: 5px 0 0 0; color: #2e5a44; font-weight: bold;">Am called / My name is</p>
-            </li>
-            <li>
-                <strong>Sverige</strong> 
-                <span style="color: #7f8c8d; margin-left: 10px;">/svehr-yeh/</span>
-                <p style="margin: 5px 0 0 0; color: #2e5a44; font-weight: bold;">Sweden</p>
-            </li>
-        </ul>
-
-        <!-- 返回与下一步按钮 -->
-        <div style="margin-top: 40px; display: flex; gap: 15px;">
-            <a href="../index.html" class="btn" style="background-color: #bdc3c7; color: #2c3e50;">Back to Home</a>
-            <!-- 占位按钮，以后可以链接到 Episode 2 -->
-            <a href="#" class="btn" onclick="alert('Episode 2 is coming soon!'); return false;">Next Episode ➡️</a>
-        </div>
-
-    </div>
-
-    <script src="../js/script.js"></script>
-</body>
-</html>
