@@ -37,6 +37,8 @@
         .level-content.active {
             display: block;
         }
+        
+        /* Active Unit Card */
         .unit-card {
             background: white;
             border: 1px solid #e2ece9;
@@ -44,7 +46,17 @@
             padding: 20px;
             margin-bottom: 15px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+            transition: all 0.3s;
         }
+        
+        /* Locked Unit Card: Visual Muting */
+        .unit-card.locked {
+            background: #fafafa;
+            border: 1px dashed #ccc;
+            box-shadow: none;
+            opacity: 0.5; /* Makes it look faded out */
+        }
+        
         .unit-title {
             color: #2e5a44;
             margin-top: 0;
@@ -56,6 +68,13 @@
             justify-content: space-between;
             align-items: center;
         }
+        
+        /* Locked Unit Title */
+        .unit-card.locked .unit-title {
+            color: #95a5a6;
+            border-bottom: 2px dashed #e0e0e0;
+        }
+
         .episode-list {
             list-style: none;
             padding: 0;
@@ -64,6 +83,8 @@
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 12px;
         }
+        
+        /* Active Episode Link */
         .episode-item a {
             display: block;
             padding: 10px 15px;
@@ -80,6 +101,17 @@
             color: white;
             transform: translateY(-2px);
         }
+        
+        /* Locked Episode Link: Disabled Hover & Gray font */
+        .episode-item.locked a {
+            background: #f5f5f5 !important;
+            color: #bdc3c7 !important;
+            border: 1px solid #e5e5e5 !important;
+            cursor: not-allowed; /* Displays the red circle block cursor */
+            pointer-events: none; /* Prevents clicking */
+            transform: none !important;
+        }
+
         .locked-msg {
             color: #95a5a6;
             font-style: italic;
@@ -120,13 +152,15 @@
 <body>
 
     <div class="container">
+        <!-- Header Banner -->
         <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #e2ece9 0%, #c2dcd3 100%); border-radius: 12px; margin-bottom: 30px;">
             <h1 style="font-size: 2.5rem; color: #2c3e50; margin: 0;">Learn Swedish with AnAn 🐻</h1>
             <p style="font-size: 1.1rem; color: #52615c; margin-top: 10px; margin-bottom: 0;">
-                Follow AnAn & NiuNiu's journey and master Swedish step by step!
+                Follow AnAn & NiuNiu's family journey and master Swedish step by step!
             </p>
         </div>
 
+        <!-- 🚀 Tabs Selection -->
         <div class="level-tabs">
             <button class="tab-btn active" onclick="switchLevel('intro')">🌟 Introductory</button>
             <button class="tab-btn" onclick="switchLevel('beginner')">🌱 Beginner</button>
@@ -135,50 +169,60 @@
             <button class="tab-btn" onclick="switchLevel('about')" style="background-color: #fcf3cf; border-color: #f9e79f; color: #b7950b;">ℹ️ About & Characters</button>
         </div>
 
+        <!-- ================= 1. Introductory Content (10 Units Plan) ================= -->
         <div id="level-intro" class="level-content active">
             
+            <!-- Unit 1 (Active) -->
             <div class="unit-card">
                 <h3 class="unit-title">Unit 1: First Meeting & Basics <span>01 / 10</span></h3>
                 <ul class="episode-list">
+                    <!-- Episode 1 (Active) -->
                     <li class="episode-item">
                         <a href="episodes/episode1.html">
                             <strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)
                         </a>
                     </li>
-                    <li class="episode-item">
-                        <a href="#" style="color: #999; pointer-events: none; background: #f5f5f5;">
-                            <strong>Ep 2:</strong> My Family 🏡 (Coming Soon)
+                    <!-- Episode 2 (Locked) -->
+                    <li class="episode-item locked">
+                        <a href="#">
+                            🔒 <strong>Ep 2:</strong> My Family 🏡 (Coming Soon)
                         </a>
                     </li>
                 </ul>
             </div>
 
-            <div class="unit-card">
-                <h3 class="unit-title">Unit 2: Numbers & Time <span>02 / 10</span></h3>
+            <!-- Unit 2 (Locked Unit Card) -->
+            <div class="unit-card locked">
+                <h3 class="unit-title">🔒 Unit 2: Numbers & Time <span>02 / 10</span></h3>
                 <ul class="episode-list">
-                    <li class="episode-item">
-                        <a href="#" style="color: #999; pointer-events: none; background: #f5f5f5;">
-                            <strong>Ep 3:</strong> Counting Fika! ☕️
+                    <li class="episode-item locked">
+                        <a href="#">
+                            🔒 <strong>Ep 3:</strong> Counting Fika! ☕️ (Coming Soon)
                         </a>
                     </li>
                 </ul>
             </div>
 
-            <div class="unit-card" style="opacity: 0.7;">
-                <h3 class="unit-title" style="color: #7f8c8d;">Unit 3: Daily Life & Food <span>03 / 10</span></h3>
+            <!-- Unit 3 to Unit 10 Placeholders (All Locked Cards) -->
+            <div class="unit-card locked">
+                <h3 class="unit-title">🔒 Unit 3: Daily Life & Food <span>03 / 10</span></h3>
             </div>
-            <div class="unit-card" style="opacity: 0.7;">
-                <h3 class="unit-title" style="color: #7f8c8d;">Unit 4: Colors & Clothes <span>04 / 10</span></h3>
+            
+            <div class="unit-card locked">
+                <h3 class="unit-title">🔒 Unit 4: Colors & Clothes <span>04 / 10</span></h3>
             </div>
-            <div class="unit-card" style="opacity: 0.7;">
-                <h3 class="unit-title" style="color: #7f8c8d;">Unit 5: Transportation & Directions <span>05 / 10</span></h3>
+            
+            <div class="unit-card locked">
+                <h3 class="unit-title">🔒 Unit 5: Transportation & Directions <span>05 / 10</span></h3>
             </div>
-            <div class="unit-card" style="opacity: 0.6; border-style: dashed;">
-                <h3 class="unit-title" style="color: #95a5a6;">Units 6 - 10: Coming in the next update! 📚</h3>
+            
+            <div class="unit-card locked">
+                <h3 class="unit-title">🔒 Units 6 - 10: Coming soon in future updates! 📚</h3>
             </div>
 
         </div>
 
+        <!-- ================= 2. Beginner Content (Locked) ================= -->
         <div id="level-beginner" class="level-content">
             <div class="locked-msg">
                 <h3>🌱 Beginner Course Locked</h3>
@@ -186,6 +230,7 @@
             </div>
         </div>
 
+        <!-- ================= 3. Intermediate Content (Locked) ================= -->
         <div id="level-intermediate" class="level-content">
             <div class="locked-msg">
                 <h3>🚀 Intermediate Course Locked</h3>
@@ -193,6 +238,7 @@
             </div>
         </div>
 
+        <!-- ================= 4. Advanced Content (Locked) ================= -->
         <div id="level-advanced" class="level-content">
             <div class="locked-msg">
                 <h3>🏆 Advanced Course Locked</h3>
@@ -200,53 +246,89 @@
             </div>
         </div>
 
+        <!-- ================= 5. About & Characters ================= -->
         <div id="level-about" class="level-content">
             <div class="unit-card" style="border-left: 4px solid #f1c40f;">
                 <h3 style="color: #2e5a44; margin-top: 0;">Welcome to Our Swedish Journey! 🇸🇪</h3>
                 <p style="line-height: 1.6; color: #555;">
                     This website is designed for English speakers who want to learn Swedish from scratch in an interactive and fun way. 
                     Through situational story episodes, natural text-to-speech pronunciations, and smart bite-sized exercises, 
-                    you will learn Swedish alongside our lovely characters!
+                    you will learn Swedish alongside AnAn's lovely family!
                 </p>
             </div>
 
-            <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 10px;">Meet Our Characters 🧑‍🤝‍🧑</h3>
+            <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 10px;">Meet the Family & Characters 🧑‍🤝‍🧑</h3>
             <div class="char-grid">
+                <!-- Character 1: AnAn -->
                 <div class="char-card">
                     <span class="char-avatar">👦</span>
                     <h4 style="margin: 5px 0; color: #2c3e50;">AnAn</h4>
-                    <span style="background: #e2ece9; color: #2e5a44; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Age 10</span>
+                    <span style="background: #e2ece9; color: #2e5a44; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Main Character</span>
                     <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4;">
-                        A curious boy who has just arrived in Sweden. He loves to ask questions and learn new words!
+                        A curious boy who has just arrived in Sweden. He loves to ask questions, explore new places, and learn Swedish words!
                     </p>
                 </div>
 
+                <!-- Character 2: NiuNiu -->
                 <div class="char-card">
                     <span class="char-avatar">👧</span>
                     <h4 style="margin: 5px 0; color: #2c3e50;">NiuNiu</h4>
-                    <span style="background: #fadbd8; color: #c0392b; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Age 6</span>
+                    <span style="background: #fadbd8; color: #c0392b; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Little Sister</span>
                     <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4;">
-                        AnAn's adorable little sister. She mimics everything AnAn says and loves Sweden's cinnamon buns (Kanelbullar)!
+                        AnAn's adorable little sister. She mimics everything AnAn says and absolutely loves Sweden's cinnamon buns (Kanelbullar)!
                     </p>
                 </div>
 
+                <!-- Character 3: Older Sister -->
+                <div class="char-card">
+                    <span class="char-avatar">👱‍♀️</span>
+                    <h4 style="margin: 5px 0; color: #2c3e50;">Older Sister</h4>
+                    <span style="background: #fdebd0; color: #d35400; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Big Sister</span>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4;">
+                        The responsible older sister of the family. She keeps everyone organized, helps with translation, and loves Swedish nature.
+                    </p>
+                </div>
+
+                <!-- Character 4: Mom -->
+                <div class="char-card">
+                    <span class="char-avatar">👩‍🦱</span>
+                    <h4 style="margin: 5px 0; color: #2c3e50;">Mom</h4>
+                    <span style="background: #e8f8f5; color: #117a65; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Mother</span>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4;">
+                        Warm, encouraging, and always ready to support the kids' learning journey. She loves cooking and trying out Swedish recipes.
+                    </p>
+                </div>
+
+                <!-- Character 5: Dad -->
+                <div class="char-card">
+                    <span class="char-avatar">👨</span>
+                    <h4 style="margin: 5px 0; color: #2c3e50;">Dad</h4>
+                    <span style="background: #eaf2f8; color: #2471a3; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Father</span>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4;">
+                        A supportive and enthusiastic father. He enjoys planning family trips around Sweden and taking photos of their new life.
+                    </p>
+                </div>
+
+                <!-- Character 6: Airport Officer -->
                 <div class="char-card">
                     <span class="char-avatar">👮</span>
                     <h4 style="margin: 5px 0; color: #2c3e50;">Airport Officer</h4>
                     <span style="background: #ebdef0; color: #8e44ad; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">NPC</span>
                     <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4;">
-                        A friendly officer working at Stockholm Arlanda Airport. He helps welcome travelers to Sweden.
+                        A friendly officer working at Stockholm Arlanda Airport. He is the family's very first friendly face upon landing in Sweden.
                     </p>
                 </div>
             </div>
         </div>
 
+        <!-- Footer -->
         <div style="margin-top: 50px; text-align: center; color: #7f8c8d; font-size: 0.9rem; border-top: 1px solid #e2ece9; padding-top: 20px;">
             <p>© 2026 Learn Swedish with AnAn. All rights reserved.</p>
         </div>
 
     </div>
 
+    <!-- Page Interaction Script -->
     <script>
         function switchLevel(levelId) {
             // 1. Switch Tab Active State
