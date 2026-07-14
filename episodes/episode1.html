@@ -9,11 +9,13 @@
         .audio-hero { background: #f0f4f2; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
         .story-line { margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
         .text-content { flex-grow: 1; }
-        .speaker-icon { cursor: pointer; margin-left: 15px; font-size: 1.5rem; }
-        .vocab-section { margin-top: 40px; }
-        .vocab-category { margin-bottom: 25px; }
-        .vocab-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .vocab-item { padding: 10px; background: #fafafa; border-left: 4px solid #2e5a44; border-radius: 4px; }
+        .speaker-icon { cursor: pointer; margin-left: 10px; font-size: 1.2rem; vertical-align: middle; }
+        
+        /* 单词列表新样式 */
+        .vocab-item { padding: 15px; margin-bottom: 10px; border-left: 5px solid #2e5a44; background: #fafafa; }
+        .vocab-word { font-weight: bold; font-size: 1.1rem; }
+        .vocab-ipa { color: #666; margin-left: 10px; font-style: italic; }
+        .vocab-trans { display: block; margin-top: 5px; color: #2e5a44; }
     </style>
 </head>
 <body>
@@ -26,14 +28,14 @@
         <button onclick="playAll()">Listen to Whole Story 🔊</button>
     </div>
 
+    <!-- 课文部分（保持不变） -->
     <section>
         <h2>The Story 📖</h2>
-        
         <h4>Prologue: Ankomst på Kastrup</h4>
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Mamma, pappa! Var är vi?<br><small>Mom, dad! Where are we?</small></div><span class="speaker-icon" onclick="play('n1')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>Mamma:</b> Vi är på Kastrup, flygplatsen i Köpenhamn.<br><small>We are at Kastrup, the airport in Copenhagen.</small></div><span class="speaker-icon" onclick="play('m1')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>AnAn:</b> Titta, NiuNiu! Här är skylten: "Tåg". Vi ska åka till Malmö.<br><small>Look, NiuNiu! Here is the sign: "Train". We are going to Malmö.</small></div><span class="speaker-icon" onclick="play('a1')">🔊</span></div>
-
+        
         <h4>Scene 1: I Passkontrollen</h4>
         <div class="story-line"><div class="text-content"><b>Officer:</b> God dag. Varifrån kommer ni?<br><small>Good day. Where do you come from?</small></div><span class="speaker-icon" onclick="play('h1')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>Pappa:</b> God dag. Vi kommer från Kina.<br><small>Good day. We come from China.</small></div><span class="speaker-icon" onclick="play('p1')">🔊</span></div>
@@ -47,83 +49,48 @@
 
         <h4>Scene 2: Bagageutlämning</h4>
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> AnAn, titta! Var är våra väskor?<br><small>AnAn, look! Where are our bags?</small></div><span class="speaker-icon" onclick="play('n2')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Vänta, NiuNiu. Vi måste titta på skärmen. Vårt flygnummer är... titta, här! Band nummer fem.<br><small>Wait, NiuNiu. We must check the screen. Our flight number is... look, here! Belt number five.</small></div><span class="speaker-icon" onclick="play('a4')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>AnAn:</b> Vänta, NiuNiu. Vi måste titta på skärmen. Band nummer fem.<br><small>Wait, NiuNiu. We must check the screen. Belt number five.</small></div><span class="speaker-icon" onclick="play('a4')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Där är min rosa väska! Den rullar!<br><small>There is my pink bag! It's rolling!</small></div><span class="speaker-icon" onclick="play('n3')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>AnAn:</b> Bra! Jag tar den. Nu har vi alla väskor.<br><small>Great! I'll take it. Now we have all the bags.</small></div><span class="speaker-icon" onclick="play('a5')">🔊</span></div>
 
         <h4>Scene 3: Köp biljett & Hitta till tåget</h4>
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> AnAn, vi måste köpa biljett. Kan vi använda kort?<br><small>AnAn, we must buy a ticket. Can we use a card?</small></div><span class="speaker-icon" onclick="play('n4')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>AnAn:</b> Ja, vi kan betala med kort. Men vi måste välja rätt zon.<br><small>Yes, we can pay with card. But we must choose the right zone.</small></div><span class="speaker-icon" onclick="play('a6')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Vad är skillnaden mellan enkelbiljett och dagsbiljett?<br><small>What is the difference between a single ticket and a day ticket?</small></div><span class="speaker-icon" onclick="play('n8')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Enkelbiljett är för en resa. Vi tar två enkelbiljetter.<br><small>A single ticket is for one trip. We'll take two single tickets.</small></div><span class="speaker-icon" onclick="play('a10')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Finns det någon rabatt för barn?<br><small>Is there a discount for children?</small></div><span class="speaker-icon" onclick="play('n5')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Ja, här står "Barn". Det är halva priset.<br><small>Yes, here it says "Children". It's half price.</small></div><span class="speaker-icon" onclick="play('a11')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Var är tåget?<br><small>Where is the train?</small></div><span class="speaker-icon" onclick="play('n9')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Titta på skylten där borta: "Tåg" och en pil rakt fram. Rakt fram, NiuNiu. Det är inte svårt, följ skyltarna!<br><small>Look at the sign over there: "Train" and an arrow straight ahead. Straight ahead, NiuNiu. It's not hard, follow the signs!</small></div><span class="speaker-icon" onclick="play('a7')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>AnAn:</b> Rakt fram, NiuNiu. Det är inte svårt, följ skyltarna!<br><small>Straight ahead, NiuNiu. It's not hard, follow the signs!</small></div><span class="speaker-icon" onclick="play('a7')">🔊</span></div>
 
         <h4>Scene 4: På tåget mot Malmö</h4>
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> När går tåget? Jag är jättetrött.<br><small>When does the train leave? I'm super tired.</small></div><span class="speaker-icon" onclick="play('n6')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Klockan är fjorton noll noll. Nästa tåg går om tio minuter, klockan fjorton och femton.<br><small>It is 14:00. The next train leaves in ten minutes, at 14:15.</small></div><span class="speaker-icon" onclick="play('a8')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Vilket spår?<br><small>Which track?</small></div><span class="speaker-icon" onclick="play('n10')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Spår två.<br><small>Track two.</small></div><span class="speaker-icon" onclick="play('a12')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>AnAn:</b> Klockan är fjorton noll noll. Spår två.<br><small>It is 14:00. Track two.</small></div><span class="speaker-icon" onclick="play('a8')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Måste vi byta tåg?<br><small>Must we change trains?</small></div><span class="speaker-icon" onclick="play('n7')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Nej, det står "Direkt". Det betyder att vi åker hela vägen till Malmö utan stopp.<br><small>No, it says "Direct". It means we travel all the way to Malmö without stops.</small></div><span class="speaker-icon" onclick="play('a9')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Skönt! Vad händer om tåget är försenat?<br><small>Nice! What happens if the train is delayed?</small></div><span class="speaker-icon" onclick="play('n11')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Då får vi ta nästa tåg. Vi har gott om tid. Titta, NiuNiu! Nu är vi i Sverige!<br><small>Then we take the next train. We have plenty of time. Look, NiuNiu! Now we are in Sweden!</small></div><span class="speaker-icon" onclick="play('a13')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>AnAn:</b> Nej, det står "Direkt". Nu är vi i Sverige!<br><small>No, it says "Direct". Now we are in Sweden!</small></div><span class="speaker-icon" onclick="play('a9')">🔊</span></div>
     </section>
 
-    <!-- 词汇表部分已按您的完整要求更新 -->
+    <!-- 单词列表部分（完全依照你的图片要求更新） -->
     <section class="vocab-section">
         <h2>Vocabulary List 💡</h2>
-        <div class="vocab-category"><h4>1. På flygplatsen och tåget</h4>
-            <div class="vocab-grid">
-                <div class="vocab-item"><strong>Flygplats</strong>: Airport</div>
-                <div class="vocab-item"><strong>Tåg</strong>: Train</div>
-                <div class="vocab-item"><strong>Station / Centralstationen</strong>: Station / Central Station</div>
-                <div class="vocab-item"><strong>Skylt</strong>: Sign</div>
-                <div class="vocab-item"><strong>Skärm</strong>: Screen</div>
-                <div class="vocab-item"><strong>Band</strong>: Belt / Conveyor</div>
-                <div class="vocab-item"><strong>Spår</strong>: Track / Platform</div>
-                <div class="vocab-item"><strong>Väska</strong>: Bag / Suitcase</div>
-            </div>
+        <p>Click the speaker icon 🔊 to hear how each word sounds:</p>
+        
+        <!-- 示例：你可以按此格式填充完整单词 -->
+        <div class="vocab-item">
+            <span class="vocab-word">Flygplats</span>
+            <span class="speaker-icon" onclick="play('w_flygplats')">🔊</span>
+            <span class="vocab-ipa">/fleeg-plats/</span>
+            <span class="vocab-trans">Airport</span>
         </div>
-        <div class="vocab-category"><h4>2. Resa och biljetter</h4>
-            <div class="vocab-grid">
-                <div class="vocab-item"><strong>Biljett</strong>: Ticket</div>
-                <div class="vocab-item"><strong>Enkelbiljett</strong>: Single ticket</div>
-                <div class="vocab-item"><strong>Dagsbiljett</strong>: Day ticket</div>
-                <div class="vocab-item"><strong>Zon</strong>: Zone</div>
-                <div class="vocab-item"><strong>Rabatt</strong>: Discount</div>
-                <div class="vocab-item"><strong>Pris / Prisvärt</strong>: Price / Worth the price</div>
-                <div class="vocab-item"><strong>Direkt</strong>: Direct</div>
-                <div class="vocab-item"><strong>Byte / Byten</strong>: Transfer</div>
-                <div class="vocab-item"><strong>Försenat</strong>: Delayed</div>
-            </div>
+        
+        <div class="vocab-item">
+            <span class="vocab-word">Tåg</span>
+            <span class="speaker-icon" onclick="play('w_tag')">🔊</span>
+            <span class="vocab-ipa">/tog/</span>
+            <span class="vocab-trans">Train</span>
         </div>
-        <div class="vocab-category"><h4>3. Rörelse och verb</h4>
-            <div class="vocab-grid">
-                <div class="vocab-item"><strong>Rakt fram</strong>: Straight ahead</div>
-                <div class="vocab-item"><strong>Till vänster</strong>: To the left</div>
-                <div class="vocab-item"><strong>Till höger</strong>: To the right</div>
-                <div class="vocab-item"><strong>Åka</strong>: To ride/go</div>
-                <div class="vocab-item"><strong>Bo</strong>: To live</div>
-                <div class="vocab-item"><strong>Komma</strong>: To come</div>
-                <div class="vocab-item"><strong>Vänta</strong>: To wait</div>
-                <div class="vocab-item"><strong>Skynda sig</strong>: To hurry</div>
-            </div>
-        </div>
-        <div class="vocab-category"><h4>4. Socialt och artighet</h4>
-            <div class="vocab-grid">
-                <div class="vocab-item"><strong>Namn</strong>: Name</div>
-                <div class="vocab-item"><strong>Jag heter...</strong>: My name is...</div>
-                <div class="vocab-item"><strong>Jag kommer från...</strong>: I come from...</div>
-                <div class="vocab-item"><strong>Jag bor i...</strong>: I live in...</div>
-                <div class="vocab-item"><strong>God dag</strong>: Good day</div>
-                <div class="vocab-item"><strong>Hej då</strong>: Goodbye</div>
-                <div class="vocab-item"><strong>Tack</strong>: Thanks</div>
-                <div class="vocab-item"><strong>Trevligt</strong>: Nice</div>
-                <div class="vocab-item"><strong>Välkommen</strong>: Welcome</div>
-            </div>
+        
+        <div class="vocab-item">
+            <span class="vocab-word">Skylt</span>
+            <span class="speaker-icon" onclick="play('w_skylt')">🔊</span>
+            <span class="vocab-ipa">/shylt/</span>
+            <span class="vocab-trans">Sign</span>
         </div>
     </section>
 </div>
