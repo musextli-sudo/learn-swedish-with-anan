@@ -3,76 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Episode 1: Hej Sweden! ✈️ - Learn Swedish with AnAn</title>
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Learn Swedish with AnAn 🇸🇪</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body { font-family: sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f7f6; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        .header { background: #2e5a44; color: white; padding: 40px 20px; text-align: center; border-radius: 0 0 20px 20px; }
+        .family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
+        .card { background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .btn-ep { display: inline-block; background: #2e5a44; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; margin-top: 10px; font-weight: bold; }
+    </style>
 </head>
 <body>
 
-    <div class="container">
-        <p style="font-size: 0.9rem;">
-            <a href="../index.html" style="color: #2e5a44; text-decoration: none; font-weight: bold;">🏠 Home</a> 
-            <span style="color: #ccc;">/</span> 
-            <span style="color: #666;">Episode 1: Hej Sweden!</span>
-        </p>
-
-        <div style="background-color: #e2ece9; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px;">
-            <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #2e5a44; font-weight: bold;">Episode 1</span>
-            <h1 style="margin: 5px 0 0 0; font-size: 2rem; color: #2c3e50;">Hej Sweden! ✈️ <span style="font-size: 1.2rem; font-weight: normal; color: #555;">(At the Airport)</span></h1>
-        </div>
-
-        <p style="font-style: italic; color: #666; line-height: 1.6;">
-            AnAn and his sister NiuNiu have just landed at Arlanda Airport in Stockholm. Let's join them as they talk to the airport officer and learn basic greetings!
-        </p>
-
-        <hr style="border: 0; border-top: 1px solid #e2ece9; margin: 25px 0;">
-
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 15px;">
-            <h2>The Story 📖</h2>
-            <button onclick="playFullStory()" style="background-color: #2e5a44; color: white; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold; cursor: pointer;">Listen to Whole Story 🔊</button>
-        </div>
-        
-        <div style="background-color: #f9f9f9; padding: 20px; border-radius: 8px; border-left: 4px solid #f1c40f;">
-            <p><strong>Officer:</strong> Hej! Vad heter du? <span onclick="speakSwedish('Hej! Vad heter du?', 'officer')" style="cursor: pointer;">🔊</span></p>
-            <p style="color: #7f8c8d; font-size: 0.9rem; margin-top: -10px;">(Hello! What is your name?)</p>
-            </div>
-
-        <h2>Vocabulary List 💡</h2>
-        <ul>
-            <li><strong>Vad</strong> <span onclick="speakSwedish('Vad')" style="cursor: pointer;">🔊</span> /vahd/ - What</li>
-            <li><strong>Tack</strong> <span onclick="speakSwedish('Tack')" style="cursor: pointer;">🔊</span> /tahk/ - Thanks</li>
-        </ul>
-
-        <div style="text-align: center; margin: 40px 0;">
-            <button id="start-practice-btn" style="background-color: #2e5a44; color: white; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-weight: bold;">Start Practice 📝</button>
-        </div>
-
-        <div id="practice-section" style="display: none; background: #fafafa; border: 2px solid #eef2f0; border-radius: 12px; padding: 30px;">
-            <div style="background-color: #eee; height: 8px; width: 100%; margin-bottom: 25px;"><div id="quiz-progress" style="background-color: #2e5a44; height: 100%; width: 0%;"></div></div>
-            <div id="quiz-question-container"></div>
-            <div id="quiz-feedback" style="margin-top: 20px; padding: 15px; border-radius: 8px; display: none;"></div>
-            <button id="quiz-next-btn" style="background-color: #f1c40f; border: none; padding: 10px 25px; margin-top: 20px; cursor: pointer; display: none;">Continue ➔</button>
-        </div>
+    <div class="header">
+        <h1>Welcome to Our Swedish Journey! 🇸🇪</h1>
+        <p>Designed for English speakers to learn Swedish from scratch through a family's daily life.</p>
     </div>
 
-    <script src="../js/script.js"></script>
-    <script>
-        // 核心：在这里修改你的题目数据
-        const episode1Quiz = [
-            {
-                type: "listening",
-                instruction: "Listen and choose:",
-                audioText: "Vi kommer från Kina.",
-                options: [
-                    { text: "Welcome to Sweden.", isCorrect: false },
-                    { text: "We come from China.", isCorrect: true }
-                ],
-                explanation: "💡 <b>Vi kommer från Kina</b> = We come from China."
-            },
-            // 你可以继续在这里添加更多对象来增加题目
-        ];
+    <div class="container">
+        <section id="family-section">
+            <h2 style="text-align: center; color: #2c3e50; margin-top: 40px;">Meet AnAn's Family 👥</h2>
+            
+            <div class="family-grid">
+                <div class="card">
+                    <div style="font-size: 3rem;">👧</div>
+                    <h3>NiuNiu</h3>
+                    <p style="color: #666; font-size: 0.9rem;">The youngest of the family. Curious and adorable.</p>
+                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 Colors, Numbers & Simple Words</p>
+                </div>
+                <div class="card">
+                    <div style="font-size: 3rem;">👦</div>
+                    <h3>AnAn</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Full of energy, loves exploring and learning new things.</p>
+                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 School, Friends & Sports</p>
+                </div>
+                <div class="card">
+                    <div style="font-size: 3rem;">👩</div>
+                    <h3>Gigi</h3>
+                    <p style="color: #666; font-size: 0.9rem;">The ambitious big sister stepping into the professional world.</p>
+                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 Work, Banking & Society</p>
+                </div>
+                <div class="card">
+                    <div style="font-size: 3rem;">👩‍🦱</div>
+                    <h3>Jenny (Mom)</h3>
+                    <p style="color: #666; font-size: 0.9rem;">The warm heart of the family, organizing day-to-day adventures.</p>
+                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 Shopping, Travel & Daily Life</p>
+                </div>
+                <div class="card">
+                    <div style="font-size: 3rem;">👨</div>
+                    <h3>Peter (Dad)</h3>
+                    <p style="color: #666; font-size: 0.9rem;">Empathetic, analytical, navigating life and administration in Sweden.</p>
+                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 Swedish Workplace & Finance</p>
+                </div>
+            </div>
+        </section>
 
-        // 其余逻辑代码保持不变 (即你之前的 JS 逻辑部分)
-        // ... (保持原有的 loadQuestion, checkChoiceOption, checkSpelling 等函数)
-    </script>
+        <section style="margin-top: 50px; text-align: center;">
+            <h2>Start Learning 🚀</h2>
+            <a href="episodes/episode1.html" class="btn-ep">Go to Episode 1: Hej Sweden!</a>
+        </section>
+    </div>
+
 </body>
 </html>
