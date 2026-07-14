@@ -24,12 +24,42 @@
             transition: all 0.2s ease;
             font-size: 1rem;
         }
-        .tab-btn.active {
-            background-color: #2e5a44;
-            color: white;
-            border-color: #2e5a44;
-            box-shadow: 0 4px 10px rgba(46, 90, 68, 0.2);
+        /* Default hover for active/clickable tabs */
+        .tab-btn:not(.locked-tab):hover {
+            background-color: #e2ece9;
         }
+        /* Active state for tabs when clicked */
+        .tab-btn.active {
+            background-color: #2e5a44 !important;
+            color: white !important;
+            border-color: #2e5a44 !important;
+            box-shadow: 0 4px 10px rgba(46, 90, 68, 0.2);
+            opacity: 1 !important;
+        }
+        
+        /* 🔒 New styles to make LOCKED TAB BUTTONS look grayed out */
+        .tab-btn.locked-tab {
+            background-color: #f5f7f6 !important;
+            border-color: #e4ece9 !important;
+            color: #9cb2a8 !important; /* Muted gray-green font */
+            cursor: not-allowed;
+            opacity: 0.6; /* Semi-transparent */
+            box-shadow: none !important;
+        }
+        .tab-btn.locked-tab:hover {
+            background-color: #f5f7f6 !important; /* Prevent hover color change */
+        }
+        
+        /* Special eye-catching style for About tab when NOT active */
+        .tab-btn.about-style {
+            background-color: #fcf3cf;
+            border-color: #f9e79f;
+            color: #b7950b;
+        }
+        .tab-btn.about-style:hover {
+            background-color: #f9e79f;
+        }
+
         .level-content {
             display: none;
             animation: fadeIn 0.3s ease-in-out;
@@ -135,10 +165,10 @@
             border-radius: 8px;
             padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
         }
         .char-avatar {
             font-size: 3rem;
@@ -155,6 +185,7 @@
 <body>
 
     <div class="container">
+        <!-- Header Banner -->
         <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #e2ece9 0%, #c2dcd3 100%); border-radius: 12px; margin-bottom: 30px;">
             <h1 style="font-size: 2.5rem; color: #2c3e50; margin: 0;">Learn Swedish with AnAn 🐻</h1>
             <p style="font-size: 1.1rem; color: #52615c; margin-top: 10px; margin-bottom: 0;">
@@ -162,24 +193,30 @@
             </p>
         </div>
 
+        <!-- 🚀 Tabs Selection -->
         <div class="level-tabs">
             <button class="tab-btn active" onclick="switchLevel('intro')">🌟 Introductory</button>
-            <button class="tab-btn" onclick="switchLevel('beginner')">🌱 Beginner</button>
-            <button class="tab-btn" onclick="switchLevel('intermediate')">🚀 Intermediate</button>
-            <button class="tab-btn" onclick="switchLevel('advanced')">🏆 Advanced</button>
-            <button class="tab-btn" onclick="switchLevel('about')" style="background-color: #fcf3cf; border-color: #f9e79f; color: #b7950b;">ℹ️ About & Characters</button>
+            <!-- Added .locked-tab and 🔒 icons to below buttons -->
+            <button class="tab-btn locked-tab" onclick="switchLevel('beginner')">🔒 🌱 Beginner</button>
+            <button class="tab-btn locked-tab" onclick="switchLevel('intermediate')">🔒 🚀 Intermediate</button>
+            <button class="tab-btn locked-tab" onclick="switchLevel('advanced')">🔒 🏆 Advanced</button>
+            <button class="tab-btn about-style" onclick="switchLevel('about')">ℹ️ About & Characters</button>
         </div>
 
+        <!-- ================= 1. Introductory Content (10 Units Plan) ================= -->
         <div id="level-intro" class="level-content active">
             
+            <!-- Unit 1 (Active) -->
             <div class="unit-card">
                 <h3 class="unit-title">Unit 1: First Meeting & Basics <span>01 / 10</span></h3>
                 <ul class="episode-list">
+                    <!-- Episode 1 (Active) -->
                     <li class="episode-item">
                         <a href="episodes/episode1.html">
                             <strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)
                         </a>
                     </li>
+                    <!-- Episode 2 (Locked) -->
                     <li class="episode-item locked">
                         <a href="#">
                             🔒 <strong>Ep 2:</strong> My Family 🏡 (Coming Soon)
@@ -188,6 +225,7 @@
                 </ul>
             </div>
 
+            <!-- Unit 2 (Locked Unit Card) -->
             <div class="unit-card locked">
                 <h3 class="unit-title">🔒 Unit 2: Numbers & Time <span>02 / 10</span></h3>
                 <ul class="episode-list">
@@ -199,6 +237,7 @@
                 </ul>
             </div>
 
+            <!-- Unit 3 to Unit 10 Placeholders (All Locked Cards) -->
             <div class="unit-card locked">
                 <h3 class="unit-title">🔒 Unit 3: Daily Life & Food <span>03 / 10</span></h3>
             </div>
@@ -217,6 +256,7 @@
 
         </div>
 
+        <!-- ================= 2. Beginner Content (Locked) ================= -->
         <div id="level-beginner" class="level-content">
             <div class="locked-msg">
                 <h3>🌱 Beginner Course Locked</h3>
@@ -224,6 +264,7 @@
             </div>
         </div>
 
+        <!-- ================= 3. Intermediate Content (Locked) ================= -->
         <div id="level-intermediate" class="level-content">
             <div class="locked-msg">
                 <h3>🚀 Intermediate Course Locked</h3>
@@ -231,6 +272,7 @@
             </div>
         </div>
 
+        <!-- ================= 4. Advanced Content (Locked) ================= -->
         <div id="level-advanced" class="level-content">
             <div class="locked-msg">
                 <h3>🏆 Advanced Course Locked</h3>
@@ -238,6 +280,7 @@
             </div>
         </div>
 
+        <!-- ================= 5. About & Characters ================= -->
         <div id="level-about" class="level-content">
             <div class="unit-card" style="border-left: 4px solid #f1c40f;">
                 <h3 style="color: #2e5a44; margin-top: 0;">Welcome to Our Swedish Journey! 🇸🇪</h3>
@@ -250,6 +293,7 @@
             <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 10px;">Meet AnAn's Family 🧑‍🤝‍🧑</h3>
             <div class="char-grid">
                 
+                <!-- Character 1: NiuNiu -->
                 <div class="char-card">
                     <div>
                         <span class="char-avatar">👧</span>
@@ -264,6 +308,7 @@
                     </div>
                 </div>
 
+                <!-- Character 2: AnAn -->
                 <div class="char-card">
                     <div>
                         <span class="char-avatar">👦</span>
@@ -278,6 +323,7 @@
                     </div>
                 </div>
 
+                <!-- Character 3: Gigi -->
                 <div class="char-card">
                     <div>
                         <span class="char-avatar">👱‍♀️</span>
@@ -292,6 +338,7 @@
                     </div>
                 </div>
 
+                <!-- Character 4: Jenny -->
                 <div class="char-card">
                     <div>
                         <span class="char-avatar">👩‍🦱</span>
@@ -306,6 +353,7 @@
                     </div>
                 </div>
 
+                <!-- Character 5: Peter -->
                 <div class="char-card">
                     <div>
                         <span class="char-avatar">👨</span>
@@ -323,12 +371,14 @@
             </div>
         </div>
 
+        <!-- Footer -->
         <div style="margin-top: 50px; text-align: center; color: #7f8c8d; font-size: 0.9rem; border-top: 1px solid #e2ece9; padding-top: 20px;">
             <p>© 2026 Learn Swedish with AnAn. All rights reserved.</p>
         </div>
 
     </div>
 
+    <!-- Page Interaction Script -->
     <script>
         function switchLevel(levelId) {
             // 1. Switch Tab Active State
