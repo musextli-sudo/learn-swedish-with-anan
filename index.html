@@ -6,13 +6,19 @@
     <title>Learn Swedish with AnAn 🐻</title>
     <style>
         body { font-family: sans-serif; background-color: #f4f7f6; margin: 0; padding: 20px; }
-        .wrapper { max-width: 800px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; border: 1px solid #e1e1e1; }
+        .wrapper { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 15px; border: 1px solid #e1e1e1; }
         .hero { background: #dceae5; padding: 30px; text-align: center; border-radius: 10px; margin-bottom: 30px; }
+        .nav-bar { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .nav-link { padding: 10px 20px; text-decoration: none; border-radius: 20px; font-weight: bold; color: #555; background: #f0f0f0; cursor: pointer; border: none; }
+        .nav-link.active { background: #2e5a44; color: white; }
         
-        /* 修复后的 Tab 导航栏 */
-        .nav-bar { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; }
-        .nav-link { padding: 10px 20px; text-decoration: none; border-radius: 20px; font-weight: bold; color: #555; background: #f0f0f0; border: 1px solid #ddd; }
-        .nav-link.active { background: #2e5a44; color: white; border-color: #2e5a44; }
+        /* 页面显示逻辑 */
+        .page { display: none; }
+        .page.active { display: block; }
+        
+        /* 人物卡片样式 */
+        .family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-top: 20px; }
+        .card { border: 1px solid #eee; padding: 15px; border-radius: 12px; text-align: center; }
     </style>
 </head>
 <body>
@@ -24,18 +30,38 @@
     </div>
 
     <nav class="nav-bar">
-        <a href="#" class="nav-link active">☀️ Intro</a>
-        <a href="#" class="nav-link">🔒 Beginner</a>
-        <a href="#" class="nav-link">🔒 Intermediate</a>
-        <a href="#" class="nav-link">🧩 Quizzes</a>
-        <a href="about.html" class="nav-link">ℹ️ About</a>
+        <button class="nav-link active" onclick="showPage('intro')">☀️ Intro</button>
+        <button class="nav-link" onclick="showPage('about')">ℹ️ About</button>
     </nav>
 
-    <div style="border: 1px solid #eee; padding: 20px; border-radius: 10px;">
+    <div id="intro" class="page active">
         <h3>Welcome!</h3>
         <p>Interactive Swedish learning through the stories of AnAn's family.</p>
     </div>
+
+    <div id="about" class="page">
+        <h3>Meet AnAn's Family 👥</h3>
+        <div class="family-grid">
+            <div class="card">👧<br><strong>NiuNiu</strong><br><small>Age 6</small></div>
+            <div class="card">👦<br><strong>AnAn</strong><br><small>Age 10</small></div>
+            <div class="card">👩<br><strong>Gigi</strong><br><small>Age 25</small></div>
+            <div class="card">👩‍🦱<br><strong>Jenny</strong><br><small>Mom</small></div>
+            <div class="card">👨<br><strong>Peter</strong><br><small>Dad</small></div>
+        </div>
+    </div>
 </div>
+
+<script>
+    function showPage(pageId) {
+        // 隐藏所有页面，移除 active 样式
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+        
+        // 显示目标页面，添加 active 样式
+        document.getElementById(pageId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+</script>
 
 </body>
 </html>
