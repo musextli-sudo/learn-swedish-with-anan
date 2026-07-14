@@ -13,35 +13,38 @@ function getVoiceSettings(role) {
     if ('speechSynthesis' in window) {
         const voices = window.speechSynthesis.getVoices();
         
-        // 尝试在用户的系统里寻找最匹配的瑞典语声音
-        // 瑞典语代码通常是 sv-SE
+        // 尝试在用户的系统里寻找最匹配的瑞典语声音（瑞典语代码通常是 sv-SE）
         const swedishVoices = voices.filter(v => v.lang.startsWith('sv') || v.lang.includes('SE'));
 
         if (swedishVoices.length > 0) {
             if (role === 'officer') {
-                // 机场人员（男声）：寻找名字里带有 'microsoft'、'google' 或 'male'、'danny'、'filip' 等男声特征的声音
+                // 机场人员（男声）：寻找带有男声特征的声音
                 settings.voice = swedishVoices.find(v => 
                     v.name.toLowerCase().includes('male') || 
                     v.name.toLowerCase().includes('filip') || 
                     v.name.toLowerCase().includes('danny')
-                ) || swedishVoices[0]; // 如果找不到男声，用默认第一个
-                settings.pitch = 0.9; // 略微调低音调，让声音更低沉
+                ) || swedishVoices[0];
+                settings.pitch = 0.9; // 略微调低音调
             } else if (role === 'anan') {
-                // 安安（10岁男孩）：使用女声/默认声，音调稍微调高一点点
+                // 安安（10岁男孩）
                 settings.voice = swedishVoices.find(v => v.name.toLowerCase().includes('astrid') || v.name.toLowerCase().includes('female')) || swedishVoices[0];
-                settings.pitch = 1.2; // 稍高的音调模拟小男孩
+                settings.pitch = 1.2; 
             } else if (role === 'niuniu') {
-                // 妞妞（6岁小女孩）：音调调得更高，听起来更稚嫩
+                // 妞妞（6岁小女孩）
                 settings.voice = swedishVoices.find(v => v.name.toLowerCase().includes('astrid') || v.name.toLowerCase().includes('female')) || swedishVoices[0];
-                settings.pitch = 1.45; // 较高的音调模拟小女孩
+                settings.pitch = 1.45; 
+            } else {
+                // 💡 新增兼容：如果未指定角色（例如练习题发音），使用第一个瑞典语默认人声
+                settings.voice = swedishVoices[0];
+                settings.pitch = 1.0;
             }
         }
     }
     return settings;
 }
 
-// 1. 单句发音函数（带角色参数）
-function speakSwedish(text, role) {
+// 1. 单句发音函数（带角色参数，角色为可选）
+function speakSwedish(text, role = 'default') {
     if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel(); // 播放前先静音之前的
 
@@ -78,14 +81,14 @@ async function playFullStory() {
             { text: "Hej då!", role: "officer" }
         ];
 
-        // 挨个播放，并在句子中间加上延迟（换气时间）
+        // 挨个播放，并在句子中间加上延迟
         for (let i = 0; i < storyLines.length; i++) {
             const line = storyLines[i];
             
             // 播放当前句子
             speakSwedish(line.text, line.role);
 
-            // 核心魔法：等待当前句子读完。根据句子长度动态计算等待时间（大概每字 350 毫秒 + 800 毫秒基础停顿）
+            // 动态等待当前句子读完
             const waitTime = (line.text.length * 90) + 900; 
             await new Promise(resolve => setTimeout(resolve, waitTime));
         }
@@ -94,7 +97,7 @@ async function playFullStory() {
     }
 }
 
-// 确保浏览器在加载完声音列表后再运行（解决部分浏览器无法获取 voice 列表的问题）
+// 确保浏览器在加载完声音列表后再运行
 if ('speechSynthesis' in window) {
     window.speechSynthesis.onvoiceschanged = function() {
         console.log("Swedish voices loaded!");
