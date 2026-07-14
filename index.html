@@ -6,634 +6,108 @@
     <title>Learn Swedish with AnAn 🐻</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* 🚀 Upgraded Navigation with Separator Grouping */
-        .level-tabs {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            background-color: #f7faf9;
-            padding: 10px 15px;
-            border-radius: 30px;
-            border: 1px solid #e2ece9;
+        :root {
+            --primary-color: #2e5a44;
+            --accent-color: #117a65;
+            --bg-color: #f7faf9;
+            --border-color: #e2ece9;
         }
+
+        body { font-family: 'Segoe UI', sans-serif; background-color: #fcfcfc; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+
+        /* Header */
+        .header-banner { text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #e2ece9, #c2dcd3); border-radius: 16px; margin-bottom: 30px; }
+        .header-banner h1 { margin: 0; color: #2c3e50; }
+
+        /* Navigation */
+        .nav-tabs { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; background: var(--bg-color); padding: 10px; border-radius: 30px; border: 1px solid var(--border-color); margin-bottom: 30px; }
+        .tab-btn { padding: 10px 20px; border-radius: 20px; border: 2px solid transparent; background: #fff; cursor: pointer; font-weight: 600; transition: 0.3s; }
+        .tab-btn.active { background: var(--primary-color); color: #fff; }
+        .tab-btn.locked { opacity: 0.5; cursor: not-allowed; }
+
+        /* Content */
+        .page-section { display: none; }
+        .page-section.active { display: block; animation: fadeIn 0.4s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Units & Cards */
+        .unit-card { background: #fff; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .unit-title { color: var(--primary-color); border-bottom: 2px solid #f0f4f2; padding-bottom: 10px; display: flex; justify-content: space-between; }
         
-        /* The container for Main Path */
-        .tab-group-main {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+        .episode-list { list-style: none; padding: 0; display: grid; gap: 10px; }
+        .episode-item a { display: block; padding: 12px; background: #f9f9f9; border-radius: 8px; text-decoration: none; color: #333; transition: 0.2s; }
+        .episode-item a:hover { background: var(--primary-color); color: #fff; }
 
-        /* The container for Support Utilities */
-        .tab-group-support {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        /* 📐 Elegant Vertical Divider */
-        .tab-divider {
-            width: 2px;
-            height: 28px;
-            background-color: #cbdcd6;
-            margin: 0 10px;
-            align-self: center;
-        }
-
-        @media (max-width: 768px) {
-            .tab-divider {
-                display: none; /* Hide divider on small screens to let items wrap naturally */
-            }
-            .level-tabs {
-                border-radius: 15px;
-            }
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            background-color: #ffffff;
-            border: 2px solid #e2ece9;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #555;
-            transition: all 0.2s ease;
-            font-size: 0.95rem;
-        }
-        /* Default hover for active/clickable tabs */
-        .tab-btn:not(.locked-tab):hover {
-            background-color: #e2ece9;
-        }
-        /* Active state for tabs when clicked */
-        .tab-btn.active {
-            background-color: #2e5a44 !important;
-            color: white !important;
-            border-color: #2e5a44 !important;
-            box-shadow: 0 4px 10px rgba(46, 90, 68, 0.2);
-            opacity: 1 !important;
-        }
-        
-        /* 🔒 LOCKED TAB BUTTONS styling */
-        .tab-btn.locked-tab {
-            background-color: #fafbfc !important;
-            border-color: #eef2f0 !important;
-            color: #b2c4bc !important;
-            cursor: not-allowed;
-            opacity: 0.6;
-            box-shadow: none !important;
-        }
-        .tab-btn.locked-tab:hover {
-            background-color: #fafbfc !important;
-        }
-        
-        /* Special style for About tab when NOT active */
-        .tab-btn.about-style {
-            background-color: #fcf3cf;
-            border-color: #f9e79f;
-            color: #b7950b;
-        }
-        .tab-btn.about-style:hover {
-            background-color: #f9e79f;
-        }
-
-        /* 🧩 Style for Quiz tab when NOT active */
-        .tab-btn.quiz-style {
-            background-color: #e8f8f5;
-            border-color: #a3e4d7;
-            color: #117a65;
-        }
-        .tab-btn.quiz-style:hover {
-            background-color: #a3e4d7;
-        }
-
-        .level-content {
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .level-content.active {
-            display: block;
-        }
-        
-        /* Active Unit Card */
-        .unit-card {
-            background: white;
-            border: 1px solid #e2ece9;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: all 0.3s;
-        }
-        
-        /* Locked Unit Card: Visual Muting */
-        .unit-card.locked {
-            background: #fafafa;
-            border: 1px dashed #ccc;
-            box-shadow: none;
-            opacity: 0.5;
-        }
-        
-        .unit-title {
-            color: #2e5a44;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            border-bottom: 2px solid #f0f4f2;
-            padding-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* Locked Unit Title */
-        .unit-card.locked .unit-title {
-            color: #95a5a6;
-            border-bottom: 2px dashed #e0e0e0;
-        }
-
-        .episode-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 12px;
-        }
-        
-        /* Active Episode Link */
-        .episode-item a {
-            display: block;
-            padding: 10px 15px;
-            background: #fafbfc;
-            border: 1px solid #eef2f0;
-            border-radius: 6px;
-            color: #2c3e50;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-        }
-        .episode-item a:hover {
-            background: #2e5a44;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Locked Episode Link */
-        .episode-item.locked a {
-            background: #f5f5f5 !important;
-            color: #bdc3c7 !important;
-            border: 1px solid #e5e5e5 !important;
-            cursor: not-allowed;
-            pointer-events: none;
-            transform: none !important;
-        }
-
-        .locked-msg {
-            color: #95a5a6;
-            font-style: italic;
-            text-align: center;
-            padding: 40px 20px;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px dashed #ddd;
-        }
-
-        /* Characters Grid Styling */
-        .char-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .char-card {
-            background: #fff;
-            border: 1px solid #e2ece9;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .char-avatar {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        /* 🎛️ NEW: Checkbox list style for customized quizzes */
-        .quiz-config-container {
-            background: #fafbfc;
-            border: 1px solid #cbdcd6;
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 20px;
-            max-width: 650px;
-            box-shadow: 0 4px 15px rgba(46, 90, 68, 0.03);
-        }
-        .quiz-select-label {
-            display: block;
-            font-weight: bold;
-            color: #117a65;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-        .quiz-options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-        
-        /* Checkbox Option Row */
-        .quiz-option-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            background: white;
-            border: 2px solid #e2ece9;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            user-select: none;
-        }
-        .quiz-option-item:hover:not(.locked-option) {
-            border-color: #117a65;
-            background-color: #f4faf8;
-        }
-        
-        /* Modernized Checkbox */
-        .quiz-option-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 15px;
-            cursor: pointer;
-            accent-color: #117a65;
-        }
-        
-        .option-text {
-            font-size: 0.95rem;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Locked Checkbox Rows */
-        .quiz-option-item.locked-option {
-            background-color: #f6f8f7;
-            border-color: #e6ecea;
-            color: #9cb2a8;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-        .quiz-option-item.locked-option .option-text {
-            color: #9cb2a8;
-        }
-        .quiz-option-item.locked-option input[type="checkbox"] {
-            cursor: not-allowed;
-        }
-
-        /* Dynamic Start Button */
-        .quiz-start-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #117a65;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-        .quiz-start-btn:hover {
-            background-color: #0e6251;
-            box-shadow: 0 4px 12px rgba(17, 122, 101, 0.2);
-        }
-        .quiz-start-btn:active {
-            transform: scale(0.99);
-        }
-        .quiz-start-btn.disabled {
-            background-color: #bdc3c7 !important;
-            color: #fff !important;
-            cursor: not-allowed;
-            pointer-events: none;
-            box-shadow: none !important;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        /* Quiz Config */
+        .quiz-option-item { display: flex; align-items: center; padding: 10px; border: 1px solid var(--border-color); border-radius: 8px; margin-bottom: 8px; cursor: pointer; }
+        .quiz-start-btn { width: 100%; padding: 15px; background: var(--accent-color); color: #fff; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; margin-top: 15px; }
+        .quiz-start-btn:disabled { background: #ccc; }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Header Banner -->
-        <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #e2ece9 0%, #c2dcd3 100%); border-radius: 12px; margin-bottom: 30px;">
-            <h1 style="font-size: 2.5rem; color: #2c3e50; margin: 0;">Learn Swedish with AnAn 🐻</h1>
-            <p style="font-size: 1.1rem; color: #52615c; margin-top: 10px; margin-bottom: 0;">
-                Follow AnAn's family and master Swedish step by step through their stories!
-            </p>
-        </div>
+        <header class="header-banner">
+            <h1>Learn Swedish with AnAn 🐻</h1>
+            <p>Master Swedish step by step through stories.</p>
+        </header>
 
-        <!-- 🚀 Tabs Selection (Grouped & Separated!) -->
-        <div class="level-tabs">
-            <!-- Group A: Main Learning Progression -->
-            <div class="tab-group-main">
-                <button class="tab-btn active" onclick="switchLevel('intro')">🌟 Introductory</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('beginner')">🔒 🌱 Beginner</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('intermediate')">🔒 🚀 Intermediate</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('advanced')">🔒 🏆 Advanced</button>
-            </div>
+        <!-- Navigation -->
+        <nav class="nav-tabs">
+            <button class="tab-btn active" onclick="showSection('intro')">🌟 Intro</button>
+            <button class="tab-btn locked">🔒 Beginner</button>
+            <button class="tab-btn locked">🔒 Intermediate</button>
+            <button class="tab-btn" onclick="showSection('quizzes')">🧩 Quizzes</button>
+            <button class="tab-btn" onclick="showSection('about')">ℹ️ About</button>
+        </nav>
 
-            <!-- 📐 The Divider Line -->
-            <div class="tab-divider"></div>
-
-            <!-- Group B: Utilities & Support -->
-            <div class="tab-group-support">
-                <button class="tab-btn quiz-style" onclick="switchLevel('quizzes')">🧩 Review Quizzes</button>
-                <button class="tab-btn about-style" onclick="switchLevel('about')">ℹ️ About & Characters</button>
-            </div>
-        </div>
-
-        <!-- ================= 1. Introductory Content (10 Units Plan) ================= -->
-        <div id="level-intro" class="level-content active">
-            
-            <!-- Unit 1 (Active) -->
+        <!-- Sections -->
+        <section id="intro" class="page-section active">
             <div class="unit-card">
-                <h3 class="unit-title">Unit 1: First Meeting & Basics <span>01 / 10</span></h3>
+                <h3 class="unit-title">Unit 1: First Meeting <span>01 / 10</span></h3>
                 <ul class="episode-list">
-                    <!-- Episode 1 (Active) -->
-                    <li class="episode-item">
-                        <a href="episodes/episode1.html">
-                            <strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)
-                        </a>
-                    </li>
-                    <!-- Episode 2 (Locked) -->
-                    <li class="episode-item locked">
-                        <a href="#">
-                            🔒 <strong>Ep 2:</strong> My Family 🏡 (Coming Soon)
-                        </a>
-                    </li>
+                    <li class="episode-item"><a href="episodes/episode1.html">Ep 1: Hej Sweden! ✈️</a></li>
                 </ul>
             </div>
+        </section>
 
-            <!-- Unit 2 (Locked Unit Card) -->
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Unit 2: Numbers & Time <span>02 / 10</span></h3>
-                <ul class="episode-list">
-                    <li class="episode-item locked">
-                        <a href="#">
-                            🔒 <strong>Ep 3:</strong> Counting Fika! ☕️ (Coming Soon)
-                        </a>
-                    </li>
-                </ul>
+        <section id="quizzes" class="page-section">
+            <div class="unit-card">
+                <h3>🧩 Custom Review Center</h3>
+                <label class="quiz-option-item">
+                    <input type="checkbox" checked onchange="updateQuizBtn()"> Ep 1: Hej Sweden!
+                </label>
+                <button id="start-quiz-btn" class="quiz-start-btn" onclick="launchQuiz()">Start Quiz</button>
             </div>
+        </section>
 
-            <!-- Unit 3 to Unit 10 Placeholders (All Locked Cards) -->
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Unit 3: Daily Life & Food <span>03 / 10</span></h3>
+        <section id="about" class="page-section">
+            <div class="unit-card">
+                <h3>Welcome!</h3>
+                <p>Interactive Swedish learning through the stories of AnAn's family.</p>
             </div>
-            
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Unit 4: Colors & Clothes <span>04 / 10</span></h3>
-            </div>
-            
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Unit 5: Transportation & Directions <span>05 / 10</span></h3>
-            </div>
-            
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Units 6 - 10: Coming soon in future updates! 📚</h3>
-            </div>
-
-        </div>
-
-        <!-- ================= 2. Review Quizzes Section (Dynamic Tick Boxes!) ================= -->
-        <div id="level-quizzes" class="level-content">
-            <div class="unit-card" style="border-left: 4px solid #117a65; background: #fafbfc; margin-bottom: 25px;">
-                <h3 style="color: #117a65; margin-top: 0;">🧩 Custom Review Center</h3>
-                <p style="color: #555; line-height: 1.5; font-size: 0.95rem; margin-bottom: 0;">
-                    Tailor your practice session. Tick the episodes you want to cover, and we will compile an instant challenge pool just for you!
-                </p>
-            </div>
-
-            <!-- 🎛️ Checkbox Selection Console -->
-            <div class="quiz-config-container">
-                <span class="quiz-select-label">Choose episodes to include:</span>
-                
-                <div class="quiz-options-list">
-                    <!-- Unlocked Option: Episode 1 -->
-                    <label class="quiz-option-item">
-                        <input type="checkbox" name="quiz-episode" value="ep1" checked onchange="updateQuizSelection()">
-                        <span class="option-text">
-                            <strong>Ep 1:</strong> Hej Sweden! ✈️ (Greetings & Airport)
-                        </span>
-                    </label>
-
-                    <!-- Locked Option: Episode 2 -->
-                    <label class="quiz-option-item locked-option">
-                        <input type="checkbox" name="quiz-episode" value="ep2" disabled onchange="updateQuizSelection()">
-                        <span class="option-text">
-                            🔒 <strong>Ep 2:</strong> My Family 🏡 (Requires Unit 1 Progression)
-                        </span>
-                    </label>
-
-                    <!-- Locked Option: Episode 3 -->
-                    <label class="quiz-option-item locked-option">
-                        <input type="checkbox" name="quiz-episode" value="ep3" disabled onchange="updateQuizSelection()">
-                        <span class="option-text">
-                            🔒 <strong>Ep 3:</strong> Counting Fika! ☕️ (Requires Unit 2 Unlock)
-                        </span>
-                    </label>
-                </div>
-
-                <!-- Dynamic CTA Button -->
-                <button id="start-quiz-btn" class="quiz-start-btn" onclick="launchQuiz()">
-                    🚀 Start Quiz (1 Episode Selected)
-                </button>
-            </div>
-        </div>
-
-        <!-- ================= 3. Beginner Content (Locked) ================= -->
-        <div id="level-beginner" class="level-content">
-            <div class="locked-msg">
-                <h3>🌱 Beginner Course Locked</h3>
-                <p>Complete the Introductory Course first to unlock this level!</p>
-            </div>
-        </div>
-
-        <!-- ================= 4. Intermediate Content (Locked) ================= -->
-        <div id="level-intermediate" class="level-content">
-            <div class="locked-msg">
-                <h3>🚀 Intermediate Course Locked</h3>
-                <p>Complete the Beginner Course first to unlock this level!</p>
-            </div>
-        </div>
-
-        <!-- ================= 5. Advanced Content (Locked) ================= -->
-        <div id="level-advanced" class="level-content">
-            <div class="locked-msg">
-                <h3>🏆 Advanced Course Locked</h3>
-                <p>Reach advanced Swedish skills to unlock these challenges!</p>
-            </div>
-        </div>
-
-        <!-- ================= 6. About & Characters ================= -->
-        <div id="level-about" class="level-content">
-            <div class="unit-card" style="border-left: 4px solid #f1c40f;">
-                <h3 style="color: #2e5a44; margin-top: 0;">Welcome to Our Swedish Journey! 🇸🇪</h3>
-                <p style="line-height: 1.6; color: #555;">
-                    This website is designed for English speakers who want to learn Swedish from scratch in an interactive and fun way. 
-                    Unlike traditional courses, you will follow a single family’s daily life in Sweden, creating a continuous storyline that connects vocabulary, context, and exercises naturally.
-                </p>
-            </div>
-
-            <h3 style="color: #2c3e50; margin-top: 30px; margin-bottom: 10px;">Meet AnAn's Family 🧑‍🤝‍🧑</h3>
-            <div class="char-grid">
-                
-                <!-- Character 1: NiuNiu -->
-                <div class="char-card">
-                    <div>
-                        <span class="char-avatar">👧</span>
-                        <h4 style="margin: 5px 0; color: #2c3e50;">NiuNiu</h4>
-                        <span style="background: #fadbd8; color: #c0392b; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Age 6</span>
-                        <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4; text-align: left;">
-                            The youngest of the family. Curious and adorable.
-                        </p>
-                    </div>
-                    <div style="margin-top: 15px; border-top: 1px solid #f9ebec; padding-top: 10px; font-size: 0.85rem; color: #c0392b; font-weight: bold;">
-                        🎯 Colors, Numbers & Simple Words
-                    </div>
-                </div>
-
-                <!-- Character 2: AnAn -->
-                <div class="char-card">
-                    <div>
-                        <span class="char-avatar">👦</span>
-                        <h4 style="margin: 5px 0; color: #2c3e50;">AnAn</h4>
-                        <span style="background: #e2ece9; color: #2e5a44; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Age 10</span>
-                        <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4; text-align: left;">
-                            Full of energy, loves exploring and learning new things.
-                        </p>
-                    </div>
-                    <div style="margin-top: 15px; border-top: 1px solid #eef5f2; padding-top: 10px; font-size: 0.85rem; color: #2e5a44; font-weight: bold;">
-                        🎯 School, Friends & Sports
-                    </div>
-                </div>
-
-                <!-- Character 3: Gigi -->
-                <div class="char-card">
-                    <div>
-                        <span class="char-avatar">👱‍♀️</span>
-                        <h4 style="margin: 5px 0; color: #2c3e50;">Gigi</h4>
-                        <span style="background: #fdebd0; color: #d35400; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Age 25</span>
-                        <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4; text-align: left;">
-                            The ambitious big sister stepping into the professional world.
-                        </p>
-                    </div>
-                    <div style="margin-top: 15px; border-top: 1px solid #fdf5ea; padding-top: 10px; font-size: 0.85rem; color: #d35400; font-weight: bold;">
-                        🎯 Work, Banking & Society
-                    </div>
-                </div>
-
-                <!-- Character 4: Jenny -->
-                <div class="char-card">
-                    <div>
-                        <span class="char-avatar">👩‍🦱</span>
-                        <h4 style="margin: 5px 0; color: #2c3e50;">Jenny (Mom)</h4>
-                        <span style="background: #e8f8f5; color: #117a65; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Adult Life</span>
-                        <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4; text-align: left;">
-                            The warm heart of the family, organizing day-to-day adventures.
-                        </p>
-                    </div>
-                    <div style="margin-top: 15px; border-top: 1px solid #eefcf9; padding-top: 10px; font-size: 0.85rem; color: #117a65; font-weight: bold;">
-                        🎯 Shopping, Travel & Daily Life
-                    </div>
-                </div>
-
-                <!-- Character 5: Peter -->
-                <div class="char-card">
-                    <div>
-                        <span class="char-avatar">👨</span>
-                        <h4 style="margin: 5px 0; color: #2c3e50;">Peter (Dad)</h4>
-                        <span style="background: #eaf2f8; color: #2471a3; font-size: 0.8rem; padding: 3px 10px; border-radius: 10px; font-weight: bold;">Adult Life</span>
-                        <p style="font-size: 0.9rem; color: #666; margin-top: 10px; line-height: 1.4; text-align: left;">
-                            Empathetic, analytical, navigating life and administration in Sweden.
-                        </p>
-                    </div>
-                    <div style="margin-top: 15px; border-top: 1px solid #f0f7fc; padding-top: 10px; font-size: 0.85rem; color: #2471a3; font-weight: bold;">
-                        🎯 Swedish Workplace & Finance
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div style="margin-top: 50px; text-align: center; color: #7f8c8d; font-size: 0.9rem; border-top: 1px solid #e2ece9; padding-top: 20px;">
-            <p>© 2026 Learn Swedish with AnAn. All rights reserved.</p>
-        </div>
-
+        </section>
     </div>
 
-    <!-- Page Interaction Script -->
     <script>
-        function switchLevel(levelId) {
-            // 1. Switch Tab Active State
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+        function showSection(sectionId) {
+            document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
             
-            // Highlight the clicked tab button
+            document.getElementById(sectionId).classList.add('active');
             event.currentTarget.classList.add('active');
-
-            // 2. Switch Visibility of Content
-            const contents = document.querySelectorAll('.level-content');
-            contents.forEach(content => content.classList.remove('active'));
-
-            document.getElementById('level-' + levelId).classList.add('active');
         }
 
-        // 3. Dynamic Checkbox Action for Quizzes
-        function updateQuizSelection() {
-            const checkboxes = document.querySelectorAll('input[name="quiz-episode"]:checked');
-            const button = document.getElementById('start-quiz-btn');
-            const count = checkboxes.length;
-
-            if (count === 0) {
-                button.innerText = "⚠️ Please select at least one episode";
-                button.classList.add('disabled');
-            } else {
-                button.innerText = `🚀 Start Quiz (${count} Episode${count > 1 ? 's' : ''} Selected)`;
-                button.classList.remove('disabled');
-            }
+        function updateQuizBtn() {
+            const checked = document.querySelectorAll('input:checked').length;
+            const btn = document.getElementById('start-quiz-btn');
+            btn.disabled = checked === 0;
+            btn.innerText = checked > 0 ? `🚀 Start Quiz (${checked} selected)` : "Please select an episode";
         }
 
-        // 4. Dynamic Redirect Logic (Routes users depending on selections)
         function launchQuiz() {
-            const checkboxes = document.querySelectorAll('input[name="quiz-episode"]:checked');
-            if (checkboxes.length === 0) return;
-
-            const selectedValues = Array.from(checkboxes).map(cb => cb.value);
-
-            // Simple routing:
-            // - If only Ep 1 is selected, send to Ep 1's dedicated quiz file.
-            // - In the future, you can send multiple IDs as URL parameters: custom_quiz.html?episodes=ep1,ep2
-            if (selectedValues.length === 1 && selectedValues[0] === 'ep1') {
-                window.location.href = "quizzes/quiz_ep1.html";
-            } else {
-                // Future generic multi-episode quiz handler
-                window.location.href = `quizzes/custom_quiz.html?episodes=${selectedValues.join(',')}`;
-            }
+            window.location.href = "quizzes/quiz_ep1.html";
         }
     </script>
 </body>
