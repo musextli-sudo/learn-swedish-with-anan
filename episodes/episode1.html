@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Episode 1: Hej Sweden! - Learn Swedish with AnAn</title>
+    <title>Episode 1: Hej Sweden! ✈️ - Learn Swedish with AnAn</title>
     <!-- 引入 CSS 样式表 -->
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -11,20 +11,29 @@
 
     <div class="container">
         <!-- 面包屑导航 -->
-        <p style="font-size: 0.9rem;"><a href="../index.html" style="color: #2e5a44; text-decoration: none;">🏠 Back to Home</a></p>
+        <p style="font-size: 0.9rem;">
+            <a href="../index.html" style="color: #2e5a44; text-decoration: none; font-weight: bold;">🏠 Home</a> 
+            <span style="color: #ccc;">/</span> 
+            <span style="color: #666;">Episode 1: Hej Sweden!</span>
+        </p>
 
-        <h1>🇸🇪 Episode 1: Hej Sweden!</h1>
-        <p style="font-style: italic; color: #666;">
-            AnAn and his sister NiuNiu have just landed at Arlanda Airport in Stockholm. Let's join them as they talk to the airport officer!
+        <!-- 关卡专属标题 -->
+        <div style="background-color: #e2ece9; padding: 15px 20px; border-radius: 8px; margin-bottom: 20px;">
+            <span style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: #2e5a44; font-weight: bold;">Episode 1</span>
+            <h1 style="margin: 5px 0 0 0; font-size: 2rem; color: #2c3e50;">Hej Sweden! ✈️ <span style="font-size: 1.2rem; font-weight: normal; color: #555;">(At the Airport)</span></h1>
+        </div>
+
+        <p style="font-style: italic; color: #666; line-height: 1.6;">
+            AnAn and his sister NiuNiu have just landed at Arlanda Airport in Stockholm. Let's join them as they talk to the airport officer and learn basic greetings!
         </p>
 
         <hr style="border: 0; border-top: 1px solid #e2ece9; margin: 25px 0;">
 
         <!-- 1. 故事对话板块 -->
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 15px;">
             <h2>The Story 📖</h2>
             <!-- 🔊 听整段故事的按钮 -->
-            <button onclick="playFullStory()" style="background-color: #2e5a44; color: white; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.9rem;">
+            <button onclick="playFullStory()" style="background-color: #2e5a44; color: white; border: none; padding: 8px 16px; border-radius: 20px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; font-size: 0.9rem; transition: 0.2s;">
                 Listen to Whole Story 🔊
             </button>
         </div>
@@ -122,8 +131,8 @@
 
         <!-- 3. 返回与下一步按钮 -->
         <div style="margin-top: 40px; display: flex; gap: 15px;">
-            <a href="../index.html" class="btn" style="background-color: #bdc3c7; color: #2c3e50;">Back to Home</a>
-            <a href="#" class="btn" onclick="alert('Episode 2 is coming soon!'); return false;">Next Episode ➡️</a>
+            <a href="../index.html" class="btn" style="background-color: #bdc3c7; color: #2c3e50; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Back to Home</a>
+            <a href="#" class="btn" onclick="alert('Episode 2 is coming soon!'); return false;" style="background-color: #2e5a44; color: white; text-decoration: none; padding: 10px 20px; border-radius: 5px; font-weight: bold;">Next Episode ➡️</a>
         </div>
 
     </div>
