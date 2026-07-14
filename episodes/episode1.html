@@ -1,69 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Swedish with AnAn 🇸🇪</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Episode 1: Hej Sverige! | Learn Swedish with AnAn</title>
+    <link rel="stylesheet" href="../css/style.css">
     <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f7f6; }
-        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
-        .header { background: #2e5a44; color: white; padding: 40px 20px; text-align: center; border-radius: 0 0 20px 20px; }
-        .family-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 30px; }
-        .card { background: white; padding: 20px; border-radius: 12px; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .btn-ep { display: inline-block; background: #2e5a44; color: white; padding: 10px 20px; text-decoration: none; border-radius: 8px; margin-top: 10px; font-weight: bold; }
+        .container { max-width: 800px; margin: 20px auto; padding: 30px; background: white; border-radius: 15px; border: 1px solid #e2ece9; }
+        .nav-back { display: inline-block; margin-bottom: 20px; color: #2e5a44; text-decoration: none; font-weight: bold; }
+        
+        /* Audio Player Styling */
+        .audio-section { background: #f4f7f6; padding: 20px; border-radius: 10px; margin-bottom: 30px; text-align: center; }
+        .sentence { margin-bottom: 15px; padding: 10px; border-bottom: 1px solid #f0f0f0; }
+        .audio-player { vertical-align: middle; margin-left: 10px; height: 30px; }
+
+        /* Vocabulary Section */
+        .word-category { margin-top: 30px; }
+        .word-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px; }
+        .word-item { padding: 10px; background: #fafafa; border: 1px solid #eef2f0; border-radius: 6px; font-size: 0.95rem; }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>Welcome to Our Swedish Journey! 🇸🇪</h1>
-        <p>Designed for English speakers to learn Swedish from scratch through a family's daily life.</p>
+<div class="container">
+    <a href="../index.html" class="nav-back">← Back to Course Selection</a>
+    
+    <h1>Episode 1: Hej Sverige! ✈️</h1>
+
+    <!-- 课文顶部音频 -->
+    <div class="audio-section">
+        <h3>🎧 听完整段课文</h3>
+        <audio controls src="../assets/audio/ep1/full_dialogue.mp3"></audio>
     </div>
 
-    <div class="container">
-        <section id="family-section">
-            <h2 style="text-align: center; color: #2c3e50; margin-top: 40px;">Meet AnAn's Family 👥</h2>
-            
-            <div class="family-grid">
-                <div class="card">
-                    <div style="font-size: 3rem;">👧</div>
-                    <h3>NiuNiu</h3>
-                    <p style="color: #666; font-size: 0.9rem;">The youngest of the family. Curious and adorable.</p>
-                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 Colors, Numbers & Simple Words</p>
-                </div>
-                <div class="card">
-                    <div style="font-size: 3rem;">👦</div>
-                    <h3>AnAn</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Full of energy, loves exploring and learning new things.</p>
-                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 School, Friends & Sports</p>
-                </div>
-                <div class="card">
-                    <div style="font-size: 3rem;">👩</div>
-                    <h3>Gigi</h3>
-                    <p style="color: #666; font-size: 0.9rem;">The ambitious big sister stepping into the professional world.</p>
-                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 Work, Banking & Society</p>
-                </div>
-                <div class="card">
-                    <div style="font-size: 3rem;">👩‍🦱</div>
-                    <h3>Jenny (Mom)</h3>
-                    <p style="color: #666; font-size: 0.9rem;">The warm heart of the family, organizing day-to-day adventures.</p>
-                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 Shopping, Travel & Daily Life</p>
-                </div>
-                <div class="card">
-                    <div style="font-size: 3rem;">👨</div>
-                    <h3>Peter (Dad)</h3>
-                    <p style="color: #666; font-size: 0.9rem;">Empathetic, analytical, navigating life and administration in Sweden.</p>
-                    <p style="color: #2e5a44; font-weight: bold; font-size: 0.85rem;">🎯 Swedish Workplace & Finance</p>
-                </div>
+    <!-- 课文内容 -->
+    <section>
+        <h2>📖 课文 (Dialog)</h2>
+        
+        <h3>序幕：Ankomst på Kastrup</h3>
+        <div class="sentence"><b>妞妞:</b> Mamma, pappa! Var är vi? <audio controls class="audio-player" src="../assets/audio/ep1/n1.mp3"></audio></div>
+        <div class="sentence"><b>妈妈:</b> Vi är på Kastrup, flygplatsen i Köpenhamn. <audio controls class="audio-player" src="../assets/audio/ep1/m1.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Titta, NiuNiu! Här är skylten: "Tåg". Vi ska åka till Malmö. <audio controls class="audio-player" src="../assets/audio/ep1/a1.mp3"></audio></div>
+
+        <h3>第一幕：I Passkontrollen</h3>
+        <div class="sentence"><b>海关:</b> God dag. Varifrån kommer ni? <audio controls class="audio-player" src="../assets/audio/ep1/h1.mp3"></audio></div>
+        <div class="sentence"><b>爸爸:</b> God dag. Vi kommer från Kina. <audio controls class="audio-player" src="../assets/audio/ep1/p1.mp3"></audio></div>
+        <div class="sentence"><b>海关:</b> Trevligt. Vad heter du? <audio controls class="audio-player" src="../assets/audio/ep1/h2.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Jag heter AnAn. <audio controls class="audio-player" src="../assets/audio/ep1/a2.mp3"></audio></div>
+        <div class="sentence"><b>海关:</b> Och var ska ni bo? <audio controls class="audio-player" src="../assets/audio/ep1/h3.mp3"></audio></div>
+        <div class="sentence"><b>爸爸:</b> Vi ska bo i Malmö. <audio controls class="audio-player" src="../assets/audio/ep1/p2.mp3"></audio></div>
+        <div class="sentence"><b>海关:</b> Välkomna till Sverige! <audio controls class="audio-player" src="../assets/audio/ep1/h4.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Tack! <audio controls class="audio-player" src="../assets/audio/ep1/a3.mp3"></audio></div>
+        <div class="sentence"><b>海关:</b> Hej då! <audio controls class="audio-player" src="../assets/audio/ep1/h5.mp3"></audio></div>
+
+        <h3>第二幕：Bagageutlämning</h3>
+        <div class="sentence"><b>妞妞:</b> AnAn, titta! Var är våra väskor? <audio controls class="audio-player" src="../assets/audio/ep1/n2.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Vänta, NiuNiu. Vi måste titta på skärmen. Band nummer fem. <audio controls class="audio-player" src="../assets/audio/ep1/a4.mp3"></audio></div>
+        <div class="sentence"><b>妞妞:</b> Där är min rosa väska! Den rullar! <audio controls class="audio-player" src="../assets/audio/ep1/n3.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Bra! Jag tar den. <audio controls class="audio-player" src="../assets/audio/ep1/a5.mp3"></audio></div>
+
+        <h3>第三幕：Köp biljett & Hitta till tåget</h3>
+        <div class="sentence"><b>妞妞:</b> Kan vi använda kort? <audio controls class="audio-player" src="../assets/audio/ep1/n4.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Ja, vi kan betala med kort. Men vi måste välja rätt zon. <audio controls class="audio-player" src="../assets/audio/ep1/a6.mp3"></audio></div>
+        <div class="sentence"><b>妞妞:</b> Finns det någon rabatt för barn? <audio controls class="audio-player" src="../assets/audio/ep1/n5.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Rakt fram, NiuNiu. Det är inte svårt, följ skyltarna! <audio controls class="audio-player" src="../assets/audio/ep1/a7.mp3"></audio></div>
+
+        <h3>第四幕：På tåget mot Malmö</h3>
+        <div class="sentence"><b>妞妞:</b> När går tåget? <audio controls class="audio-player" src="../assets/audio/ep1/n6.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Klockan är fjorton noll noll. Spår två. <audio controls class="audio-player" src="../assets/audio/ep1/a8.mp3"></audio></div>
+        <div class="sentence"><b>妞妞:</b> Måste vi byta tåg? <audio controls class="audio-player" src="../assets/audio/ep1/n7.mp3"></audio></div>
+        <div class="sentence"><b>安安:</b> Nej, det står "Direkt". Titta, NiuNiu! Nu är vi i Sverige! <audio controls class="audio-player" src="../assets/audio/ep1/a9.mp3"></audio></div>
+    </section>
+
+    <!-- 词汇表 -->
+    <section>
+        <h2>📚 核心词汇表 (Ordlista)</h2>
+        
+        <div class="word-category">
+            <h4>1. 机场与交通</h4>
+            <div class="word-grid">
+                <div class="word-item">Flygplats (机场)</div>
+                <div class="word-item">Tåg (火车)</div>
+                <div class="word-item">Skylt (指示牌)</div>
+                <div class="word-item">Spår (站台)</div>
+                <div class="word-item">Väska (行李)</div>
             </div>
-        </section>
+        </div>
 
-        <section style="margin-top: 50px; text-align: center;">
-            <h2>Start Learning 🚀</h2>
-            <a href="episodes/episode1.html" class="btn-ep">Go to Episode 1: Hej Sweden!</a>
-        </section>
-    </div>
+        <div class="word-category">
+            <h4>2. 旅行与票务</h4>
+            <div class="word-grid">
+                <div class="word-item">Biljett (票)</div>
+                <div class="word-item">Enkelbiljett (单程票)</div>
+                <div class="word-item">Rabatt (折扣)</div>
+                <div class="word-item">Direkt (直达)</div>
+                <div class="word-item">Försenat (晚点)</div>
+            </div>
+        </div>
+    </section>
+</div>
 
 </body>
 </html>
