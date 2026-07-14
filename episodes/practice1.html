@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <title>Practice: Episode 1 | Learning Swedish</title>
     <style>
-        body { font-family: sans-serif; background: #f9f7f2; color: #333; line-height: 1.6; }
-        .container { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        body { font-family: sans-serif; background: #f9f7f2; padding: 20px; }
+        .container { max-width: 800px; margin: auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
         .quiz-section { margin-bottom: 30px; border-bottom: 2px solid #eee; padding-bottom: 20px; }
-        input[type="text"] { border: 1px solid #ccc; padding: 5px; width: 150px; }
-        .correct { background-color: #d4edda !important; border-color: #28a745 !important; }
-        .wrong { background-color: #f8d7da !important; border-color: #dc3545 !important; }
-        #check-btn { display: block; margin: 30px auto; padding: 15px 40px; background: #2e5a44; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1.1rem; }
-        .nav-footer { margin-top: 40px; text-align: center; }
+        select, input { padding: 5px; margin: 5px; border: 1px solid #999; border-radius: 4px; }
+        .correct { background: #d4edda; color: #155724; font-weight: bold; }
+        .wrong { background: #f8d7da; color: #721c24; font-weight: bold; }
+        #check-btn { display: block; margin: 30px auto; padding: 15px 40px; background: #2e5a44; color: white; border: none; border-radius: 5px; cursor: pointer; }
     </style>
 </head>
 <body>
@@ -19,46 +18,38 @@
 <div class="container">
     <h1>Practice: Episode 1 📝</h1>
 
-    <!-- 1) Listening -->
     <section class="quiz-section">
-        <h3>1) Listening Comprehension (5 Questions)</h3>
-        <p>1. Officer: "Varifrån kommer ni?" <input type="text" class="check" data-ans="B" placeholder="Type A or B"></p>
-        <p>2. AnAn: "Vi ska åka till Malmö." <input type="text" class="check" data-ans="A" placeholder="Type A or B"></p>
-        <p>3. NiuNiu: "Finns det någon rabatt för barn?" <input type="text" class="check" data-ans="B" placeholder="Type A or B"></p>
-        <p>4. NiuNiu: "Måste vi byta tåg?" <input type="text" class="check" data-ans="A" placeholder="Type A or B"></p>
-        <p>5. AnAn: "Titta, nu är vi i Sverige!" <input type="text" class="check" data-ans="B" placeholder="Type A or B"></p>
+        <h3>1) Listening Comprehension</h3>
+        <p>1. Varifrån kommer ni? <select class="check" data-ans="B"><option value="">--</option><option>A</option><option>B</option></select> (A. Where are you going? / B. Where are you from?)</p>
+        <p>2. Vi ska åka till Malmö. <select class="check" data-ans="A"><option value="">--</option><option>A</option><option>B</option></select> (A. We are going to Malmö. / B. We live in Malmö.)</p>
+        <p>3. Finns det någon rabatt för barn? <select class="check" data-ans="B"><option value="">--</option><option>A</option><option>B</option></select> (A. Discount for adults? / B. Discount for children?)</p>
+        <p>4. Måste vi byta tåg? <select class="check" data-ans="A"><option value="">--</option><option>A</option><option>B</option></select> (A. Change trains? / B. Buy tickets?)</p>
+        <p>5. Titta, nu är vi i Sverige! <select class="check" data-ans="B"><option value="">--</option><option>A</option><option>B</option></select> (A. In Denmark? / B. In Sweden?)</p>
     </section>
 
-    <!-- 2) Fill in the blanks -->
     <section class="quiz-section">
-        <h3>2) Fill in the blanks (5 Questions)</h3>
-        <p>1. Vad <input type="text" class="check" data-ans="heter"> du? Jag heter AnAn.</p>
-        <p>2. Måste vi köpa en <input type="text" class="check" data-ans="biljett"> här? Ja.</p>
-        <p>3. Titta på <input type="text" class="check" data-ans="skylten"> där borta: "Tåg".</p>
-        <p>4. Vi kommer <input type="text" class="check" data-ans="från"> Kina.</p>
-        <p>5. Vi åker hela vägen <input type="text" class="check" data-ans="utan"> stopp.</p>
+        <h3>2) Fill in the blanks</h3>
+        <p>1. Officer: Vad <input type="text" class="check" data-ans="heter"> du? AnAn: Jag heter AnAn.</p>
+        <p>2. 妞妞: Måste vi köpa en <input type="text" class="check" data-ans="enkelbiljett"> här?</p>
+        <p>3. 安安: Titta på <input type="text" class="check" data-ans="skylten"> där borta: "Tåg".</p>
+        <p>4. 爸爸: Vi kommer <input type="text" class="check" data-ans="från"> Kina.</p>
+        <p>5. 安安: Det betyder att vi åker hela vägen <input type="text" class="check" data-ans="utan"> stopp.</p>
     </section>
 
-    <!-- 3) Matching -->
     <section class="quiz-section">
-        <h3>3) Matching (10 Questions - Type the letter)</h3>
-        <p>Flygplats: <input type="text" class="check" data-ans="C" style="width:50px"> | Skylt: <input type="text" class="check" data-ans="D" style="width:50px"> | Biljett: <input type="text" class="check" data-ans="A" style="width:50px"> | Vänta: <input type="text" class="check" data-ans="B" style="width:50px"> | Direkt: <input type="text" class="check" data-ans="F" style="width:50px"></p>
-        <p>Station: <input type="text" class="check" data-ans="E" style="width:50px"> | Försenat: <input type="text" class="check" data-ans="H" style="width:50px"> | Rabatt: <input type="text" class="check" data-ans="G" style="width:50px"> | Tåg: <input type="text" class="check" data-ans="I" style="width:50px"> | Zon: <input type="text" class="check" data-ans="J" style="width:50px"></p>
+        <h3>3) Matching</h3>
+        <p>Flygplats: <select class="check" data-ans="C"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select> | Skylt: <select class="check" data-ans="D"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select> | Biljett: <select class="check" data-ans="A"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select> | Vänta: <select class="check" data-ans="B"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select> | Direkt: <select class="check" data-ans="F"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select></p>
+        <p>Station: <select class="check" data-ans="E"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select> | Försenat: <select class="check" data-ans="H"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select> | Rabatt: <select class="check" data-ans="G"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select> | Tåg: <select class="check" data-ans="I"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select> | Zon: <select class="check" data-ans="J"><option value="">--</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option><option>H</option><option>I</option><option>J</option></select></p>
     </section>
 
-    <!-- 4) Vocabulary -->
     <section class="quiz-section">
-        <h3>4) Swedish Vocabulary (10 Questions)</h3>
-        <p>Airport: <input type="text" class="check" data-ans="flygplats"> | Train: <input type="text" class="check" data-ans="tåg"> | Passport: <input type="text" class="check" data-ans="pass"> | Bag: <input type="text" class="check" data-ans="väska"></p>
-        <p>One-way ticket: <input type="text" class="check" data-ans="enkelbiljett"> | Platform/Track: <input type="text" class="check" data-ans="spår"> | Change trains: <input type="text" class="check" data-ans="byta"> </p>
-        <p>Go straight: <input type="text" class="check" data-ans="rakt fram"> | Child: <input type="text" class="check" data-ans="barn"> | Goodbye: <input type="text" class="check" data-ans="hej då"></p>
+        <h3>4) Swedish Vocabulary</h3>
+        <p>Airport: <input type="text" class="check" data-ans="flygplats"> | Train: <input type="text" class="check" data-ans="tåg"> | Passport: <input type="text" class="check" data-ans="pass"> | Bag: <input type="text" class="check" data-ans="väska"> | One-way ticket: <input type="text" class="check" data-ans="enkelbiljett"></p>
+        <p>Platform: <input type="text" class="check" data-ans="spår"> | Change trains: <input type="text" class="check" data-ans="byta"> | Straight: <input type="text" class="check" data-ans="rakt fram"> | Child: <input type="text" class="check" data-ans="barn"> | Goodbye: <input type="text" class="check" data-ans="hej då"></p>
     </section>
 
     <button id="check-btn" onclick="checkAnswers()">Check Answers</button>
-
-    <div class="nav-footer">
-        <a href="episode1.html" style="font-weight:bold; color:#2e5a44;">Back to Episode 1</a>
-    </div>
+    <a href="episode1.html" style="display:block; text-align:center;">Back to Episode 1</a>
 </div>
 
 <script>
@@ -70,9 +61,7 @@
                 el.className = 'check wrong';
             }
         });
-        alert('Check finished! Green indicates correct answers.');
     }
 </script>
-
 </body>
 </html>
