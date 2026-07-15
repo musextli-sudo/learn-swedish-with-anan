@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Episode [X]: [剧集标题] | Learning Swedish</title>
-    <!-- 统一引用外部 CSS -->
+    <!-- 确保这里包含了所有必要的 CSS 样式 -->
     <link rel="stylesheet" href="../css/style.css"> 
 </head> 
 <body>
@@ -15,11 +15,11 @@
         <button onclick="togglePlayAll()">Listen to Whole Story 🔊</button>
     </div>
 
-    <!-- 课文部分 -->
     <section>
         <h2>The Story 📖</h2>
         <h4>Scene 1: [场景名称]</h4>
         
+        <!-- 保持这个结构，关键在于 story-line 类名 -->
         <div class="story-line">
             <div class="text-content">
                 <b>[角色名字]:</b> [瑞典语原句]<br>
@@ -29,11 +29,11 @@
         </div>
     </section>
 
-    <!-- 词汇表 -->
     <section class="vocab-section">
         <h2>Vocabulary List 💡</h2>
         <h4>1. [单词分类名称]</h4>
         
+        <!-- 保持这个结构，关键在于 vocab-item 类名 -->
         <div class="vocab-item">
             <span class="vocab-word">[瑞典语单词]</span>
             <span class="speaker-icon" onclick="play('v_epX_word1')">🔊</span>
@@ -50,7 +50,7 @@
     </section>
 </div>
 
-<!-- 统一引用外部 JS，放在 body 结束前 -->
+<!-- 只要 script.js 包含你刚才在 Ep1 里写的逻辑，模板就无需再写代码了 -->
 <script src="../js/script.js"></script>
 </body>
 </html>
