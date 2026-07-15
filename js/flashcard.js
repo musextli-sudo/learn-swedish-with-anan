@@ -48,15 +48,12 @@ function nextCard() {
 } 
 // 接受 event 对象作为第一个参数
 function playVocab(event, word) {
-    // 显式阻止冒泡，确保只有喇叭动作被触发
     if (event) {
         event.stopPropagation();
     }
     
-    // 停止当前所有播放
     window.speechSynthesis.cancel(); 
     
-    // 使用延时确保引擎重置
     setTimeout(() => {
         const utterance = new SpeechSynthesisUtterance(word);
         utterance.lang = 'sv-SE';
