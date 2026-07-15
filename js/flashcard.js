@@ -10,12 +10,29 @@ function loadDeck() {
 
 function updateCard() {
     const card = currentDeck[currentIndex];
-    document.getElementById('cardFront').innerText = card.word;
+    const front = document.getElementById('cardFront');
+    
+    // 给正面加上小喇叭图标和点击事件
+    front.innerHTML = `${card.word} <span class="speaker-icon" onclick="playVocab('${card.word}')">🔊</span>`;
     document.getElementById('cardBack').innerText = card.trans;
     
     // 更新进度条
     const progress = ((currentIndex + 1) / currentDeck.length) * 100;
     document.getElementById('progress').style.width = progress + "%";
+}
+
+// 新增：专门朗读词汇的函数
+function playVocab(word) {
+    // 防止点击图标时触发卡片翻转
+    event.stopPropagation(); 
+    
+    const synth = window.speechSynthesis;
+    synth.cancel(); // 停止当前朗读
+    
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'sv-SE';
+    utterance.rate = 0.9;
+    synth.speak(utterance);
 }
 
 function flipCard() {
