@@ -96,3 +96,22 @@ h2 { color: #2e5a44; margin-top: 30px; }
 
 /* 抽认卡操作按钮 */
 .card-controls { text-align: center; margin-top: 20px; }
+
+/* 新增的 Vocabulary 按钮样式 */
+.vocab-style {
+    background-color: #f9f9f9; 
+    border: 1px solid #ddd;
+    text-decoration: none; 
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px; 
+    border-radius: 8px; 
+    color: #333;
+    transition: all 0.3s;
+}
+
+.vocab-style:hover {
+    background-color: #eee;
+    cursor: pointer;
+}
