@@ -1,12 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Vocabulary - Learn Swedish with AnAn</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
-    <h1>AnAn's Swedish Vocabulary</h1>
-    <p>Start building your Swedish vocabulary here!</p>
-    <a href="../index.html">Back to Home</a>
-</body>
-</html>
+<div class="container">
+    <h1>Vocabulary Flashcards 🃏</h1>
+    
+    <select id="epSelector" onchange="loadDeck()">
+        <option value="ep1">Episode 1</option>
+        <option value="ep2">Episode 2</option>
+    </select>
+
+    <div class="progress-bar"><div id="progress"></div></div>
+
+    <div class="card-container" onclick="flipCard()">
+        <div class="card" id="card">
+            <div class="front" id="cardFront">Word</div>
+            <div class="back" id="cardBack">Translation</div>
+        </div>
+    </div>
+    
+    <button onclick="nextCard()">Next Card ➡️</button>
+</div>
