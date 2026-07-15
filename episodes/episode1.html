@@ -129,68 +129,6 @@
     </section>
 </div>
 
-    <script>
-        let isPaused = false;
-        const synth = window.speechSynthesis;
-
-       // 修改后的单句播放函数
-function play(id) {
-    synth.cancel(); // 停止当前所有播放
-    
-    // 获取点击的图标及其父元素
-    const icon = event.currentTarget;
-    const element = icon.parentElement;
-    
-    // 提取文字逻辑：
-    // 如果是课文行 (story-line)，取第一个 <br> 之前的文字
-    // 如果是词汇行 (vocab-item)，取第一个 span.vocab-word 的文字
-    let text = "";
-    if (element.classList.contains('story-line')) {
-        text = element.querySelector('.text-content').innerText.split('\n')[0];
-    } else if (element.classList.contains('vocab-item')) {
-        text = element.querySelector('.vocab-word').innerText;
-    }
-    
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'sv-SE';
-    
-    // 高亮效果
-    element.classList.add('highlight');
-    utterance.onend = () => element.classList.remove('highlight');
-    
-    synth.speak(utterance);
-}
-
-        function togglePlayAll() {
-            const btn = document.querySelector('.audio-hero button');
-            if (synth.speaking && !synth.paused) {
-                synth.pause();
-                btn.innerText = "Resume Story 🔊";
-            } else if (synth.paused) {
-                synth.resume();
-                btn.innerText = "Pause Story ⏸️";
-            } else {
-                playAll();
-                btn.innerText = "Pause Story ⏸️";
-            }
-        }
-
-        async function playAll() {
-            synth.cancel();
-            const lines = document.querySelectorAll('.story-line');
-            for (let line of lines) {
-                if (synth.paused) break;
-                const text = line.querySelector('.text-content').innerText.split('\n')[0];
-                line.classList.add('highlight');
-                await new Promise(resolve => {
-                    const utterance = new SpeechSynthesisUtterance(text);
-                    utterance.lang = 'sv-SE';
-                    utterance.onend = resolve;
-                    synth.speak(utterance);
-                });
-                line.classList.remove('highlight');
-            }
-        }
-    </script>
+    <script src="../js/script.js"></script>
 </body>
 </html>
