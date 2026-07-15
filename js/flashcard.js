@@ -28,4 +28,10 @@ function nextCard() {
         document.getElementById('card').classList.remove('flipped');
         setTimeout(updateCard, 300); // 等待翻转动画结束
     }
-}
+} 
+
+// 在 flashcard.js 的最底部添加这段代码
+document.addEventListener('DOMContentLoaded', () => {
+    // 强制初始化加载 Episode 1
+    loadDeck(); 
+});
