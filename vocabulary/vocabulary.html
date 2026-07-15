@@ -1,14 +1,12 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Vocabulary Flashcards | Learning Swedish</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
 <div class="container">
-    <h1>Vocabulary Flashcards 🃏</h1>
-    
-    <select id="epSelector" onchange="loadDeck()">
-        <option value="ep1">Episode 1</option>
-        <option value="ep2">Episode 2</option>
-    </select>
-
-    <div class="progress-bar"><div id="progress"></div></div>
-
-   <div class="container">
     <h1>Vocabulary Flashcards 🃏</h1>
     
     <select id="epSelector" onchange="loadDeck()">
@@ -22,8 +20,8 @@
 
     <div class="card-container" onclick="flipCard()">
         <div class="card" id="card">
-            <div class="front" id="cardFront">Word</div>
-            <div class="back" id="cardBack">Translation</div>
+            <div class="front" id="cardFront">Select a deck...</div>
+            <div class="back" id="cardBack">Waiting...</div>
         </div>
     </div>
     
@@ -31,3 +29,9 @@
         <button onclick="nextCard()">Next Card ➡️</button>
     </div>
 </div>
+
+<script src="../js/data.js"></script>
+<script src="../js/flashcard.js"></script>
+<script src="../js/script.js"></script>
+</body>
+</html>
