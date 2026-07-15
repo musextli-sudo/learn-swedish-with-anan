@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Episode [X]: [剧集标题] | Learning Swedish</title>
+    <!-- 统一引用外部 CSS -->
+    <link rel="stylesheet" href="../css/style.css"> 
+</head> 
+<body>
+
+<div class="container">
+    <h1>Episode [X]: [剧集标题] 📝</h1>
+
+    <div class="audio-hero">
+        <button onclick="togglePlayAll()">Listen to Whole Story 🔊</button>
+    </div>
+
+    <!-- 课文部分 -->
+    <section>
+        <h2>The Story 📖</h2>
+        <h4>Scene 1: [场景名称]</h4>
+        
+        <div class="story-line">
+            <div class="text-content">
+                <b>[角色名字]:</b> [瑞典语原句]<br>
+                <small>[英语翻译]</small>
+            </div>
+            <span class="speaker-icon" onclick="play('epX_id1')">🔊</span>
+        </div>
+    </section>
+
+    <!-- 词汇表 -->
+    <section class="vocab-section">
+        <h2>Vocabulary List 💡</h2>
+        <h4>1. [单词分类名称]</h4>
+        
+        <div class="vocab-item">
+            <span class="vocab-word">[瑞典语单词]</span>
+            <span class="speaker-icon" onclick="play('v_epX_word1')">🔊</span>
+            <span class="vocab-ipa">/[音标]/</span>
+            <span class="vocab-trans">[英语翻译]</span>
+        </div>
+
+        <a href="practice[X].html" class="practice-btn">Start Practice 📝</a>
+        
+        <div class="nav-footer">
+            <a href="../index.html" class="nav-btn btn-home">Back to Home</a>
+            <a href="episode[X+1].html" class="nav-btn btn-next">Next Episode ➡️</a>
+        </div>
+    </section>
+</div>
+
+<!-- 统一引用外部 JS，放在 body 结束前 -->
+<script src="../js/script.js"></script>
+</body>
+</html>
