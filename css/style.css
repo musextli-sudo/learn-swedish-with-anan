@@ -1,61 +1,39 @@
-/* 基础页面设置：北欧简约风 */
+/* 1. 基础页面设置：北欧简约风 */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f1ea; /* 温暖的沙色背景，护眼 */
-    color: #2c3e50; /* 深灰文字，比纯黑更高级 */
+    background-color: #f4f1ea; 
+    color: #2c3e50;
     line-height: 1.6;
     margin: 0;
     padding: 20px;
 }
 
-/* 主容器：让内容在网页中间居中，像书本一样 */
-.container {
-    max-width: 800px;
-    margin: 40px auto;
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 12px; /* 圆角 */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* 淡淡的阴影 */
-}
+/* 2. 全局标题样式 */
+h1 { color: #1e4620; border-bottom: 2px solid #e2ece9; padding-bottom: 10px; }
+h2 { color: #2e5a44; margin-top: 30px; }
 
-/* 标题样式：瑞典森林绿 */
-h1 {
-    color: #1e4620; /* 森林绿 */
-    border-bottom: 2px solid #e2ece9;
-    padding-bottom: 10px;
-}
+/* 3. 剧集专用组件样式 (从你提供的新代码中整合) */
+.container { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.audio-hero { background: #f0f4f2; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+.story-line { margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+.text-content { flex-grow: 1; }
+.speaker-icon { cursor: pointer; margin-left: 10px; font-size: 1.2rem; vertical-align: middle; }
 
-h2 {
-    color: #2e5a44;
-    margin-top: 30px;
-}
+.vocab-item { padding: 15px; margin-bottom: 10px; border-left: 5px solid #2e5a44; background: #fafafa; }
+.vocab-word { font-weight: bold; font-size: 1.1rem; }
+.vocab-ipa { color: #666; margin-left: 10px; font-style: italic; }
+.vocab-trans { display: block; margin-top: 5px; color: #2e5a44; font-weight: bold; }
 
-/* 按钮样式：带有瑞典黄的活力 */
-.btn {
-    display: inline-block;
-    background-color: #f1c40f; /* 瑞典国旗黄 */
-    color: #1a252f;
-    padding: 12px 24px;
-    text-decoration: none;
-    border-radius: 6px;
-    font-weight: bold;
-    transition: background 0.2s ease;
-}
+/* 4. 练习及导航按钮样式 */
+.practice-btn { display: block; margin: 30px auto; padding: 12px 25px; background: #2e5a44; color: white; text-decoration: none; border-radius: 5px; width: fit-content; font-weight: bold; }
+.nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; }
+.nav-btn { padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+.btn-home { background: #dcdcdc; color: #333; }
+.btn-next { background: #2e5a44; color: white; } 
 
-.btn:hover {
-    background-color: #f39c12; /* 鼠标悬停时变深 */
-}
-
-/* 角色列表样式 */
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    background: #f9f9f9;
-    margin: 10px 0;
-    padding: 15px;
-    border-left: 4px solid #1e4620; /* 绿色的侧边条 */
-    border-radius: 4px;
+/* 5. 高亮样式 */
+.highlight {
+    background-color: #fff3cd;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
