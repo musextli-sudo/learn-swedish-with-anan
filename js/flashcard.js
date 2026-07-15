@@ -24,9 +24,8 @@ function updateCard() {
     speaker.className = 'speaker-icon';
     speaker.innerText = '🔊';
     speaker.onclick = (e) => {
-        e.stopPropagation(); // 防止翻转
-        playVocab(card.word);
-    };
+    playVocab(e, card.word); // 这里传入 e，以便在函数内部调用 e.stopPropagation()
+};
     front.appendChild(speaker);
     
     // 更新背面翻译
