@@ -131,8 +131,37 @@
 </div>
 
 <script>
-    function play(id) { new Audio(`../assets/audio/ep1/${id}.mp3`).play(); }
-    function playAll() { new Audio(`../assets/audio/ep1/full.mp3`).play(); }
+    // 使用 Web Speech API 直接朗读文字
+    function play(id) {
+        // 1. 获取对应的文本内容
+        // 假设每个 <div class="story-line"> 里都有一个 <small> 标签包含翻译，或者直接用 innerText 获取
+        // 为了简便，我们根据 id 找到对应的文本
+        const textElement = document.querySelector(`[onclick="play('${id}')"]`).parentElement.querySelector('.text-content');
+        const text = textElement.innerText.split('\n')[0]; // 取第一行瑞典语原文
+        
+        // 2. 创建朗读对象
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'sv-SE'; // 设置语言为瑞典语
+        utterance.rate = 0.9;     // 语速（0.1 - 2.0）
+        
+        // 3. 开始朗读
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // 串联朗读整个故事
+    function playAll() {
+        const lines = document.querySelectorAll('.story-line');
+        lines.forEach((line, index) => {
+            const text = line.querySelector('.text-content').innerText.split('\n')[0];
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'sv-SE';
+            utterance.rate = 0.9;
+            // 延迟播放，实现按顺序朗读
+            setTimeout(() => {
+                window.speechSynthesis.speak(utterance);
+            }, index * 3000); // 每 3 秒读下一句
+        });
+    }
 </script>
 
 </body>
