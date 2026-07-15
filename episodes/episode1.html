@@ -40,7 +40,6 @@
         <button onclick="togglePlayAll()">Listen to Whole Story 🔊</button>
     </div>
 
-    <!-- 课文部分 -->
     <section>
         <h2>The Story 📖</h2>
         <h4>Prologue: Ankomst på Kastrup</h4>
@@ -63,68 +62,4 @@
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> AnAn, titta! Var är våra väskor?<br><small>AnAn, look! Where are our bags?</small></div><span class="speaker-icon" onclick="play('n2')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>AnAn:</b> Vänta, NiuNiu. Vi måste titta på skärmen. Band nummer fem.<br><small>Wait, NiuNiu. We must check the screen. Belt number five.</small></div><span class="speaker-icon" onclick="play('a4')">🔊</span></div>
         <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Där är min rosa väska! Den rullar!<br><small>There is my pink bag! It's rolling!</small></div><span class="speaker-icon" onclick="play('n3')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Bra! Jag tar den. Nu har vi alla väskor.<br><small>Great! I'll take it. Now we have all the bags.</small></div><span class="speaker-icon" onclick="play('a5')">🔊</span></div>
-
-        <h4>Scene 3: Köp biljett & Hitta till tåget</h4>
-        <div class="story-line"><div class="text-content"><b>NiuNiu:</b> AnAn, vi måste köpa biljett. Kan vi använda kort?<br><small>AnAn, we must buy a ticket. Can we use a card?</small></div><span class="speaker-icon" onclick="play('n4')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Ja, vi kan betala med kort. Men vi måste välja rätt zon.<br><small>Yes, we can pay with card. But we must choose the right zone.</small></div><span class="speaker-icon" onclick="play('a6')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Finns det någon rabatt för barn?<br><small>Is there a discount for children?</small></div><span class="speaker-icon" onclick="play('n5')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Rakt fram, NiuNiu. Det är inte svårt, följ skyltarna!<br><small>Straight ahead, NiuNiu. It's not hard, follow the signs!</small></div><span class="speaker-icon" onclick="play('a7')">🔊</span></div>
-
-        <h4>Scene 4: På tåget mot Malmö</h4>
-        <div class="story-line"><div class="text-content"><b>NiuNiu:</b> När går tåget? Jag är jättetrött.<br><small>When does the train leave? I'm super tired.</small></div><span class="speaker-icon" onclick="play('n6')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Klockan är fjorton noll noll. Spår två.<br><small>It is 14:00. Track two.</small></div><span class="speaker-icon" onclick="play('a8')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>NiuNiu:</b> Måste vi byta tåg?<br><small>Must we change trains?</small></div><span class="speaker-icon" onclick="play('n7')">🔊</span></div>
-        <div class="story-line"><div class="text-content"><b>AnAn:</b> Nej, det står "Direkt". Nu är vi i Sverige!<br><small>No, it says "Direct". Now we are in Sweden!</small></div><span class="speaker-icon" onclick="play('a9')">🔊</span></div>
-    </section>
-
-    <!-- 词汇表 (此处省略部分内容以保持长度，你原本的词汇表保持不变即可) -->
-
-    <script>
-        let isPaused = false;
-        const synth = window.speechSynthesis;
-
-        function play(id) {
-            synth.cancel();
-            const element = document.querySelector(`[onclick="play('${id}')"]`).parentElement;
-            const text = element.querySelector('.text-content').innerText.split('\n')[0];
-            const utterance = new SpeechSynthesisUtterance(text);
-            utterance.lang = 'sv-SE';
-            element.classList.add('highlight');
-            utterance.onend = () => element.classList.remove('highlight');
-            synth.speak(utterance);
-        }
-
-        function togglePlayAll() {
-            const btn = document.querySelector('.audio-hero button');
-            if (synth.speaking && !synth.paused) {
-                synth.pause();
-                btn.innerText = "Resume Story 🔊";
-            } else if (synth.paused) {
-                synth.resume();
-                btn.innerText = "Pause Story ⏸️";
-            } else {
-                playAll();
-                btn.innerText = "Pause Story ⏸️";
-            }
-        }
-
-        async function playAll() {
-            synth.cancel();
-            const lines = document.querySelectorAll('.story-line');
-            for (let line of lines) {
-                if (synth.paused) break;
-                const text = line.querySelector('.text-content').innerText.split('\n')[0];
-                line.classList.add('highlight');
-                await new Promise(resolve => {
-                    const utterance = new SpeechSynthesisUtterance(text);
-                    utterance.lang = 'sv-SE';
-                    utterance.onend = resolve;
-                    synth.speak(utterance);
-                });
-                line.classList.remove('highlight');
-            }
-        }
-    </script>
-</body>
-</html>
+        <div class="story-line"><div class="text-content"><b>AnAn:</b> Bra! Jag tar den. Nu har vi alla väskor.<br><small>Great! I'll take it. Now we have all the bags.</small></div><span class
