@@ -47,6 +47,25 @@ function nextCard() {
         setTimeout(updateCard, 300); // 等待翻转动画结束
     }
 } 
+function playVocab(word) {
+    // 1. 阻止事件冒泡，确保只读声音不翻转卡片
+    event.stopPropagation(); 
+    
+    // 2. 停止当前正在播放的所有声音（这是关键）
+    window.speechSynthesis.cancel(); 
+    
+    // 3. 使用延时触发（有时浏览器需要一点时间来重置合成器）
+    setTimeout(() => {
+        const utterance = new SpeechSynthesisUtterance(word);
+        utterance.lang = 'sv-SE';
+        utterance.rate = 0.9;
+        
+        // 4. 调试：如果还是没声音，看看控制台是否报错
+        utterance.onerror = (e) => console.error("语音合成错误:", e);
+        
+        window.speechSynthesis.speak(utterance);
+    }, 50);
+}
 
 // 在 flashcard.js 的最底部添加这段代码
 document.addEventListener('DOMContentLoaded', () => {
