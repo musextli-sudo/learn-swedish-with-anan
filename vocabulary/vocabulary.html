@@ -8,6 +8,18 @@
 
     <div class="progress-bar"><div id="progress"></div></div>
 
+   <div class="container">
+    <h1>Vocabulary Flashcards 🃏</h1>
+    
+    <select id="epSelector" onchange="loadDeck()">
+        <option value="ep1">Episode 1</option>
+        <option value="ep2">Episode 2</option>
+    </select>
+
+    <div class="progress-container">
+        <div id="progress"></div>
+    </div>
+
     <div class="card-container" onclick="flipCard()">
         <div class="card" id="card">
             <div class="front" id="cardFront">Word</div>
@@ -15,5 +27,7 @@
         </div>
     </div>
     
-    <button onclick="nextCard()">Next Card ➡️</button>
+    <div class="card-controls">
+        <button onclick="nextCard()">Next Card ➡️</button>
+    </div>
 </div>
