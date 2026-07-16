@@ -2,13 +2,16 @@ let currentDeck = [];
 let currentIndex = 0;
 
 // 1. 加载卡片组
+// 请确认你的 loadDeck 是这样写的：
 function loadDeck() {
     const ep = document.getElementById('epSelector').value;
-    // 检查 vocabDatabase 是否存在
-    if (typeof vocabDatabase !== 'undefined' && vocabDatabase[ep]) {
+    // 确保 vocabDatabase 可以在此作用域访问
+    if (window.vocabDatabase && vocabDatabase[ep]) {
         currentDeck = vocabDatabase[ep];
         currentIndex = 0;
-        updateCard();
+        updateCard(); // 必须调用这个！
+    } else {
+        console.error("找不到数据源，请检查 vocabDatabase");
     }
 }
 
