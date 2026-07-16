@@ -7,7 +7,7 @@
 </head>
 <body>
 <div class="container">
-   <h1>Vocabulary Flashcards 🃏</h1>
+    <h1>Vocabulary Flashcards 🃏</h1>
     
     <select id="epSelector" onchange="loadDeck()">
         <option value="ep1">Episode 1</option>
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div id="counter" style="text-align: center; margin: 10px 0; color: #666; font-size: 0.9rem;"></div>
+    <div id="counter"></div>
     
     <div class="card-controls">
         <button onclick="nextCard()">Next Card ➡️</button>
@@ -36,4 +36,13 @@
 <script src="../js/flashcard.js"></script>
 <script src="../js/script.js"></script>
 </body>
-</html>
+</html> 
+
+/* --- 放在最后面 --- */
+#counter {
+    color: #000000 !important; 
+    font-weight: bold;        
+    font-size: 1.2rem !important; 
+    margin-top: 15px !important;
+    text-align: center;
+}
