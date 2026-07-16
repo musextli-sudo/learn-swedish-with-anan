@@ -1,72 +1,65 @@
 let currentDeck = [];
 let currentIndex = 0;
 
+// 1. 加载卡片组
 function loadDeck() {
     const ep = document.getElementById('epSelector').value;
-    currentDeck = vocabDatabase[ep];
-    currentIndex = 0;
-    updateCard();
+    // 检查 vocabDatabase 是否存在
+    if (typeof vocabDatabase !== 'undefined' && vocabDatabase[ep]) {
+        currentDeck = vocabDatabase[ep];
+        currentIndex = 0;
+        updateCard();
+    }
 }
 
+// 2. 更新卡片界面与进度条
 function updateCard() {
+    if (currentDeck.length === 0) return;
+
     const card = currentDeck[currentIndex];
     const front = document.getElementById('cardFront');
     
-    // 清空原有内容
-    front.innerHTML = "";
-    
-    // 1. 创建文字节点
+    front.innerHTML = ""; 
     const wordText = document.createTextNode(card.word + " ");
     front.appendChild(wordText);
     
-    // 2. 创建喇叭按钮 (Span 标签)
     const speaker = document.createElement('span');
     speaker.className = 'speaker-icon';
-    speaker.innerText = '🔊';
-    speaker.onclick = (e) => {
-    playVocab(e, card.word); // 这里传入 e，以便在函数内部调用 e.stopPropagation()
-};
+    speaker.innerText = ' 🔊';
+    speaker.style.cursor = 'pointer';
+    speaker.onclick = (e) => playVocab(e, card.word);
     front.appendChild(speaker);
     
-    // 更新背面翻译
     document.getElementById('cardBack').innerText = card.trans;
     
-    // 更新进度条
-    const progress = ((currentIndex + 1) / currentDeck.length) * 100;
-    document.getElementById('progress').style.width = progress + "%";
+    // 更新进度条 (关键点：这里对应 HTML 的 id="progress")
+    const progressEl = document.getElementById('progress');
+    const percent = ((currentIndex + 1) / currentDeck.length) * 100;
+    progressEl.style.width = percent + "%";
 }
+
+// 3. 翻牌逻辑
 function flipCard() {
     document.getElementById('card').classList.toggle('flipped');
 }
 
+// 4. 下一张逻辑
 function nextCard() {
     if (currentIndex < currentDeck.length - 1) {
         currentIndex++;
         document.getElementById('card').classList.remove('flipped');
-        setTimeout(updateCard, 300); // 等待翻转动画结束
+        setTimeout(updateCard, 300); 
     }
-} 
-// 接受 event 对象作为第一个参数
-function playVocab(event, word) {
-    if (event) {
-        event.stopPropagation();
-    }
-    
-    window.speechSynthesis.cancel(); 
-    
-    setTimeout(() => {
-        const utterance = new SpeechSynthesisUtterance(word);
-        utterance.lang = 'sv-SE';
-        utterance.rate = 0.9;
-        
-        utterance.onerror = (e) => console.error("语音合成错误:", e);
-        
-        window.speechSynthesis.speak(utterance);
-    }, 50);
 }
 
-// 在 flashcard.js 的最底部添加这段代码
-document.addEventListener('DOMContentLoaded', () => {
-    // 强制初始化加载 Episode 1
-    loadDeck(); 
-});
+// 5. 语音逻辑
+function playVocab(event, word) {
+    event.stopPropagation();
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'sv-SE';
+    window.speechSynthesis.speak(utterance);
+}
+
+// 6. 初始化
+document.addEventListener('DOMContentLoaded', loadDeck);
