@@ -18,6 +18,13 @@ function updateCard() {
 
     const card = currentDeck[currentIndex];
     const front = document.getElementById('cardFront');
+    const progressEl = document.getElementById('progress');
+    const percent = ((currentIndex + 1) / currentDeck.length) * 100;
+    
+    console.log("当前索引:", currentIndex, "总数:", currentDeck.length, "进度:", percent);
+    
+    progressEl.style.width = percent + "%"; 
+}
     
     front.innerHTML = ""; 
     const wordText = document.createTextNode(card.word + " ");
