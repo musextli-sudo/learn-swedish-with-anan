@@ -14,7 +14,7 @@ function loadDeck() {
     }
 }
 
-// 2. 更新卡片界面与进度条
+// 2. 更新卡片界面与计数器
 function updateCard() {
     if (currentDeck.length === 0) return;
 
@@ -23,6 +23,8 @@ function updateCard() {
     
     // 清空原有内容
     front.innerHTML = ""; 
+    
+    // 创建文字节点
     const wordText = document.createTextNode(card.word + " ");
     front.appendChild(wordText);
     
@@ -37,15 +39,12 @@ function updateCard() {
     // 更新背面翻译
     document.getElementById('cardBack').innerText = card.trans;
     
-    // 更新进度条
-    const progressEl = document.getElementById('progress');
-    if (progressEl) {
-        const percent = ((currentIndex + 1) / currentDeck.length) * 100;
-        progressEl.style.width = percent + "%";
-        console.log("当前进度:", percent + "%");
+    // --- 新增：显示计数器 (格式：X / Y) ---
+    const counterEl = document.getElementById('counter');
+    if (counterEl) {
+        counterEl.innerText = `${currentIndex + 1} / ${currentDeck.length}`;
     }
 }
-
 // 3. 翻牌逻辑
 function flipCard() {
     const card = document.getElementById('card');
