@@ -7,468 +7,109 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         /* 🚀 Upgraded Navigation with Separator Grouping */
-        .level-tabs {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            background-color: #f7faf9;
-            padding: 10px 15px;
-            border-radius: 30px;
-            border: 1px solid #e2ece9;
-        }
+        .level-tabs { display: flex; align-items: center; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; background-color: #f7faf9; padding: 10px 15px; border-radius: 30px; border: 1px solid #e2ece9; }
+        .tab-group-main { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tab-group-support { display: flex; gap: 10px; flex-wrap: wrap; }
+        .tab-divider { width: 2px; height: 28px; background-color: #cbdcd6; margin: 0 10px; align-self: center; }
+        @media (max-width: 768px) { .tab-divider { display: none; } .level-tabs { border-radius: 15px; } }
         
-        /* The container for Main Path */
-        .tab-group-main {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        /* The container for Support Utilities */
-        .tab-group-support {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        /* 📐 Elegant Vertical Divider */
-        .tab-divider {
-            width: 2px;
-            height: 28px;
-            background-color: #cbdcd6;
-            margin: 0 10px;
-            align-self: center;
-        }
-
-        @media (max-width: 768px) {
-            .tab-divider {
-                display: none; /* Hide divider on small screens to let items wrap naturally */
-            }
-            .level-tabs {
-                border-radius: 15px;
-            }
-        }
-
-        .tab-btn {
-            padding: 10px 20px;
-            background-color: #ffffff;
-            border: 2px solid #e2ece9;
-            border-radius: 25px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #555;
-            transition: all 0.2s ease;
-            font-size: 0.95rem;
-        }
-        /* Default hover for active/clickable tabs */
-        .tab-btn:not(.locked-tab):hover {
-            background-color: #e2ece9;
-        }
-        /* Active state for tabs when clicked */
-        .tab-btn.active {
-            background-color: #2e5a44 !important;
-            color: white !important;
-            border-color: #2e5a44 !important;
-            box-shadow: 0 4px 10px rgba(46, 90, 68, 0.2);
-            opacity: 1 !important;
-        }
+        .tab-btn { padding: 10px 20px; background-color: #ffffff; border: 2px solid #e2ece9; border-radius: 25px; cursor: pointer; font-weight: bold; color: #555; transition: all 0.2s ease; font-size: 0.95rem; }
+        .tab-btn:not(.locked-tab):hover { background-color: #e2ece9; }
+        .tab-btn.active { background-color: #2e5a44 !important; color: white !important; border-color: #2e5a44 !important; box-shadow: 0 4px 10px rgba(46, 90, 68, 0.2); opacity: 1 !important; }
         
-        /* 🔒 LOCKED TAB BUTTONS styling */
-        .tab-btn.locked-tab {
-            background-color: #fafbfc !important;
-            border-color: #eef2f0 !important;
-            color: #b2c4bc !important;
-            cursor: not-allowed;
-            opacity: 0.6;
-            box-shadow: none !important;
-        }
-        .tab-btn.locked-tab:hover {
-            background-color: #fafbfc !important;
-        }
-        
-        /* Special style for About tab when NOT active */
-        .tab-btn.about-style {
-            background-color: #fcf3cf;
-            border-color: #f9e79f;
-            color: #b7950b;
-        }
-        .tab-btn.about-style:hover {
-            background-color: #f9e79f;
-        }
+        .tab-btn.locked-tab { background-color: #fafbfc !important; border-color: #eef2f0 !important; color: #b2c4bc !important; cursor: not-allowed; opacity: 0.6; box-shadow: none !important; }
+        .tab-btn.about-style { background-color: #fcf3cf; border-color: #f9e79f; color: #b7950b; }
+        .tab-btn.quiz-style { background-color: #e8f8f5; border-color: #a3e4d7; color: #117a65; }
 
-        /* 🧩 Style for Quiz tab when NOT active */
-        .tab-btn.quiz-style {
-            background-color: #e8f8f5;
-            border-color: #a3e4d7;
-            color: #117a65;
-        }
-        .tab-btn.quiz-style:hover {
-            background-color: #a3e4d7;
-        }
+        .level-content { display: none; animation: fadeIn 0.3s ease-in-out; }
+        .level-content.active { display: block; }
+        
+        /* 📊 Progress Bar */
+        .progress-container { width: 100%; background: #e2ece9; border-radius: 10px; margin: 20px 0; overflow: hidden; }
+        .progress-bar { height: 15px; background: #2e5a44; width: 0%; transition: width 0.4s; }
 
-        .level-content {
-            display: none;
-            animation: fadeIn 0.3s ease-in-out;
-        }
-        .level-content.active {
-            display: block;
-        }
-        
-        /* Active Unit Card */
-        .unit-card {
-            background: white;
-            border: 1px solid #e2ece9;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: all 0.3s;
-        }
-        
-        /* Locked Unit Card: Visual Muting */
-        .unit-card.locked {
-            background: #fafafa;
-            border: 1px dashed #ccc;
-            box-shadow: none;
-            opacity: 0.5;
-        }
-        
-        .unit-title {
-            color: #2e5a44;
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 1.2rem;
-            border-bottom: 2px solid #f0f4f2;
-            padding-bottom: 5px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* Locked Unit Title */
-        .unit-card.locked .unit-title {
-            color: #95a5a6;
-            border-bottom: 2px dashed #e0e0e0;
-        }
+        /* 🃏 Flashcard Styling */
+        .flashcard-container { perspective: 1000px; width: 100%; max-width: 400px; margin: 20px auto; cursor: pointer; }
+        .flashcard { position: relative; width: 100%; height: 200px; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; }
+        .flashcard.flipped { transform: rotateY(180deg); }
+        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; border: 2px solid #2e5a44; border-radius: 15px; font-size: 1.5rem; background: white; }
+        .back { transform: rotateY(180deg); background: #e8f8f5; color: #117a65; }
 
-        .episode-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 12px;
-        }
+        /* Existing Components (Unit Cards, Lists, etc.) */
+        .unit-card { background: white; border: 1px solid #e2ece9; border-radius: 10px; padding: 20px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+        .episode-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 12px; }
+        .episode-item a { display: block; padding: 10px 15px; background: #fafbfc; border: 1px solid #eef2f0; border-radius: 6px; color: #2c3e50; text-decoration: none; }
+        .char-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .char-card { background: #fff; border: 1px solid #e2ece9; border-radius: 8px; padding: 20px; text-align: center; }
+        .quiz-config-container { background: #fafbfc; border: 1px solid #cbdcd6; border-radius: 12px; padding: 25px; margin-top: 20px; }
+        .quiz-start-btn { display: block; width: 100%; padding: 15px; background-color: #117a65; color: white; border: none; border-radius: 8px; font-size: 1.1rem; font-weight: bold; cursor: pointer; }
         
-        /* Active Episode Link */
-        .episode-item a {
-            display: block;
-            padding: 10px 15px;
-            background: #fafbfc;
-            border: 1px solid #eef2f0;
-            border-radius: 6px;
-            color: #2c3e50;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: all 0.2s;
-        }
-        .episode-item a:hover {
-            background: #2e5a44;
-            color: white;
-            transform: translateY(-2px);
-        }
-        
-        /* Locked Episode Link */
-        .episode-item.locked a {
-            background: #f5f5f5 !important;
-            color: #bdc3c7 !important;
-            border: 1px solid #e5e5e5 !important;
-            cursor: not-allowed;
-            pointer-events: none;
-            transform: none !important;
-        }
-
-        .locked-msg {
-            color: #95a5a6;
-            font-style: italic;
-            text-align: center;
-            padding: 40px 20px;
-            background: #fafafa;
-            border-radius: 8px;
-            border: 1px dashed #ddd;
-        }
-
-        /* Characters Grid Styling */
-        .char-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .char-card {
-            background: #fff;
-            border: 1px solid #e2ece9;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-        }
-        .char-avatar {
-            font-size: 3rem;
-            margin-bottom: 10px;
-            display: inline-block;
-        }
-
-        /* 🎛️ NEW: Checkbox list style for customized quizzes */
-        .quiz-config-container {
-            background: #fafbfc;
-            border: 1px solid #cbdcd6;
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 20px;
-            max-width: 650px;
-            box-shadow: 0 4px 15px rgba(46, 90, 68, 0.03);
-        }
-        .quiz-select-label {
-            display: block;
-            font-weight: bold;
-            color: #117a65;
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-        .quiz-options-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-        
-        /* Checkbox Option Row */
-        .quiz-option-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 15px;
-            background: white;
-            border: 2px solid #e2ece9;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            user-select: none;
-        }
-        .quiz-option-item:hover:not(.locked-option) {
-            border-color: #117a65;
-            background-color: #f4faf8;
-        }
-        
-        /* Modernized Checkbox */
-        .quiz-option-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            margin-right: 15px;
-            cursor: pointer;
-            accent-color: #117a65;
-        }
-        
-        .option-text {
-            font-size: 0.95rem;
-            color: #2c3e50;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* Locked Checkbox Rows */
-        .quiz-option-item.locked-option {
-            background-color: #f6f8f7;
-            border-color: #e6ecea;
-            color: #9cb2a8;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
-        .quiz-option-item.locked-option .option-text {
-            color: #9cb2a8;
-        }
-        .quiz-option-item.locked-option input[type="checkbox"] {
-            cursor: not-allowed;
-        }
-
-        /* Dynamic Start Button */
-        .quiz-start-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background-color: #117a65;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-        .quiz-start-btn:hover {
-            background-color: #0e6251;
-            box-shadow: 0 4px 12px rgba(17, 122, 101, 0.2);
-        }
-        .quiz-start-btn:active {
-            transform: scale(0.99);
-        }
-        .quiz-start-btn.disabled {
-            background-color: #bdc3c7 !important;
-            color: #fff !important;
-            cursor: not-allowed;
-            pointer-events: none;
-            box-shadow: none !important;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <!-- Header Banner -->
         <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #e2ece9 0%, #c2dcd3 100%); border-radius: 12px; margin-bottom: 30px;">
             <h1 style="font-size: 2.5rem; color: #2c3e50; margin: 0;">Learn Swedish with AnAn 🐻</h1>
-            <p style="font-size: 1.1rem; color: #52615c; margin-top: 10px; margin-bottom: 0;">
-                Follow AnAn's family and master Swedish step by step through their stories!
-            </p>
         </div>
 
-        <!-- 🚀 Tabs Selection -->
+        <div class="progress-container">
+            <div id="progress-bar" class="progress-bar"></div>
+        </div>
+
         <div class="level-tabs">
             <div class="tab-group-main">
                 <button class="tab-btn active" onclick="switchLevel('intro', event)">🌟 Introductory</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('beginner', event)">🔒 🌱 Beginner</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('intermediate', event)">🔒 🚀 Intermediate</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('advanced', event)">🔒 🏆 Advanced</button>
+                <button class="tab-btn locked-tab">🔒 Beginner</button>
             </div>
             <div class="tab-divider"></div>
             <div class="tab-group-support">
                 <button class="tab-btn quiz-style" onclick="switchLevel('quizzes', event)">🧩 Review Quizzes</button>
-                <button class="tab-btn about-style" onclick="switchLevel('about', event)">ℹ️ About & Characters</button>
-                <a href="vocabulary/vocabulary.html" class="tab-btn vocab-style" style="text-decoration:none; color:inherit;">📖 Vocabulary</a>
+                <button class="tab-btn" onclick="switchLevel('flashcards', event)">🃏 Flashcards</button>
+                <button class="tab-btn about-style" onclick="switchLevel('about', event)">ℹ️ About</button>
             </div>
         </div>
 
-        <!-- 1. Introductory Content -->
         <div id="level-intro" class="level-content active">
-            <h3 style="color: #2e5a44; margin-bottom: 20px;">📚 Episodes</h3>
-            <ul class="episode-list" style="grid-template-columns: 1fr;">
-                <li class="episode-item">
-                    <a href="episodes/episode1.html"><strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)</a>
-                </li>
-                <li class="episode-item">
-                    <a href="episodes/episode2.html"><strong>Ep 2:</strong> Min familj och mitt liv 🏠 (Family & Life)</a>
-                </li>
-                <li class="episode-item locked">
-                    <a href="#">🔒 <strong>Ep 3:</strong> Coming Soon...</a>
-                </li>
-            </ul>
+            <h2>Welcome to the course!</h2>
         </div>
 
-        <!-- 2. Review Quizzes Section -->
-        <div id="level-quizzes" class="level-content">
-            <div class="unit-card" style="border-left: 4px solid #117a65; background: #fafbfc; margin-bottom: 25px;">
-                <h3 style="color: #117a65; margin-top: 0;">🧩 Custom Review Center</h3>
-                <p style="color: #555; line-height: 1.5; font-size: 0.95rem; margin-bottom: 0;">
-                    Tailor your practice session. Tick the episodes you want to cover, and we will compile an instant challenge pool just for you!
-                </p>
-            </div>
-            <div class="quiz-config-container">
-                <span class="quiz-select-label">Choose episodes to include:</span>
-                <div class="quiz-options-list">
-                    <label class="quiz-option-item">
-                        <input type="checkbox" name="quiz-episode" value="ep1" checked onchange="updateQuizSelection()">
-                        <span class="option-text"><strong>Ep 1:</strong> Hej Sweden! ✈️ (Greetings & Airport)</span>
-                    </label>
-                    <label class="quiz-option-item locked-option">
-                        <input type="checkbox" name="quiz-episode" value="ep2" disabled onchange="updateQuizSelection()">
-                        <span class="option-text">🔒 <strong>Ep 2:</strong> My Family 🏡 (Requires Unit 1 Progression)</span>
-                    </label>
-                    <label class="quiz-option-item locked-option">
-                        <input type="checkbox" name="quiz-episode" value="ep3" disabled onchange="updateQuizSelection()">
-                        <span class="option-text">🔒 <strong>Ep 3:</strong> Counting Fika! ☕️ (Requires Unit 2 Unlock)</span>
-                    </label>
+        <div id="level-flashcards" class="level-content">
+            <div class="flashcard-container">
+                <div class="flashcard" onclick="this.classList.toggle('flipped'); updateProgress(20);">
+                    <div class="front">Hej (Front)</div>
+                    <div class="back">Hello (Back)</div>
                 </div>
-                <button id="start-quiz-btn" class="quiz-start-btn" onclick="launchQuiz()">🚀 Start Quiz (1 Episode Selected)</button>
+            </div>
+            <p style="text-align:center;">Click to flip and earn progress!</p>
+        </div>
+
+        <div id="level-quizzes" class="level-content">
+            <div class="quiz-config-container">
+                <button id="start-quiz-btn" class="quiz-start-btn">🚀 Start Quiz</button>
             </div>
         </div>
 
-        <!-- 3. Locked Content -->
-        <div id="level-beginner" class="level-content"><div class="locked-msg"><h3>🌱 Beginner Course Locked</h3><p>Complete the Introductory Course first!</p></div></div>
-        <div id="level-intermediate" class="level-content"><div class="locked-msg"><h3>🚀 Intermediate Course Locked</h3><p>Complete the Beginner Course first!</p></div></div>
-        <div id="level-advanced" class="level-content"><div class="locked-msg"><h3>🏆 Advanced Course Locked</h3><p>Reach advanced Swedish skills!</p></div></div>
-
-        <!-- 4. About & Characters -->
         <div id="level-about" class="level-content">
-            <div class="unit-card" style="border-left: 4px solid #f1c40f; margin-bottom: 20px;">
-                <h3 style="color: #2e5a44; margin-top: 0;">Welcome to Our Swedish Journey! 🇸🇪</h3>
-                <p style="line-height: 1.6; color: #555;">Start your Swedish journey by following a family's daily life in Sweden.</p>
-            </div>
-            <h3 style="color: #2e5a44; margin-bottom: 15px;">Meet AnAn's Family 🧑‍🤝‍🧑</h3>
-            <div class="char-grid">
-                <div class="char-card"><div class="char-avatar">👧</div><h4>NiuNiu</h4><p>Curious and adorable.</p></div>
-                <div class="char-card"><div class="char-avatar">👦</div><h4>AnAn</h4><p>Full of energy.</p></div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div style="margin-top: 50px; text-align: center; color: #7f8c8d; font-size: 0.9rem; border-top: 1px solid #e2ece9; padding-top: 20px;">
-            <p>© 2026 Learn Swedish with AnAn. All rights reserved.</p>
+            <h3>Meet AnAn's Family 🧑‍🤝‍🧑</h3>
         </div>
     </div>
 
     <script>
+        // 导航切换逻辑
         function switchLevel(levelId, event) {
-            // 确保 event 对象存在
-            if (!event) return;
-            
-            // 1. Switch Tab Active State
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.currentTarget.classList.add('active');
-
-            // 2. Switch Visibility of Content
-            const contents = document.querySelectorAll('.level-content');
-            contents.forEach(content => content.classList.remove('active'));
+            document.querySelectorAll('.level-content').forEach(c => c.classList.remove('active'));
             document.getElementById('level-' + levelId).classList.add('active');
         }
 
-        function updateQuizSelection() {
-            const checkboxes = document.querySelectorAll('input[name="quiz-episode"]:checked');
-            const button = document.getElementById('start-quiz-btn');
-            const count = checkboxes.length;
-
-            if (count === 0) {
-                button.innerText = "⚠️ Please select at least one episode";
-                button.classList.add('disabled');
-            } else {
-                button.innerText = `🚀 Start Quiz (${count} Episode${count > 1 ? 's' : ''} Selected)`;
-                button.classList.remove('disabled');
-            }
-        }
-
-        function launchQuiz() {
-            const checkboxes = document.querySelectorAll('input[name="quiz-episode"]:checked');
-            if (checkboxes.length === 0) return;
-
-            const selectedValues = Array.from(checkboxes).map(cb => cb.value);
-            if (selectedValues.length === 1 && selectedValues[0] === 'ep1') {
-                window.location.href = "quizzes/quiz_ep1.html";
-            } else {
-                window.location.href = `quizzes/custom_quiz.html?episodes=${selectedValues.join(',')}`;
-            }
+        // 进度条逻辑
+        let currentProgress = 0;
+        function updateProgress(value) {
+            currentProgress = Math.min(currentProgress + value, 100);
+            document.getElementById('progress-bar').style.width = currentProgress + '%';
         }
     </script>
 </body>
