@@ -328,48 +328,6 @@
             box-shadow: none !important;
         }
 
-        /* 🃏 Flashcard Styles */
-        .flashcard-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .card {
-            background-color: transparent;
-            width: 100%;
-            height: 100px;
-            perspective: 1000px;
-            cursor: pointer;
-        }
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            border-radius: 10px;
-        }
-        .card.flipped .card-inner {
-            transform: rotateY(180deg);
-        }
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 10px;
-            font-weight: bold;
-            border: 1px solid #e2ece9;
-        }
-        .card-front { background-color: #ffffff; color: #2e5a44; }
-        .card-back { background-color: #2e5a44; color: white; transform: rotateY(180deg); }
-
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
@@ -379,6 +337,7 @@
 <body>
 
     <div class="container">
+        <!-- Header Banner -->
         <div style="text-align: center; padding: 40px 20px; background: linear-gradient(135deg, #e2ece9 0%, #c2dcd3 100%); border-radius: 12px; margin-bottom: 30px;">
             <h1 style="font-size: 2.5rem; color: #2c3e50; margin: 0;">Learn Swedish with AnAn 🐻</h1>
             <p style="font-size: 1.1rem; color: #52615c; margin-top: 10px; margin-bottom: 0;">
@@ -386,45 +345,59 @@
             </p>
         </div>
 
+        <!-- 🚀 Tabs Selection (Grouped & Separated!) -->
         <div class="level-tabs">
+            <!-- Group A: Main Learning Progression -->
             <div class="tab-group-main">
-                <button class="tab-btn active" onclick="switchLevel('intro', event)">🌟 Introductory</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('beginner', event)">🔒 🌱 Beginner</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('intermediate', event)">🔒 🚀 Intermediate</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('advanced', event)">🔒 🏆 Advanced</button>
+                <button class="tab-btn active" onclick="switchLevel('intro')">🌟 Introductory</button>
+                <button class="tab-btn locked-tab" onclick="switchLevel('beginner')">🔒 🌱 Beginner</button>
+                <button class="tab-btn locked-tab" onclick="switchLevel('intermediate')">🔒 🚀 Intermediate</button>
+                <button class="tab-btn locked-tab" onclick="switchLevel('advanced')">🔒 🏆 Advanced</button>
             </div>
 
+            <!-- 📐 The Divider Line -->
             <div class="tab-divider"></div>
 
-            <div class="tab-group-support">
-                <button class="tab-btn quiz-style" onclick="switchLevel('quizzes', event)">🧩 Review Quizzes</button>
-                <button class="tab-btn" onclick="switchLevel('cards', event)">🃏 Word Cards</button>
-                <button class="tab-btn about-style" onclick="switchLevel('about', event)">ℹ️ About & Characters</button>
-                <a href="vocabulary/vocabulary.html" class="tab-btn vocab-style" style="text-decoration:none;">📖 Vocabulary</a>
+            <!-- Group B: Utilities & Support -->
+           <div class="tab-group-support">
+            <button class="tab-btn quiz-style" onclick="switchLevel('quizzes')">🧩 Review Quizzes</button>
+            <button class="tab-btn about-style" onclick="switchLevel('about')">ℹ️ About & Characters</button>
+    
+            <a href="vocabulary/vocabulary.html" class="tab-btn vocab-style">📖 Vocabulary</a>
             </div>
-        </div>
 
-        <div id="level-intro" class="level-content active">
-            <h3 style="color: #2e5a44; margin-bottom: 20px;">📚 Episodes</h3>
-            <ul class="episode-list" style="grid-template-columns: 1fr;">
-                <li class="episode-item">
-                    <a href="episodes/episode1.html">
-                        <strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)
-                    </a>
-                </li>
-                <li class="episode-item">
-                    <a href="episodes/episode2.html">
-                        <strong>Ep 2:</strong> Min familj och mitt liv 🏠 (Family & Life)
-                    </a>
-                </li>
-                <li class="episode-item locked">
-                    <a href="#">
-                        🔒 <strong>Ep 3:</strong> Coming Soon...
-                    </a>
-                </li>
-            </ul>
-        </div>
+        <!-- ================= 1. Introductory Content (10 Units Plan) ================= -->
+      <!-- ================= 1. Introductory Content (Episode List) ================= -->
+<div id="level-intro" class="level-content active">
+    
+    <h3 style="color: #2e5a44; margin-bottom: 20px;">📚 Episodes</h3>
+    
+    <ul class="episode-list" style="grid-template-columns: 1fr;"> <!-- 这里将 grid 修改为单列布局，方便大块内容展示 -->
+        
+        <!-- Ep 1 -->
+        <li class="episode-item">
+            <a href="episodes/episode1.html">
+                <strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)
+            </a>
+        </li>
+        
+        <!-- Ep 2 -->
+        <li class="episode-item">
+            <a href="episodes/episode2.html">
+                <strong>Ep 2:</strong> Min familj och mitt liv 🏠 (Family & Life)
+            </a>
+        </li>
 
+        <!-- Ep 3 (占位符) -->
+        <li class="episode-item locked">
+            <a href="#">
+                🔒 <strong>Ep 3:</strong> Coming Soon...
+            </a>
+        </li>
+
+    </ul>
+</div>
+        <!-- ================= 2. Review Quizzes Section (Dynamic Tick Boxes!) ================= -->
         <div id="level-quizzes" class="level-content">
             <div class="unit-card" style="border-left: 4px solid #117a65; background: #fafbfc; margin-bottom: 25px;">
                 <h3 style="color: #117a65; margin-top: 0;">🧩 Custom Review Center</h3>
@@ -433,83 +406,179 @@
                 </p>
             </div>
 
+            <!-- 🎛️ Checkbox Selection Console -->
             <div class="quiz-config-container">
                 <span class="quiz-select-label">Choose episodes to include:</span>
+                
                 <div class="quiz-options-list">
+                    <!-- Unlocked Option: Episode 1 -->
                     <label class="quiz-option-item">
                         <input type="checkbox" name="quiz-episode" value="ep1" checked onchange="updateQuizSelection()">
-                        <span class="option-text"><strong>Ep 1:</strong> Hej Sweden! ✈️ (Greetings & Airport)</span>
+                        <span class="option-text">
+                            <strong>Ep 1:</strong> Hej Sweden! ✈️ (Greetings & Airport)
+                        </span>
                     </label>
+
+                    <!-- Locked Option: Episode 2 -->
                     <label class="quiz-option-item locked-option">
                         <input type="checkbox" name="quiz-episode" value="ep2" disabled onchange="updateQuizSelection()">
-                        <span class="option-text">🔒 <strong>Ep 2:</strong> My Family 🏡 (Requires Unit 1 Progression)</span>
+                        <span class="option-text">
+                            🔒 <strong>Ep 2:</strong> My Family 🏡 (Requires Unit 1 Progression)
+                        </span>
+                    </label>
+
+                    <!-- Locked Option: Episode 3 -->
+                    <label class="quiz-option-item locked-option">
+                        <input type="checkbox" name="quiz-episode" value="ep3" disabled onchange="updateQuizSelection()">
+                        <span class="option-text">
+                            🔒 <strong>Ep 3:</strong> Counting Fika! ☕️ (Requires Unit 2 Unlock)
+                        </span>
                     </label>
                 </div>
-                <button id="start-quiz-btn" class="quiz-start-btn" onclick="launchQuiz()">🚀 Start Quiz (1 Episode Selected)</button>
+
+                <!-- Dynamic CTA Button -->
+                <button id="start-quiz-btn" class="quiz-start-btn" onclick="launchQuiz()">
+                    🚀 Start Quiz (1 Episode Selected)
+                </button>
             </div>
         </div>
 
-        <div id="level-cards" class="level-content">
-            <h3 style="color: #2e5a44;">🃏 Quick Vocabulary Practice</h3>
-            <div class="flashcard-grid">
-                <div class="card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-inner"><div class="card-front">Hej</div><div class="card-back">Hello</div></div>
-                </div>
-                <div class="card" onclick="this.classList.toggle('flipped')">
-                    <div class="card-inner"><div class="card-front">Familj</div><div class="card-back">Family</div></div>
-                </div>
+        <!-- ================= 3. Beginner Content (Locked) ================= -->
+        <div id="level-beginner" class="level-content">
+            <div class="locked-msg">
+                <h3>🌱 Beginner Course Locked</h3>
+                <p>Complete the Introductory Course first to unlock this level!</p>
             </div>
         </div>
 
-        <div id="level-beginner" class="level-content"><div class="locked-msg"><h3>🌱 Beginner Course Locked</h3><p>Complete the Introductory Course first!</p></div></div>
-        <div id="level-intermediate" class="level-content"><div class="locked-msg"><h3>🚀 Intermediate Course Locked</h3><p>Complete the Beginner Course first!</p></div></div>
-        <div id="level-advanced" class="level-content"><div class="locked-msg"><h3>🏆 Advanced Course Locked</h3><p>Reach advanced Swedish skills!</p></div></div>
-
-        <div id="level-about" class="level-content">
-            <div class="unit-card" style="border-left: 4px solid #f1c40f; margin-bottom: 20px;">
-                <h3 style="color: #2e5a44; margin-top: 0;">Welcome to Our Swedish Journey! 🇸🇪</h3>
-                <p style="line-height: 1.6; color: #555;">Start your Swedish journey by following a family's daily life in Sweden.</p>
-            </div>
-            <h3 style="color: #2e5a44; margin-bottom: 15px;">Meet AnAn's Family 🧑‍🤝‍🧑</h3>
-            <div class="char-grid">
-                <div class="char-card"><div class="char-avatar">👧</div><h4>NiuNiu</h4><p>Curious and adorable.</p></div>
-                <div class="char-card"><div class="char-avatar">👦</div><h4>AnAn</h4><p>Full of energy.</p></div>
+        <!-- ================= 4. Intermediate Content (Locked) ================= -->
+        <div id="level-intermediate" class="level-content">
+            <div class="locked-msg">
+                <h3>🚀 Intermediate Course Locked</h3>
+                <p>Complete the Beginner Course first to unlock this level!</p>
             </div>
         </div>
 
-        <footer style="margin-top: 50px; padding: 20px; text-align: center; color: #95a5a6; font-size: 0.9rem;">
-            <p>&copy; 2026 Learn Swedish with AnAn. All Rights Reserved.</p>
-        </footer>
+        <!-- ================= 5. Advanced Content (Locked) ================= -->
+        <div id="level-advanced" class="level-content">
+            <div class="locked-msg">
+                <h3>🏆 Advanced Course Locked</h3>
+                <p>Reach advanced Swedish skills to unlock these challenges!</p>
+            </div>
+        </div>
+
+      <!-- ================= 6. About & Characters ================= -->
+<div id="level-about" class="level-content">
+    <!-- 欢迎语部分 -->
+    <div class="unit-card" style="border-left: 4px solid #f1c40f; margin-bottom: 20px;">
+        <h3 style="color: #2e5a44; margin-top: 0;">Welcome to Our Swedish Journey! 🇸🇪</h3>
+        <p style="line-height: 1.6; color: #555;">
+           Start your Swedish journey by following a family's daily life in Sweden. Master natural vocabulary and daily expressions through our interactive, story-based lessons and practical exercises.
+        </p>
     </div>
 
+    <!-- 标题 -->
+    <h3 style="color: #2e5a44; margin-bottom: 15px;">Meet AnAn's Family 🧑‍🤝‍🧑</h3>
+
+    <!-- 成员卡片网格布局 -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+        
+        <!-- NiuNiu -->
+        <div class="unit-card">
+            <div style="font-size: 40px; text-align: center;">👧</div>
+            <h4 style="text-align: center; margin: 10px 0;">NiuNiu <br><span style="font-size: 0.8em; color: #e67e22;">Age 6</span></h4>
+            <p style="font-size: 0.9em; color: #555; text-align: center;">The youngest of the family. Curious and adorable.</p>
+            <p style="font-size: 0.8em; color: #c0392b; text-align: center; font-weight: bold;">🎯 Colors, Numbers & Simple Words</p>
+        </div>
+
+        <!-- AnAn -->
+        <div class="unit-card">
+            <div style="font-size: 40px; text-align: center;">👦</div>
+            <h4 style="text-align: center; margin: 10px 0;">AnAn <br><span style="font-size: 0.8em; color: #e67e22;">Age 10</span></h4>
+            <p style="font-size: 0.9em; color: #555; text-align: center;">Full of energy, loves exploring and learning new things.</p>
+            <p style="font-size: 0.8em; color: #c0392b; text-align: center; font-weight: bold;">🎯 School, Friends & Sports</p>
+        </div>
+
+        <!-- Gigi -->
+        <div class="unit-card">
+            <div style="font-size: 40px; text-align: center;">👩</div>
+            <h4 style="text-align: center; margin: 10px 0;">Gigi <br><span style="font-size: 0.8em; color: #e67e22;">Age 25</span></h4>
+            <p style="font-size: 0.9em; color: #555; text-align: center;">The ambitious big sister stepping into the professional world.</p>
+            <p style="font-size: 0.8em; color: #c0392b; text-align: center; font-weight: bold;">🎯 Work, Banking & Society</p>
+        </div>
+
+        <!-- Jenny -->
+        <div class="unit-card">
+            <div style="font-size: 40px; text-align: center;">👩‍🦱</div>
+            <h4 style="text-align: center; margin: 10px 0;">Jenny (Mom) <br><span style="font-size: 0.8em; color: #2980b9;">Adult Life</span></h4>
+            <p style="font-size: 0.9em; color: #555; text-align: center;">The warm heart of the family, organizing day-to-day adventures.</p>
+            <p style="font-size: 0.8em; color: #c0392b; text-align: center; font-weight: bold;">🎯 Shopping, Travel & Daily Life</p>
+        </div>
+
+        <!-- Peter -->
+        <div class="unit-card">
+            <div style="font-size: 40px; text-align: center;">👨</div>
+            <h4 style="text-align: center; margin: 10px 0;">Peter (Dad) <br><span style="font-size: 0.8em; color: #2980b9;">Adult Life</span></h4>
+            <p style="font-size: 0.9em; color: #555; text-align: center;">Empathetic, analytical, navigating life and administration in Sweden.</p>
+            <p style="font-size: 0.8em; color: #c0392b; text-align: center; font-weight: bold;">🎯 Swedish Workplace & Finance</p>
+        </div>
+    </div>
+</div>
+      
+
+        <!-- Footer -->
+        <div style="margin-top: 50px; text-align: center; color: #7f8c8d; font-size: 0.9rem; border-top: 1px solid #e2ece9; padding-top: 20px;">
+            <p>© 2026 Learn Swedish with AnAn. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Page Interaction Script -->
     <script>
-        function switchLevel(levelId, event) {
-            if (event.currentTarget.classList.contains('locked-tab')) return;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        function switchLevel(levelId) {
+            // 1. Switch Tab Active State
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Highlight the clicked tab button
             event.currentTarget.classList.add('active');
-            document.querySelectorAll('.level-content').forEach(content => content.classList.remove('active'));
-            const targetSection = document.getElementById('level-' + levelId);
-            if (targetSection) targetSection.classList.add('active');
+
+            // 2. Switch Visibility of Content
+            const contents = document.querySelectorAll('.level-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            document.getElementById('level-' + levelId).classList.add('active');
         }
+
+        // 3. Dynamic Checkbox Action for Quizzes
         function updateQuizSelection() {
             const checkboxes = document.querySelectorAll('input[name="quiz-episode"]:checked');
             const button = document.getElementById('start-quiz-btn');
             const count = checkboxes.length;
+
             if (count === 0) {
-                button.innerText = "⚠️ Please select at least one";
+                button.innerText = "⚠️ Please select at least one episode";
                 button.classList.add('disabled');
             } else {
                 button.innerText = `🚀 Start Quiz (${count} Episode${count > 1 ? 's' : ''} Selected)`;
                 button.classList.remove('disabled');
             }
         }
+
+        // 4. Dynamic Redirect Logic (Routes users depending on selections)
         function launchQuiz() {
             const checkboxes = document.querySelectorAll('input[name="quiz-episode"]:checked');
             if (checkboxes.length === 0) return;
+
             const selectedValues = Array.from(checkboxes).map(cb => cb.value);
+
+            // Simple routing:
+            // - If only Ep 1 is selected, send to Ep 1's dedicated quiz file.
+            // - In the future, you can send multiple IDs as URL parameters: custom_quiz.html?episodes=ep1,ep2
             if (selectedValues.length === 1 && selectedValues[0] === 'ep1') {
                 window.location.href = "quizzes/quiz_ep1.html";
             } else {
+                // Future generic multi-episode quiz handler
                 window.location.href = `quizzes/custom_quiz.html?episodes=${selectedValues.join(',')}`;
             }
         }
