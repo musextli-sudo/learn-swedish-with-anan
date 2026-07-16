@@ -367,54 +367,36 @@
             </div>
 
         <!-- ================= 1. Introductory Content (10 Units Plan) ================= -->
-        <div id="level-intro" class="level-content active">
+      <!-- ================= 1. Introductory Content (Episode List) ================= -->
+<div id="level-intro" class="level-content active">
     
-    <!-- Unit 1 -->
-    <div class="unit-card">
-        <h3 class="unit-title">Unit 1: First Meeting & Basics <span>01 / 10</span></h3>
-        <ul class="episode-list">
-            <li class="episode-item">
-                <a href="episodes/episode1.html">
-                    <strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)
-                </a>
-            </li>
-            <!-- 这里已经删除了原本锁住的 Ep 2 -->
-        </ul>
-    </div>
+    <h3 style="color: #2e5a44; margin-bottom: 20px;">📚 Episodes</h3>
+    
+    <ul class="episode-list" style="grid-template-columns: 1fr;"> <!-- 这里将 grid 修改为单列布局，方便大块内容展示 -->
+        
+        <!-- Ep 1 -->
+        <li class="episode-item">
+            <a href="episodes/episode1.html">
+                <strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)
+            </a>
+        </li>
+        
+        <!-- Ep 2 -->
+        <li class="episode-item">
+            <a href="episodes/episode2.html">
+                <strong>Ep 2:</strong> Min familj och mitt liv 🏠 (Family & Life)
+            </a>
+        </li>
 
-    <!-- Unit 2 (现在是唯一的 Ep 2 入口) -->
-    <div class="unit-card">
-        <h3 class="unit-title">Unit 2: Family & Life <span>02 / 10</span></h3>
-        <ul class="episode-list">
-            <li class="episode-item">
-                <a href="episodes/episode2.html">
-                    <strong>Ep 2:</strong> Min familj och mitt liv 🏠
-                </a>
-            </li>
-        </ul>
-    </div>
+        <!-- Ep 3 (占位符) -->
+        <li class="episode-item locked">
+            <a href="#">
+                🔒 <strong>Ep 3:</strong> Coming Soon...
+            </a>
+        </li>
 
+    </ul>
 </div>
-
-            <!-- Unit 3 to Unit 10 Placeholders (All Locked Cards) -->
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Unit 3: Daily Life & Food <span>03 / 10</span></h3>
-            </div>
-            
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Unit 4: Colors & Clothes <span>04 / 10</span></h3>
-            </div>
-            
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Unit 5: Transportation & Directions <span>05 / 10</span></h3>
-            </div>
-            
-            <div class="unit-card locked">
-                <h3 class="unit-title">🔒 Units 6 - 10: Coming soon in future updates! 📚</h3>
-            </div>
-
-        </div>
-
         <!-- ================= 2. Review Quizzes Section (Dynamic Tick Boxes!) ================= -->
         <div id="level-quizzes" class="level-content">
             <div class="unit-card" style="border-left: 4px solid #117a65; background: #fafbfc; margin-bottom: 25px;">
