@@ -5,9 +5,17 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-
 /* --- 下拉菜单 --- */
 #epSelector { width: 100%; padding: 10px; font-size: 1rem; border-radius: 5px; border: 1px solid #ccc; margin-bottom: 20px; }
 
-/* --- 📊 Progress Bar (关键修复) --- */
-.progress-container { width: 100%; background: #e0e0e0; border-radius: 10px; margin: 20px 0; overflow: height: 15px; /* 明确高度 */ overflow: hidden; }
-#progress { height: 100%; background: #4CAF50; width: 0%; /* 初始宽度为0 */ transition: width 0.4s ease-in-out; }
+
+/* --- 📊 Progress Bar (修正版) --- */
+.progress-container { 
+    width: 100%; 
+    background: #e0e0e0; 
+    border-radius: 10px; 
+    margin: 20px 0; 
+    height: 15px;         /* 这里要把 height 独立出来 */
+    overflow: hidden;    /* 这里单独写 overflow */
+}
+#progress { height: 100%; background: #4CAF50; width: 0%; transition: width 0.4s ease-in-out; }
 
 /* --- 🃏 Card Container (关键修复) --- */
 .card-container { perspective: 1000px; /* 必须要有透视效果 */ width: 100%; height: 250px; margin: 20px 0; cursor: pointer; }
