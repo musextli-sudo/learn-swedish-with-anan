@@ -2,18 +2,17 @@
 .level-tabs { display: flex; align-items: center; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; background-color: #f7faf9; padding: 10px 15px; border-radius: 30px; border: 1px solid #e2ece9; }
 .tab-btn { padding: 10px 20px; background: #ffffff; border: 2px solid #e2ece9; border-radius: 25px; cursor: pointer; font-weight: bold; color: #555; transition: all 0.2s; }
 .tab-btn.active { background-color: #2e5a44 !important; color: white !important; border-color: #2e5a44 !important; }
-.level-content { display: none; animation: fadeIn 0.3s; }
-.level-content.active { display: block; }
 
-/* --- 🃏 Flashcard Styling --- */
-.flashcard-container { perspective: 1000px; width: 100%; max-width: 400px; margin: 20px auto; }
-.flashcard { position: relative; width: 100%; height: 200px; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
-.flashcard.flipped { transform: rotateY(180deg); }
-.front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; border: 2px solid #2e5a44; border-radius: 15px; font-size: 1.5rem; background: white; }
+/* --- 🃏 Flashcard Styling (匹配你的 HTML) --- */
+.card-container { perspective: 1000px; width: 100%; max-width: 400px; margin: 20px auto; }
+.card { position: relative; width: 100%; height: 200px; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
+.card.flipped { transform: rotateY(180deg); }
+
+.front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; align-items: center; justify-content: center; border: 2px solid #2e5a44; border-radius: 15px; font-size: 1.5rem; background: white; padding: 20px; box-sizing: border-box; }
 .back { transform: rotateY(180deg); background: #e8f8f5; color: #117a65; }
 
-/* --- 📊 Progress Bar --- */
-.progress-container { width: 100%; background: #e2ece9; border-radius: 10px; margin: 20px 0; overflow: hidden; }
-.progress-bar { height: 15px; background: #2e5a44; width: 0%; transition: width 0.4s; }
+/* --- 📊 Progress Bar (匹配你的 HTML) --- */
+.progress-container { width: 100%; background: #e2ece9; border-radius: 10px; margin: 20px 0; overflow: hidden; height: 15px; }
+#progress { height: 100%; background: #2e5a44; width: 0%; transition: width 0.4s; }
 
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
