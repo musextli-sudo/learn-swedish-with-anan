@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Episode 2: Min familj och mitt liv | Learning Swedish</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .container { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .audio-hero { background: #f0f4f2; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+        .story-line { margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+        .text-content { flex-grow: 1; }
+        .speaker-icon { cursor: pointer; margin-left: 10px; font-size: 1.2rem; vertical-align: middle; }
+        
+        .vocab-item { padding: 15px; margin-bottom: 10px; border-left: 5px solid #2e5a44; background: #fafafa; }
+        .vocab-word { font-weight: bold; font-size: 1.1rem; }
+        .vocab-ipa { color: #666; margin-left: 10px; font-style: italic; }
+        .vocab-trans { display: block; margin-top: 5px; color: #2e5a44; font-weight: bold; }
+
+        .practice-btn { display: block; margin: 30px auto; padding: 12px 25px; background: #2e5a44; color: white; text-decoration: none; border-radius: 5px; width: fit-content; font-weight: bold; }
+        .nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; }
+        .nav-btn { padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+        .btn-home { background: #dcdcdc; color: #333; }
+        .btn-next { background: #2e5a44; color: white; } 
+    </style>
+</head> 
+<body>
+
+<div class="container">
+    <h1>Episode 2: Min familj och mitt liv 🏠</h1>
+
+    <div class="audio-hero">
+        <button onclick="togglePlayAll()">Listen to Whole Story 🔊</button>
+    </div>
+
+    <section>
+        <h2>The Story 📖</h2>
+        
+        <h4>Scene 1: Presentation & Hemmet</h4>
+        <div class="story-line"><div class="text-content"><b>Lärare:</b> Hej! Trevligt att träffas. Vad heter du?<br><small>Hi! Nice to meet you. What is your name?</small></div><span class="speaker-icon" onclick="play('ep2_1')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> Hej! Jag heter Anan.<br><small>Hi! My name is Anan.</small></div><span class="speaker-icon" onclick="play('ep2_2')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Lärare:</b> Hur gammal är du och vem bor du med?<br><small>How old are you and who do you live with?</small></div><span class="speaker-icon" onclick="play('ep2_3')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> Jag är 10 år. I min familj finns min pappa, min mamma, min storasyster, min lillasyster och jag.<br><small>I am 10. In my family there are my dad, my mom, my big sister, my little sister and me.</small></div><span class="speaker-icon" onclick="play('ep2_4')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Lärare:</b> Kan du berätta om dem?<br><small>Can you tell me about them?</small></div><span class="speaker-icon" onclick="play('ep2_5')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> Min lillasyster är 6 år och går på förskola. Min storasyster jobbar som dataanalytiker. Pappa är banktjänsteman och mamma är hemmafru som tar hand om hela familjen.<br><small>My little sister is 6 and goes to preschool. My big sister works as a data analyst. Dad is a bank clerk and mom is a housewife who takes care of the whole family.</small></div><span class="speaker-icon" onclick="play('ep2_6')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Lärare:</b> Kan du beskriva ditt hem? Bor du i lägenhet eller villa?<br><small>Can you describe your home? Do you live in an apartment or a villa?</small></div><span class="speaker-icon" onclick="play('ep2_7')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> Vi bor i ett radhus. Huset har två våningar och totalt fem rum: fyra sovrum och ett vardagsrum. På övervåningen finns tre sovrum och ett badrum. På nedervåningen finns vardagsrummet, köket och ett arbetsrum. Vi har också en liten trädgård med en gräsmatta och lite växter.<br><small>We live in a townhouse. The house has two floors and five rooms in total: four bedrooms and one living room. Upstairs there are three bedrooms and a bathroom. Downstairs are the living room, kitchen, and a study. We also have a small garden with a lawn and some plants.</small></div><span class="speaker-icon" onclick="play('ep2_8')">🔊</span></div>
+
+        <h4>Scene 2: Intressen & Semester</h4>
+        <div class="story-line"><div class="text-content"><b>Lärare:</b> Anan, vad har du för intressen? Och din familj?<br><small>Anan, what interests do you have? And your family?</small></div><span class="speaker-icon" onclick="play('ep2_9')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> Jag gillar utomhussporter, särskilt basket, fotboll, simning och löpning. Min lillasyster Niuniu är ganska lugn; hon älskar musik, serier och tecknad film. Min storasyster Gigi gillar att resa, vandra, måla, läsa och lära sig nya saker. Pappa gillar trädgårdsarbete, fiske och att titta på film. Mamma gillar matlagning, stickning, sång och att spela piano.<br><small>I like outdoor sports, especially basketball, football, swimming and running. My little sister Niuniu is quite calm; she loves music, comics and cartoons. My big sister Gigi likes to travel, hike, paint, read and learn new things. Dad likes gardening, fishing and watching movies. Mom likes cooking, knitting, singing and playing the piano.</small></div><span class="speaker-icon" onclick="play('ep2_10')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Lärare:</b> Hur gillar ni att ha semester?<br><small>How do you like to have holidays?</small></div><span class="speaker-icon" onclick="play('ep2_11')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> På helgerna gillar vi att gå ut och äta på restaurang. På sommaren plockar vi ofta blåbär, hallon och lingon i skogen. På hösten plockar vi svamp. På vintern, under jul och nyår, åker vi ofta tillbaka till Kina för att besöka våra släktingar. På våren brukar vi resa i Europa, till exempel till Italien, Spanien, Frankrike och Tyskland.<br><small>On weekends we like to go out and eat at a restaurant. In the summer we often pick blueberries, raspberries and lingonberries in the forest. In autumn we pick mushrooms. In winter, during Christmas and New Year, we often go back to China to visit our relatives. In spring we usually travel in Europe, for example to Italy, Spain, France and Germany.</small></div><span class="speaker-icon" onclick="play('ep2_12')">🔊</span></div>
+
+        <h4>Scene 3: Klimat & Väder</h4>
+        <div class="story-line"><div class="text-content"><b>Lärare:</b> Anan, vad tycker du om det svenska klimatet?<br><small>Anan, what do you think of the Swedish climate?</small></div><span class="speaker-icon" onclick="play('ep2_13')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> Jag älskar den svenska sommaren; den är solig, lagom sval och inte för varm. Men den svenska vintern är kall, mörk och väldigt lång. Det blåser ofta, vilket jag inte är van vid än. Men jag älskar när det snöar!<br><small>I love the Swedish summer; it is sunny, pleasantly cool and not too hot. But the Swedish winter is cold, dark and very long. It often blows, which I am not used to yet. But I love it when it snows!</small></div><span class="speaker-icon" onclick="play('ep2_14')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> Jag kommer från Shenzhen. Där är det varmt och fuktigt året om. I norra Kina, som i Peking, är det torrare. I östra Kina, som Shanghai, är det fuktigt. Västra Kinas städer, som Lijiang, har det behagligaste klimatet.<br><small>I come from Shenzhen. It is hot and humid all year round. In northern China, like Beijing, it is drier. In eastern China, like Shanghai, it is humid. Western Chinese cities, like Lijiang, have the most pleasant climate.</small></div><span class="speaker-icon" onclick="play('ep2_15')">🔊</span></div>
+
+        <h4>Scene 4: Transport</h4>
+        <div class="story-line"><div class="text-content"><b>Lärare:</b> Anan, hur tar du dig till skolan?<br><small>Anan, how do you get to school?</small></div><span class="speaker-icon" onclick="play('ep2_16')">🔊</span></div>
+        <div class="story-line"><div class="text-content"><b>Anan:</b> Jag åker skolbuss. När jag blir lite äldre planerar jag att cykla till skolan. Pappa kör bil. Min storasyster åker tåg. Mamma går oftast till fots när hon handlar. I Kina tar vi tunnelbanan.<br><small>I take the school bus. When I get a bit older I plan to cycle to school. Dad drives a car. My big sister takes the train. Mom usually walks when she shops. In China we take the subway.</small></div><span class="speaker-icon" onclick="play('ep2_17')">🔊</span></div>
+    </section>
+
+    <section class="vocab-section">
+        <h2>Vocabulary List 💡</h2>
+        
+        <h4>1. Boende & Miljö</h4>
+        <div class="vocab-item"><span class="vocab-word">Radhus</span><span class="vocab-trans">Townhouse</span></div>
+        <div class="vocab-item"><span class="vocab-word">Lägenhet</span><span class="vocab-trans">Apartment</span></div>
+        <div class="vocab-item"><span class="vocab-word">Villa</span><span class="vocab-trans">Villa</span></div>
+        <div class="vocab-item"><span class="vocab-word">Sovrum</span><span class="vocab-trans">Bedroom</span></div>
+        <div class="vocab-item"><span class="vocab-word">Vardagsrum</span><span class="vocab-trans">Living room</span></div>
+        <div class="vocab-item"><span class="vocab-word">Kök</span><span class="vocab-trans">Kitchen</span></div>
+        <div class="vocab-item"><span class="vocab-word">Trädgård</span><span class="vocab-trans">Garden</span></div>
+        <div class="vocab-item"><span class="vocab-word">Gräsmatta</span><span class="vocab-trans">Lawn</span></div>
+        <div class="vocab-item"><span class="vocab-word">Växter</span><span class="vocab-trans">Plants</span></div>
+
+        <h4>2. Yrken</h4>
+        <div class="vocab-item"><span class="vocab-word">Dataanalytiker</span><span class="vocab-trans">Data analyst</span></div>
+        <div class="vocab-item"><span class="vocab-word">Banktjänsteman</span><span class="vocab-trans">Bank clerk</span></div>
+        <div class="vocab-item"><span class="vocab-word">Hemmafru</span><span class="vocab-trans">Housewife</span></div>
+        <div class="vocab-item"><span class="vocab-word">Grundskoleelev</span><span class="vocab-trans">Elementary school student</span></div>
+        <div class="vocab-item"><span class="vocab-word">Förskolebarn</span><span class="vocab-trans">Preschooler</span></div>
+
+        <h4>3. Intressen</h4>
+        <div class="vocab-item"><span class="vocab-word">Utomhussporter</span><span class="vocab-trans">Outdoor sports</span></div>
+        <div class="vocab-item"><span class="vocab-word">Spela basket</span><span class="vocab-trans">Play basketball</span></div>
+        <div class="vocab-item"><span class="vocab-word">Spela fotboll</span><span class="vocab-trans">Play soccer</span></div>
+        <div class="vocab-item"><span class="vocab-word">Simma</span><span class="vocab-trans">Swim</span></div>
+        <div class="vocab-item"><span class="vocab-word">Springa</span><span class="vocab-trans">Run</span></div>
+        <div class="vocab-item"><span class="vocab-word">Lyssna på musik</span><span class="vocab-trans">Listen to music</span></div>
+        <div class="vocab-item"><span class="vocab-word">Titta på film</span><span class="vocab-trans">Watch movie</span></div>
+        <div class="vocab-item"><span class="vocab-word">Tecknad film</span><span class="vocab-trans">Cartoon</span></div>
+        <div class="vocab-item"><span class="vocab-word">Serier</span><span class="vocab-trans">Comics</span></div>
+        <div class="vocab-item"><span class="vocab-word">Resa</span><span class="vocab-trans">Travel</span></div>
+        <div class="vocab-item"><span class="vocab-word">Vandra</span><span class="vocab-trans">Hike</span></div>
+        <div class="vocab-item"><span class="vocab-word">Måla</span><span class="vocab-trans">Paint</span></div>
+        <div class="vocab-item"><span class="vocab-word">Fiska</span><span class="vocab-trans">Fish</span></div>
+        <div class="vocab-item"><span class="vocab-word">Stickning</span><span class="vocab-trans">Knitting</span></div>
+        <div class="vocab-item"><span class="vocab-word">Sjunga</span><span class="vocab-trans">Sing</span></div>
+        <div class="vocab-item"><span class="vocab-word">Spela piano</span><span class="vocab-trans">Play piano</span></div>
+        <div class="vocab-item"><span class="vocab-word">Trädgårdsarbete</span><span class="vocab-trans">Gardening</span></div>
+        <div class="vocab-item"><span class="vocab-word">Matlagning</span><span class="vocab-trans">Cooking</span></div>
+        <div class="vocab-item"><span class="vocab-word">Plocka bär</span><span class="vocab-trans">Pick berries</span></div>
+
+        <h4>4. Transport</h4>
+        <div class="vocab-item"><span class="vocab-word">Skolbuss</span><span class="vocab-trans">School bus</span></div>
+        <div class="vocab-item"><span class="vocab-word">Cykel</span><span class="vocab-trans">Bicycle</span></div>
+        <div class="vocab-item"><span class="vocab-word">Bil</span><span class="vocab-trans">Car</span></div>
+        <div class="vocab-item"><span class="vocab-word">Tåg</span><span class="vocab-trans">Train</span></div>
+        <div class="vocab-item"><span class="vocab-word">Tunnelbana</span><span class="vocab-trans">Subway</span></div>
+        <div class="vocab-item"><span class="vocab-word">Gå</span><span class="vocab-trans">Walk</span></div>
+
+        <h4>5. Väder och Årstider</h4>
+        <div class="vocab-item"><span class="vocab-word">Vår</span><span class="vocab-trans">Spring</span></div>
+        <div class="vocab-item"><span class="vocab-word">Sommar</span><span class="vocab-trans">Summer</span></div>
+        <div class="vocab-item"><span class="vocab-word">Höst</span><span class="vocab-trans">Autumn</span></div>
+        <div class="vocab-item"><span class="vocab-word">Vinter</span><span class="vocab-trans">Winter</span></div>
+        <div class="vocab-item"><span class="vocab-word">Solig</span><span class="vocab-trans">Sunny</span></div>
+        <div class="vocab-item"><span class="vocab-word">Kall</span><span class="vocab-trans">Cold</span></div>
+        <div class="vocab-item"><span class="vocab-word">Varm</span><span class="vocab-trans">Hot</span></div>
+        <div class="vocab-item"><span class="vocab-word">Sval</span><span class="vocab-trans">Cool</span></div>
+        <div class="vocab-item"><span class="vocab-word">Blåsig</span><span class="vocab-trans">Windy</span></div>
+        <div class="vocab-item"><span class="vocab-word">Fuktig</span><span class="vocab-trans">Humid</span></div>
+        <div class="vocab-item"><span class="vocab-word">Torr</span><span class="vocab-trans">Dry</span></div>
+        <div class="vocab-item"><span class="vocab-word">Snöa</span><span class="vocab-trans">Snow</span></div>
+        <div class="vocab-item"><span class="vocab-word">Regna</span><span class="vocab-trans">Rain</span></div>
+
+        <h4>6. Geografi och Länder</h4>
+        <div class="vocab-item"><span class="vocab-word">Norra</span><span class="vocab-trans">North</span></div>
+        <div class="vocab-item"><span class="vocab-word">Södra</span><span class="vocab-trans">South</span></div>
+        <div class="vocab-item"><span class="vocab-word">Östra</span><span class="vocab-trans">East</span></div>
+        <div class="vocab-item"><span class="vocab-word">Västra</span><span class="vocab-trans">West</span></div>
+        <div class="vocab-item"><span class="vocab-word">Sverige</span><span class="vocab-trans">Sweden</span></div>
+        <div class="vocab-item"><span class="vocab-word">Kina</span><span class="vocab-trans">China</span></div>
+        <div class="vocab-item"><span class="vocab-word">Italien</span><span class="vocab-trans">Italy</span></div>
+        <div class="vocab-item"><span class="vocab-word">Spanien</span><span class="vocab-trans">Spain</span></div>
+        <div class="vocab-item"><span class="vocab-word">Frankrike</span><span class="vocab-trans">France</span></div>
+        <div class="vocab-item"><span class="vocab-word">Tyskland</span><span class="vocab-trans">Germany</span></div>
+
+        <a href="practice2.html" class="practice-btn">Start Practice 📝</a>
+        
+        <div class="nav-footer">
+            <a href="../index.html" class="nav-btn btn-home">Back to Home</a>
+            <a href="episode3.html" class="nav-btn btn-next">Next Episode ➡️</a>
+        </div>
+    </section>
+</div>
+
+<script src="../js/script.js"></script>
+</body>
+</html>
