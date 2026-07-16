@@ -2,16 +2,15 @@ let currentDeck = [];
 let currentIndex = 0;
 
 // 1. 加载卡片组
-// 请确认你的 loadDeck 是这样写的：
 function loadDeck() {
     const ep = document.getElementById('epSelector').value;
     // 确保 vocabDatabase 可以在此作用域访问
-    if (window.vocabDatabase && vocabDatabase[ep]) {
+    if (typeof vocabDatabase !== 'undefined' && vocabDatabase[ep]) {
         currentDeck = vocabDatabase[ep];
         currentIndex = 0;
-        updateCard(); // 必须调用这个！
+        updateCard(); 
     } else {
-        console.error("找不到数据源，请检查 vocabDatabase");
+        console.error("找不到数据源，请检查 data.js 是否正确引入且 vocabDatabase 已定义");
     }
 }
 
@@ -21,18 +20,13 @@ function updateCard() {
 
     const card = currentDeck[currentIndex];
     const front = document.getElementById('cardFront');
-    const progressEl = document.getElementById('progress');
-    const percent = ((currentIndex + 1) / currentDeck.length) * 100;
     
-    console.log("当前索引:", currentIndex, "总数:", currentDeck.length, "进度:", percent);
-    
-    progressEl.style.width = percent + "%"; 
-}
-    
+    // 清空原有内容
     front.innerHTML = ""; 
     const wordText = document.createTextNode(card.word + " ");
     front.appendChild(wordText);
     
+    // 创建喇叭按钮
     const speaker = document.createElement('span');
     speaker.className = 'speaker-icon';
     speaker.innerText = ' 🔊';
@@ -40,31 +34,37 @@ function updateCard() {
     speaker.onclick = (e) => playVocab(e, card.word);
     front.appendChild(speaker);
     
+    // 更新背面翻译
     document.getElementById('cardBack').innerText = card.trans;
     
-    // 更新进度条 (关键点：这里对应 HTML 的 id="progress")
+    // 更新进度条
     const progressEl = document.getElementById('progress');
-    const percent = ((currentIndex + 1) / currentDeck.length) * 100;
-    progressEl.style.width = percent + "%";
+    if (progressEl) {
+        const percent = ((currentIndex + 1) / currentDeck.length) * 100;
+        progressEl.style.width = percent + "%";
+        console.log("当前进度:", percent + "%");
+    }
 }
 
 // 3. 翻牌逻辑
 function flipCard() {
-    document.getElementById('card').classList.toggle('flipped');
+    const card = document.getElementById('card');
+    if (card) card.classList.toggle('flipped');
 }
 
 // 4. 下一张逻辑
 function nextCard() {
     if (currentIndex < currentDeck.length - 1) {
         currentIndex++;
-        document.getElementById('card').classList.remove('flipped');
+        const card = document.getElementById('card');
+        if (card) card.classList.remove('flipped');
         setTimeout(updateCard, 300); 
     }
 }
 
 // 5. 语音逻辑
 function playVocab(event, word) {
-    event.stopPropagation();
+    if (event) event.stopPropagation();
     window.speechSynthesis.cancel();
     const utterance = new SpeechSynthesisUtterance(word);
     utterance.lang = 'sv-SE';
