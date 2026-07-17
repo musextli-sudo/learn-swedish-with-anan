@@ -119,5 +119,92 @@ const vocabDatabase = {
         { word: "Spanien", trans: "Spain", audio: "v_spanien" },
         { word: "Frankrike", trans: "France", audio: "v_frankrike" },
         { word: "Tyskland", trans: "Germany", audio: "v_tyskland" }
-    ]
+    ] 
+
+    "ep3": [
+
+    // 1. Mataffären
+    { word: "Mataffär", trans: "Supermarket" },
+    { word: "Handla", trans: "Shop (for groceries)" },
+    { word: "Inköpslista", trans: "Shopping list" },
+    { word: "Kundvagn", trans: "Shopping cart" },
+    { word: "Kundkorg", trans: "Shopping basket" },
+    { word: "Avdelning", trans: "Section/Department" },
+
+    // 2. Grönsaker
+    { word: "Potatis", trans: "Potato" },
+    { word: "Morot", trans: "Carrot" },
+    { word: "Lök", trans: "Onion" },
+    { word: "Tomat", trans: "Tomato" },
+    { word: "Gurka", trans: "Cucumber" },
+    { word: "Sallad", trans: "Lettuce" },
+    { word: "Broccoli", trans: "Broccoli" },
+    { word: "Champinjon", trans: "Mushroom" },
+    { word: "Vitlök", trans: "Garlic" },
+    { word: "Paprika", trans: "Bell pepper" },
+    { word: "Vitkål", trans: "Cabbage" },
+
+    // 3. Frukt
+    { word: "Äpple", trans: "Apple" },
+    { word: "Banan", trans: "Banana" },
+    { word: "Vindruvor", trans: "Grapes" },
+    { word: "Persika", trans: "Peach" },
+    { word: "Citron", trans: "Lemon" },
+    { word: "Vattenmelon", trans: "Watermelon" },
+    { word: "Jordgubbar", trans: "Strawberries" },
+    { word: "Blåbär", trans: "Blueberries" },
+    { word: "Körsbär", trans: "Cherries" },
+    { word: "Apelsin", trans: "Orange" },
+
+    // 4. Kött & Mejeri
+    { word: "Nötkött", trans: "Beef" },
+    { word: "Fläskkött", trans: "Pork" },
+    { word: "Kyckling", trans: "Chicken" },
+    { word: "Lamm", trans: "Lamb" },
+    { word: "Bacon", trans: "Bacon" },
+    { word: "Skinka", trans: "Ham" },
+    { word: "Mjölk", trans: "Milk" },
+    { word: "Yoghurt", trans: "Yogurt" },
+    { word: "Ägg", trans: "Eggs" },
+    { word: "Ost", trans: "Cheese" },
+    { word: "Smör", trans: "Butter" },
+    { word: "Grädde", trans: "Cream" },
+
+    // 5. Snacks & Dryck
+    { word: "Glass", trans: "Ice cream" },
+    { word: "Pizza", trans: "Pizza" },
+    { word: "Hamburgare", trans: "Hamburger" },
+    { word: "Choklad", trans: "Chocolate" },
+    { word: "Godis", trans: "Candy" },
+    { word: "Kakor", trans: "Cookies" },
+    { word: "Chips", trans: "Potato chips" },
+    { word: "Te", trans: "Tea" },
+    { word: "Kaffe", trans: "Coffee" },
+
+    // 6. Shopping
+    { word: "Extrapris", trans: "Special offer" },
+    { word: "Ekologisk", trans: "Organic" },
+    { word: "Laktosfri", trans: "Lactose-free" },
+    { word: "Vegansk", trans: "Vegan" },
+    { word: "Svensk", trans: "Swedish (product)" },
+    { word: "Importerad", trans: "Imported" },
+
+    // 7. Betalning
+    { word: "Självscanning", trans: "Self-checkout" },
+    { word: "Skanna", trans: "Scan" },
+    { word: "Streckkod", trans: "Barcode" },
+    { word: "Väga", trans: "Weigh" },
+    { word: "Medlemskort", trans: "Membership card" },
+    { word: "Kvitto", trans: "Receipt" },
+    { word: "Spara", trans: "Save (money)" },
+
+    // 8. Pant
+    { word: "Pant", trans: "Bottle deposit" },
+    { word: "Pantmaskin", trans: "Bottle return machine" },
+    { word: "Flaska", trans: "Bottle" },
+    { word: "Burk", trans: "Can" },
+    { word: "Återvinna", trans: "Recycle" },
+    { word: "Pengar tillbaka", trans: "Money back / Refund" }
+
+]
 };
