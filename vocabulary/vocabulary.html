@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <title>Vocabulary Flashcards | Learning Swedish</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        /* 样式代码放到这里，既不会在右边露出来，又能完美生效 */
+        #counter {
+            color: #000000 !important; 
+            font-weight: bold;        
+            font-size: 1.2rem !important; 
+            margin-top: 15px !important;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
 <div class="container">
@@ -11,8 +21,8 @@
     
     <select id="epSelector" onchange="loadDeck()">
         <option value="ep1">Episode 1</option>
-        <option value="ep2">Episode 2</option> 
-        <option value="ep3">Episode 3</option>
+        <option value="ep2">Episode 2</option>
+        <option value="ep3">Episode 3</option> <!-- 这里也为您加好了第三课 -->
     </select>
 
     <div class="card-container" onclick="flipCard()">
@@ -22,6 +32,7 @@
         </div>
     </div>
 
+    <!-- 计数器在这里显示 -->
     <div id="counter"></div>
     
     <div class="card-controls">
@@ -37,13 +48,4 @@
 <script src="../js/flashcard.js"></script>
 <script src="../js/script.js"></script>
 </body>
-</html> 
-
-/* --- 放在最后面 --- */
-#counter {
-    color: #000000 !important; 
-    font-weight: bold;        
-    font-size: 1.2rem !important; 
-    margin-top: 15px !important;
-    text-align: center;
-}
+</html>
