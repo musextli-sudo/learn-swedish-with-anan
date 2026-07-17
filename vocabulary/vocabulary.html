@@ -18,7 +18,7 @@
 <div class="container">
     <h1>Vocabulary Flashcards 🃏</h1>
     
-    <select id="epSelector" onchange="loadDeck()">
+    <select id="epSelector" onchange="safeLoadDeck()">
         <option value="" disabled selected>-- Choose an Episode --</option>
         <option value="ep1">Episode 1</option>
         <option value="ep2">Episode 2</option>
@@ -43,20 +43,34 @@
     </div>
 </div>
 
+<!-- 基础数据与主逻辑 -->
 <script src="../js/data.js"></script>
 <script src="../js/flashcard.js"></script>
+<!-- 冲突源头排查：如果 script.js 报错，以下代码可以确保它不破坏 flashcard.js 的功能 -->
 <script src="../js/script.js"></script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const selector = document.getElementById("epSelector");
-        if (selector) {
-            selector.value = "ep1"; 
-            if (typeof loadDeck === "function") {
-                loadDeck();
-            }
+    // 建立一层安全保护帽函数，防止原生 loadDeck 被外部脚本意外篡改或延迟覆盖
+    function safeLoadDeck() {
+        if (typeof loadDeck === "function") {
+            loadDeck();
+        } else if (typeof window.loadDeck === "function") {
+            window.loadDeck();
+        } else {
+            console.log("Waiting for loadDeck function to be ready...");
         }
-    });
+    }
+
+    // 使用更安全的 window.onload，确保前面所有 js 文件（哪怕有小错）都安全下载完后，强行执行初始化
+    window.onload = function() {
+        setTimeout(function() {
+            const selector = document.getElementById("epSelector");
+            if (selector) {
+                selector.value = "ep1"; 
+                safeLoadDeck();
+            }
+        }, 100); // 延迟 100 毫秒强行拉起，跨越任何因缓存导致的死锁
+    };
 </script>
 </body>
 </html>
