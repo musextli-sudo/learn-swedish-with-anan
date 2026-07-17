@@ -119,7 +119,7 @@ const vocabDatabase = {
         { word: "Spanien", trans: "Spain", audio: "v_spanien" },
         { word: "Frankrike", trans: "France", audio: "v_frankrike" },
         { word: "Tyskland", trans: "Germany", audio: "v_tyskland" }
-    ] 
+    ],
 
    "ep3": [
         { word: "Mataffär", trans: "Supermarket" },
