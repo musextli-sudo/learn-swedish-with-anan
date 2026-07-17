@@ -5,7 +5,6 @@
     <title>Vocabulary Flashcards | Learning Swedish</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
-        /* 样式代码放到这里，既不会在右边露出来，又能完美生效 */
         #counter {
             color: #000000 !important; 
             font-weight: bold;        
@@ -19,10 +18,12 @@
 <div class="container">
     <h1>Vocabulary Flashcards 🃏</h1>
     
+    <!-- 1. 增加了初始默认提示，确保切换时百分百触发加载 -->
     <select id="epSelector" onchange="loadDeck()">
+        <option value="" disabled selected>-- Choose an Episode --</option>
         <option value="ep1">Episode 1</option>
         <option value="ep2">Episode 2</option>
-        <option value="ep3">Episode 3</option> <!-- 这里也为您加好了第三课 -->
+        <option value="ep3">Episode 3</option>
     </select>
 
     <div class="card-container" onclick="flipCard()">
@@ -32,7 +33,6 @@
         </div>
     </div>
 
-    <!-- 计数器在这里显示 -->
     <div id="counter"></div>
     
     <div class="card-controls">
@@ -47,5 +47,19 @@
 <script src="../js/data.js"></script>
 <script src="../js/flashcard.js"></script>
 <script src="../js/script.js"></script>
+
+<!-- 2. 新增：这一小段代码确保页面加载完后，如果用户没选，也会自动尝试初始化卡片 -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 让下拉菜单默认选中 Episode 1 并加载
+        const selector = document.getElementById("epSelector");
+        if (selector) {
+            selector.value = "ep1"; 
+            if (typeof loadDeck === "function") {
+                loadDeck();
+            }
+        }
+    });
+</script>
 </body>
 </html>
