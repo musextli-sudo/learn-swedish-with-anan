@@ -4,22 +4,87 @@
      <meta charset="UTF-8">     
      <title>Episode 3: En dag i mataffären | Learning Swedish</title>     
      <link rel="stylesheet" href="../css/style.css">     
-     <style>         
-         .container { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }         
-         .audio-hero { background: #f0f4f2; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 30px; }         
-         .story-line { margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; }         
-         .text-content { flex-grow: 1; }         
-         .speaker-icon { cursor: pointer; margin-left: 10px; font-size: 1.2rem; vertical-align: middle; }                               
-         .vocab-item { padding: 15px; margin-bottom: 10px; border-left: 5px solid #2e5a44; background: #fafafa; }         
-         .vocab-word { font-weight: bold; font-size: 1.1rem; }         
-         .vocab-ipa { color: #666; margin-left: 10px; font-style: italic; }         
-         .vocab-trans { display: block; margin-top: 5px; color: #2e5a44; font-weight: bold; }          
-         .practice-btn { display: block; margin: 30px auto; padding: 12px 25px; background: #2e5a44; color: white; text-decoration: none; border-radius: 5px; width: fit-content; font-weight: bold; }         
-         .nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; }         
-         .nav-btn { padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; }         
-         .btn-home { background: #dcdcdc; color: #333; }         
-         .btn-next { background: #2e5a44; color: white; }      
-     </style> 
+     <style>
+        .container { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .audio-hero { background: #f0f4f2; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
+        .story-line { margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
+        .text-content { flex-grow: 1; }
+        .speaker-icon { cursor: pointer; margin-left: 0; font-size: 1rem; vertical-align: middle; }
+        
+        /* === ✨ 替换后的干净单行 Vocabulary 样式（完全对齐 Lesson 1） === */
+        .vocab-section ul,
+        .vocab-list {
+            list-style: none !important; /* 消除前面的小圆点 */
+            padding-left: 0 !important;   /* 消除左侧默认缩进 */
+            margin: 0 0 25px 0;
+        }
+
+        .vocab-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 8px;
+            border-bottom: 1px solid #e2e8f0; /* 极简灰色下划线 */
+            border-left: none !important;     /* 彻底去掉左边粗绿线 */
+            background: transparent !important; /* 去掉大灰色背景框 */
+            margin-bottom: 0;
+            font-size: 1rem;
+            gap: 12px;
+        }
+
+        .vocab-item:last-child {
+            border-bottom: none;
+        }
+
+        .vocab-word {
+            font-weight: 700;
+            color: #1a202c;
+            min-width: 150px; /* 固定的瑞典语单词列宽度 */
+        }
+
+        .vocab-tag {
+            color: #718096;
+            font-size: 0.9rem;
+            font-style: italic;
+            min-width: 140px; /* 固定的词性标签列宽度 */
+        }
+
+        .vocab-translation, .vocab-trans {
+            color: #2d3748;
+            flex-grow: 1;
+            font-weight: normal; /* 取消原本粗体 */
+            display: inline;    /* 确保在一行，不换行 */
+            margin-top: 0;
+        }
+
+        .audio-btn, .speaker-icon {
+            background: #e8f4ed;
+            border: none;
+            color: #2e5a44;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        /* ======================================================== */
+
+        /* 练习及导航按钮样式 */
+        .practice-btn { display: block; margin: 30px auto; padding: 12px 25px; background: #2e5a44; color: white; text-decoration: none; border-radius: 5px; width: fit-content; font-weight: bold; }
+        .nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; }
+        .nav-btn { padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; }
+        .btn-home { background: #dcdcdc; color: #333; }
+        .btn-next { background: #2e5a44; color: white; } 
+
+        /* 高亮样式 */
+        .highlight {
+            background-color: #fff3cd;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
 </head>  
 <body>  
  <div class="container">     
@@ -119,7 +184,7 @@
          <div class="story-line"><div class="text-content"><b>AnAn:</b> Dagens uppdrag är klart!<br><small>Today's mission is accomplished!</small></div><span class="speaker-icon" onclick="play('ep3_66')">🔊</span></div>     
      </section>      
      
-     <section class="vocab-section">        
+      <section class="vocab-section">        
          <h2>Vocabulary List 💡</h2>                  
          
          <h4>1. Mataffären</h4>         
@@ -204,6 +269,7 @@
          <div class="vocab-item"><span class="vocab-word">Burk</span><span class="speaker-icon" onclick="play('v_burk')">🔊</span><span class="vocab-trans">Can</span></div>         
          <div class="vocab-item"><span class="vocab-word">Återvinna</span><span class="speaker-icon" onclick="play('v_atervinna')">🔊</span><span class="vocab-trans">Recycle</span></div>         
          <div class="vocab-item"><span class="vocab-word">Pengar tillbaka</span><span class="speaker-icon" onclick="play('v_pengartillbaka')">🔊</span><span class="vocab-trans">Money back / Refund</span></div>                  
+                       
          
          <a href="practice3.html" class="practice-btn">Start Practice 📝</a>                  
          
