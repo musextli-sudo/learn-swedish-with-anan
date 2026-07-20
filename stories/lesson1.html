@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 1: Fika i Sverige ☕ | Swedish Stories</title>
+    <!-- 如果你想引入项目全局样式 style.css，可以使用下面的路径 -->
+    <link rel="stylesheet" href="../css/style.css">
+    
+    <style>
+        :root {
+            --primary-color: #2e5a44;
+            --accent-color: #e8f4ed;
+            --text-color: #2d3748;
+            --border-color: #e2e8f0;
+            --bg-color: #f8faf9;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 30px;
+        }
+
+        /* Header & Navigation */
+        .header {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 10px;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+            color: #1e3d2e;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+        }
+
+        /* Lesson Content Sections */
+        .section-box {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.25rem;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .text-swedish {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #1a202c;
+        }
+
+        .text-english {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #4a5568;
+        }
+
+        /* Vocabulary Styling - Single Line Layout */
+        .vocab-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .vocab-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 1rem;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .vocab-item:last-child {
+            border-bottom: none;
+        }
+
+        .vocab-word {
+            font-weight: 700;
+            color: #1a202c;
+            min-width: 140px;
+        }
+
+        .audio-btn {
+            background: var(--accent-color);
+            border: none;
+            color: var(--primary-color);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            transition: transform 0.1s ease, background 0.2s ease;
+        }
+
+        .audio-btn:hover {
+            background: #d1ebd9;
+            transform: scale(1.05);
+        }
+
+        .vocab-tag {
+            color: #718096;
+            font-size: 0.88rem;
+            font-style: italic;
+            min-width: 130px;
+        }
+
+        .vocab-translation {
+            color: #2d3748;
+            flex-grow: 1;
+        }
+
+        /* Play Button for Swedish Text */
+        .play-all-btn {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 15px;
+            transition: opacity 0.2s ease;
+        }
+
+        .play-all-btn:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header with correct relative path back to root -->
+        <header class="header">
+            <a href="../index.html" class="back-link">← Back to Lessons</a>
+            <h1>Lesson 1: Fika i Sverige ☕</h1>
+        </header>
+
+        <!-- 1. Swedish Text Section -->
+        <section class="section-box">
+            <h2 class="section-title">🇸🇪 Svenska</h2>
+            <button class="play-all-btn" onclick="speakText(document.getElementById('swedish-story').innerText)">
+                🔊 Listen to Story
+            </button>
+            <div id="swedish-story" class="text-swedish">
+                <p>En fika är mycket mer än bara en kopp kaffe. Det är en viktig tradition i Sverige.</p>
+                <p>Varje dag samlas svenskar på jobbet eller på ett kafé för att dricka kaffe och prata. Oftast äter man någonting sötsak till, till exempel en kanelbulle eller en chokladboll.</p>
+                <p>Att fika handlar om att ta en paus och koppla av med vänner eller kollegor. Det är ett enkelt sätt att njuta av livet!</p>
+            </div>
+        </section>
+
+        <!-- 2. English Translation Section -->
+        <section class="section-box">
+            <h2 class="section-title">🇬🇧 English Translation</h2>
+            <div class="text-english">
+                <p>A fika is much more than just a cup of coffee. It is an important tradition in Sweden.</p>
+                <p>Every day, Swedes gather at work or at a cafe to drink coffee and talk. Usually, people eat a sweet treat with it, for example a cinnamon bun or a chocolate ball.</p>
+                <p>Having fika is about taking a break and relaxing with friends or colleagues. It is a simple way to enjoy life!</p>
+            </div>
+        </section>
+
+        <!-- 3. Vocabulary Section (Word | Audio | POS | Translation) -->
+        <section class="section-box">
+            <h2 class="section-title">📖 Vocabulary</h2>
+            <ul class="vocab-list">
+                <li class="vocab-item">
+                    <span class="vocab-word">fika</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('fika')">🔊</button>
+                    <span class="vocab-tag">(en-ord, noun/verb)</span>
+                    <span class="vocab-translation">coffee break / to have coffee</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">en tradition</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('en tradition')">🔊</button>
+                    <span class="vocab-tag">(en-ord, noun)</span>
+                    <span class="vocab-translation">a tradition</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">viktig</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('viktig')">🔊</button>
+                    <span class="vocab-tag">(adjective)</span>
+                    <span class="vocab-translation">important</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">att samlas</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('att samlas')">🔊</button>
+                    <span class="vocab-tag">(verb)</span>
+                    <span class="vocab-translation">to gather / assemble</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">ett kafé</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('ett kafé')">🔊</button>
+                    <span class="vocab-tag">(ett-ord, noun)</span>
+                    <span class="vocab-translation">a café</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">en sötsak</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('en sötsak')">🔊</button>
+                    <span class="vocab-tag">(en-ord, noun)</span>
+                    <span class="vocab-translation">a sweet / pastry</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">en kanelbulle</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('en kanelbulle')">🔊</button>
+                    <span class="vocab-tag">(en-ord, noun)</span>
+                    <span class="vocab-translation">a cinnamon bun</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">en chokladboll</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('en chokladboll')">🔊</button>
+                    <span class="vocab-tag">(en-ord, noun)</span>
+                    <span class="vocab-translation">a Swedish chocolate ball</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">att koppla av</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('att koppla av')">🔊</button>
+                    <span class="vocab-tag">(verb phrase)</span>
+                    <span class="vocab-translation">to relax / unwind</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">en kollega</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('en kollega')">🔊</button>
+                    <span class="vocab-tag">(en-ord, noun)</span>
+                    <span class="vocab-translation">a colleague</span>
+                </li>
+                <li class="vocab-item">
+                    <span class="vocab-word">att njuta av</span>
+                    <button class="audio-btn" title="Listen" onclick="speakText('att njuta av')">🔊</button>
+                    <span class="vocab-tag">(verb phrase)</span>
+                    <span class="vocab-translation">to enjoy</span>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Speech Synthesis JS (Swedish Voice) -->
+    <script>
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel(); 
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'sv-SE'; 
+                utterance.rate = 0.85; // 稍微调慢了一点点，更适合听说练习   
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Audio playback is not supported on your browser.');
+            }
+        }
+    </script>
+</body>
+</html>
