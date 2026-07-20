@@ -24,7 +24,16 @@
         <option value="ep2">Episode 2</option>
         <option value="ep3">Episode 3</option> 
         <option value="ep4">Episode 4</option>
-    </select>
+    </select>  
+
+    <!-- 2. 新增的【顺序/随机】模式切换按钮 -->
+<div class="mode-controls" style="margin: 15px 0; text-align: center;">
+    <button id="modeBtn" onclick="toggleMode()" class="btn-mode">
+        ➡️ 切换模式: 当前【按顺序】
+    </button>
+</div>
+
+    
 
     <div class="card-container" onclick="flipCard()">
         <div class="card" id="card">
