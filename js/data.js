@@ -189,7 +189,7 @@ const vocabDatabase = {
         { word: "Burk", trans: "Can" },
         { word: "Återvinna", trans: "Recycle" },
         { word: "Pengar tillbaka", trans: "Money back / Refund" }
-    ]，
+     ],
 
    "ep4": [
         // 1. Bankgrunder – Bank Basics
