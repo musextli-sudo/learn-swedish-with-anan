@@ -4,20 +4,86 @@
     <meta charset="UTF-8">
     <title>Episode 4: Banken i Sverige | Learning Swedish</title>
     <link rel="stylesheet" href="../css/style.css">
-    <style>
+   <style>
         .container { max-width: 800px; margin: 40px auto; padding: 30px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
         .audio-hero { background: #f0f4f2; padding: 25px; border-radius: 10px; text-align: center; margin-bottom: 30px; }
         .story-line { margin: 20px 0; padding-bottom: 15px; border-bottom: 1px solid #eee; display: flex; align-items: center; }
         .text-content { flex-grow: 1; }
-        .speaker-icon { cursor: pointer; margin-left: 10px; font-size: 1.2rem; vertical-align: middle; }
-        .vocab-item { padding: 15px; margin-bottom: 10px; border-left: 5px solid #2e5a44; background: #fafafa; }
-        .vocab-word { font-weight: bold; font-size: 1.1rem; }
-        .vocab-trans { display: block; margin-top: 5px; color: #2e5a44; font-weight: bold; }
+        .speaker-icon { cursor: pointer; margin-left: 0; font-size: 1rem; vertical-align: middle; }
+        
+        /* === ✨ 替换后的干净单行 Vocabulary 样式（完全对齐 Lesson 1） === */
+        .vocab-section ul,
+        .vocab-list {
+            list-style: none !important; /* 消除前面的小圆点 */
+            padding-left: 0 !important;   /* 消除左侧默认缩进 */
+            margin: 0 0 25px 0;
+        }
+
+        .vocab-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 8px;
+            border-bottom: 1px solid #e2e8f0; /* 极简灰色下划线 */
+            border-left: none !important;     /* 彻底去掉左边粗绿线 */
+            background: transparent !important; /* 去掉大灰色背景框 */
+            margin-bottom: 0;
+            font-size: 1rem;
+            gap: 12px;
+        }
+
+        .vocab-item:last-child {
+            border-bottom: none;
+        }
+
+        .vocab-word {
+            font-weight: 700;
+            color: #1a202c;
+            min-width: 150px; /* 固定的瑞典语单词列宽度 */
+        }
+
+        .vocab-tag {
+            color: #718096;
+            font-size: 0.9rem;
+            font-style: italic;
+            min-width: 140px; /* 固定的词性标签列宽度 */
+        }
+
+        .vocab-translation, .vocab-trans {
+            color: #2d3748;
+            flex-grow: 1;
+            font-weight: normal; /* 取消原本粗体 */
+            display: inline;    /* 确保在一行，不换行 */
+            margin-top: 0;
+        }
+
+        .audio-btn, .speaker-icon {
+            background: #e8f4ed;
+            border: none;
+            color: #2e5a44;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        /* ======================================================== */
+
+        /* 练习及导航按钮样式 */
         .practice-btn { display: block; margin: 30px auto; padding: 12px 25px; background: #2e5a44; color: white; text-decoration: none; border-radius: 5px; width: fit-content; font-weight: bold; }
         .nav-footer { display: flex; justify-content: space-between; margin-top: 40px; padding-top: 20px; border-top: 2px solid #eee; }
         .nav-btn { padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold; }
         .btn-home { background: #dcdcdc; color: #333; }
-        .btn-next { background: #2e5a44; color: white; }
+        .btn-next { background: #2e5a44; color: white; } 
+
+        /* 高亮样式 */
+        .highlight {
+            background-color: #fff3cd;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
     </style>
 </head>
 <body>
@@ -91,130 +157,655 @@
         <div class="story-line"><div class="text-content"><b>Gigi:</b> Okej. Jag ska vara försiktig.<br><small>Okay. I will be careful.</small></div><span class="speaker-icon" onclick="play('ep4_48')">🔊</span></div>
     </section>
 
-    <section class="vocab-section">
-        <h2>Vocabulary List 💡</h2>
+   <section class="vocab-section">
+    <h2>Vocabulary List 💡</h2>
 
-        <h4>1. Bankgrunder – Bank Basics</h4>
-        <div class="vocab-item"><span class="vocab-word">en bank</span><span class="speaker-icon" onclick="play('v_en_bank')">🔊</span><span class="vocab-trans">a bank</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett bankkonto</span><span class="speaker-icon" onclick="play('v_ett_bankkonto')">🔊</span><span class="vocab-trans">a bank account</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett konto</span><span class="speaker-icon" onclick="play('v_ett_konto')">🔊</span><span class="vocab-trans">an account</span></div>
-        <div class="vocab-item"><span class="vocab-word">en kund</span><span class="speaker-icon" onclick="play('v_en_kund')">🔊</span><span class="vocab-trans">a customer</span></div>
-        <div class="vocab-item"><span class="vocab-word">en bankkund</span><span class="speaker-icon" onclick="play('v_en_bankkund')">🔊</span><span class="vocab-trans">a bank customer</span></div>
-        <div class="vocab-item"><span class="vocab-word">en bankanställd</span><span class="speaker-icon" onclick="play('v_en_bankanstalld')">🔊</span><span class="vocab-trans">a bank employee</span></div>
-        <div class="vocab-item"><span class="vocab-word">en banktjänsteman</span><span class="speaker-icon" onclick="play('v_en_banktjansteman')">🔊</span><span class="vocab-trans">a bank officer</span></div>
-        <div class="vocab-item"><span class="vocab-word">en tjänst</span><span class="speaker-icon" onclick="play('v_en_tjanst')">🔊</span><span class="vocab-trans">a service</span></div>
-        <div class="vocab-item"><span class="vocab-word">en bankapp</span><span class="speaker-icon" onclick="play('v_en_bankapp')">🔊</span><span class="vocab-trans">a banking app</span></div>
-        <div class="vocab-item"><span class="vocab-word">mobilbanken</span><span class="speaker-icon" onclick="play('v_mobilbanken')">🔊</span><span class="vocab-trans">mobile banking</span></div>
+    <h4>1. Bankgrunder – Bank Basics</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Bank</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_bank')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a bank</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Bankkonto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_bankkonto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">a bank account</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Konto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_konto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">an account</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Kund</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_kund')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a customer</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Bankkund</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_bankkund')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a bank customer</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Bankanställd</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_bankanstalld')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a bank employee</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Banktjänsteman</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_banktjansteman')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a bank officer</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Tjänst</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_tjanst')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a service</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Bankapp</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_bankapp')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a banking app</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Mobilbanken</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_mobilbanken')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun / definite)</span>
+            <span class="vocab-trans">mobile banking</span>
+        </li>
+    </ul>
 
-        <h4>2. Olika typer av konton – Types of Accounts</h4>
-        <div class="vocab-item"><span class="vocab-word">ett lönekonto</span><span class="speaker-icon" onclick="play('v_ett_lonekonto')">🔊</span><span class="vocab-trans">salary account</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett transaktionskonto</span><span class="speaker-icon" onclick="play('v_ett_transaktionskonto')">🔊</span><span class="vocab-trans">transaction account</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett privatkonto</span><span class="speaker-icon" onclick="play('v_ett_privatkonto')">🔊</span><span class="vocab-trans">personal account</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett sparkonto</span><span class="speaker-icon" onclick="play('v_ett_sparkonto')">🔊</span><span class="vocab-trans">savings account</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett ISK-konto</span><span class="speaker-icon" onclick="play('v_ett_isk_konto')">🔊</span><span class="vocab-trans">investment savings account</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett investeringskonto</span><span class="speaker-icon" onclick="play('v_ett_investeringskonto')">🔊</span><span class="vocab-trans">investment account</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett pensionskonto</span><span class="speaker-icon" onclick="play('v_ett_pensionskonto')">🔊</span><span class="vocab-trans">pension account</span></div>
+    <h4>2. Olika typer av konton – Types of Accounts</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Lönekonto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_lonekonto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">salary account</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Transaktionskonto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_transaktionskonto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">transaction account</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Privatkonto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_privatkonto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">personal account</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Sparkonto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_sparkonto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">savings account</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">ISK-konto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_isk_konto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">investment savings account</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Investeringskonto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_investeringskonto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">investment account</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Pensionskonto</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_pensionskonto')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">pension account</span>
+        </li>
+    </ul>
 
-        <h4>3. Lön och vardagsekonomi – Salary & Daily Money</h4>
-        <div class="vocab-item"><span class="vocab-word">en lön</span><span class="speaker-icon" onclick="play('v_en_lon')">🔊</span><span class="vocab-trans">salary</span></div>
-        <div class="vocab-item"><span class="vocab-word">en månadslön</span><span class="speaker-icon" onclick="play('v_en_manadslon')">🔊</span><span class="vocab-trans">monthly salary</span></div>
-        <div class="vocab-item"><span class="vocab-word">få lön</span><span class="speaker-icon" onclick="play('v_fa_lon')">🔊</span><span class="vocab-trans">receive salary</span></div>
-        <div class="vocab-item"><span class="vocab-word">sätta in pengar</span><span class="speaker-icon" onclick="play('v_satta_in_pengar')">🔊</span><span class="vocab-trans">deposit money</span></div>
-        <div class="vocab-item"><span class="vocab-word">ta ut pengar</span><span class="speaker-icon" onclick="play('v_ta_ut_pengar')">🔊</span><span class="vocab-trans">withdraw money</span></div>
-        <div class="vocab-item"><span class="vocab-word">överföra pengar</span><span class="speaker-icon" onclick="play('v_overfora_pengar')">🔊</span><span class="vocab-trans">transfer money</span></div>
-        <div class="vocab-item"><span class="vocab-word">en överföring</span><span class="speaker-icon" onclick="play('v_en_overforing')">🔊</span><span class="vocab-trans">a transfer</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett saldo</span><span class="speaker-icon" onclick="play('v_ett_saldo')">🔊</span><span class="vocab-trans">balance</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett kontoutdrag</span><span class="speaker-icon" onclick="play('v_ett_kontoutdrag')">🔊</span><span class="vocab-trans">bank statement</span></div>
-        <div class="vocab-item"><span class="vocab-word">tillgängliga pengar</span><span class="speaker-icon" onclick="play('v_tillgangliga_pengar')">🔊</span><span class="vocab-trans">available money</span></div>
+    <h4>3. Lön och vardagsekonomi – Salary & Daily Money</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Lön</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_lon')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">salary</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Månadslön</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_manadslon')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">monthly salary</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Få lön</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_fa_lon')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">receive salary</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Sätta in pengar</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_satta_in_pengar')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">deposit money</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Ta ut pengar</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ta_ut_pengar')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">withdraw money</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Överföra pengar</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_overfora_pengar')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">transfer money</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Överföring</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_overforing')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a transfer</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Saldo</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_saldo')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">balance</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Kontoutdrag</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_kontoutdrag')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">bank statement</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Tillgängliga pengar</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_tillgangliga_pengar')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">available money</span>
+        </li>
+    </ul>
 
-        <h4>4. Betala räkningar – Paying Bills</h4>
-        <div class="vocab-item"><span class="vocab-word">en räkning</span><span class="speaker-icon" onclick="play('v_en_rakning')">🔊</span><span class="vocab-trans">a bill</span></div>
-        <div class="vocab-item"><span class="vocab-word">en faktura</span><span class="speaker-icon" onclick="play('v_en_faktura')">🔊</span><span class="vocab-trans">an invoice</span></div>
-        <div class="vocab-item"><span class="vocab-word">betala en räkning</span><span class="speaker-icon" onclick="play('v_betala_en_rakning')">🔊</span><span class="vocab-trans">pay a bill</span></div>
-        <div class="vocab-item"><span class="vocab-word">en betalning</span><span class="speaker-icon" onclick="play('v_en_betalning')">🔊</span><span class="vocab-trans">a payment</span></div>
-        <div class="vocab-item"><span class="vocab-word">betalningar</span><span class="speaker-icon" onclick="play('v_betalningar')">🔊</span><span class="vocab-trans">payments</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett belopp</span><span class="speaker-icon" onclick="play('v_ett_belopp')">🔊</span><span class="vocab-trans">an amount</span></div>
-        <div class="vocab-item"><span class="vocab-word">en mottagare</span><span class="speaker-icon" onclick="play('v_en_mottagare')">🔊</span><span class="vocab-trans">a recipient</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett bankgiro</span><span class="speaker-icon" onclick="play('v_ett_bankgiro')">🔊</span><span class="vocab-trans">bank giro number</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett plusgiro</span><span class="speaker-icon" onclick="play('v_ett_plusgiro')">🔊</span><span class="vocab-trans">plus giro number</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett OCR-nummer</span><span class="speaker-icon" onclick="play('v_ett_ocr_nummer')">🔊</span><span class="vocab-trans">OCR reference number</span></div>
-        <div class="vocab-item"><span class="vocab-word">förfallodatum</span><span class="speaker-icon" onclick="play('v_forfallodatum')">🔊</span><span class="vocab-trans">due date</span></div>
-        <div class="vocab-item"><span class="vocab-word">godkänna</span><span class="speaker-icon" onclick="play('v_godkanna')">🔊</span><span class="vocab-trans">approve</span></div>
+    <h4>4. Betala räkningar – Paying Bills</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Räkning</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_rakning')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a bill</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Faktura</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_faktura')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">an invoice</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Betala en räkning</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_betala_en_rakning')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">pay a bill</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Betalning</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_betalning')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a payment</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Betalningar</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_betalningar')">🔊</button>
+            <span class="vocab-tag">(en-ord, plural)</span>
+            <span class="vocab-trans">payments</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Belopp</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_belopp')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">an amount</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Mottagare</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_mottagare')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a recipient</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Bankgiro</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_bankgiro')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">bank giro number</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Plusgiro</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_plusgiro')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">plus giro number</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">OCR-nummer</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_ocr_nummer')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">OCR reference number</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Förfallodatum</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_forfallodatum')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">due date</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Godkänna</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_godkanna')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">approve</span>
+        </li>
+    </ul>
 
-        <h4>5. BankID och digitala tjänster – BankID & Digital Banking</h4>
-        <div class="vocab-item"><span class="vocab-word">BankID</span><span class="speaker-icon" onclick="play('v_bankid')">🔊</span><span class="vocab-trans">digital ID</span></div>
-        <div class="vocab-item"><span class="vocab-word">logga in</span><span class="speaker-icon" onclick="play('v_logga_in')">🔊</span><span class="vocab-trans">log in</span></div>
-        <div class="vocab-item"><span class="vocab-word">logga ut</span><span class="speaker-icon" onclick="play('v_logga_ut')">🔊</span><span class="vocab-trans">log out</span></div>
-        <div class="vocab-item"><span class="vocab-word">identifiera sig</span><span class="speaker-icon" onclick="play('v_identifiera_sig')">🔊</span><span class="vocab-trans">identify oneself</span></div>
-        <div class="vocab-item"><span class="vocab-word">signera</span><span class="speaker-icon" onclick="play('v_signera')">🔊</span><span class="vocab-trans">sign</span></div>
-        <div class="vocab-item"><span class="vocab-word">en säkerhetskod</span><span class="speaker-icon" onclick="play('v_en_sakerhetskod')">🔊</span><span class="vocab-trans">security code</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett lösenord</span><span class="speaker-icon" onclick="play('v_ett_losenord')">🔊</span><span class="vocab-trans">password</span></div>
-        <div class="vocab-item"><span class="vocab-word">säker</span><span class="speaker-icon" onclick="play('v_saker')">🔊</span><span class="vocab-trans">safe / secure</span></div>
-        <div class="vocab-item"><span class="vocab-word">försiktig</span><span class="speaker-icon" onclick="play('v_forsiktig')">🔊</span><span class="vocab-trans">careful</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett bedrägeri</span><span class="speaker-icon" onclick="play('v_ett_bedrageri')">🔊</span><span class="vocab-trans">fraud</span></div>
+    <h4>5. BankID och digitala tjänster – BankID & Digital Banking</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">BankID</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_bankid')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">digital ID</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Logga in</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_logga_in')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">log in</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Logga ut</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_logga_ut')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">log out</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Identifiera sig</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_identifiera_sig')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">identify oneself</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Signera</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_signera')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">sign</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Säkerhetskod</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_sakerhetskod')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">security code</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Lösenord</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_losenord')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">password</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Säker</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_saker')">🔊</button>
+            <span class="vocab-tag">(adjective)</span>
+            <span class="vocab-trans">safe / secure</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Försiktig</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_forsiktig')">🔊</button>
+            <span class="vocab-tag">(adjective)</span>
+            <span class="vocab-trans">careful</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Bedrägeri</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_bedrageri')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">fraud</span>
+        </li>
+    </ul>
 
-        <h4>6. Spara pengar – Saving Money</h4>
-        <div class="vocab-item"><span class="vocab-word">spara</span><span class="speaker-icon" onclick="play('v_spara')">🔊</span><span class="vocab-trans">save</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett sparande</span><span class="speaker-icon" onclick="play('v_ett_sparande')">🔊</span><span class="vocab-trans">saving</span></div>
-        <div class="vocab-item"><span class="vocab-word">månadsspara</span><span class="speaker-icon" onclick="play('v_manadsspara')">🔊</span><span class="vocab-trans">save monthly</span></div>
-        <div class="vocab-item"><span class="vocab-word">långsiktigt sparande</span><span class="speaker-icon" onclick="play('v_langsiktigt_sparande')">🔊</span><span class="vocab-trans">long-term saving</span></div>
-        <div class="vocab-item"><span class="vocab-word">kortsiktigt sparande</span><span class="speaker-icon" onclick="play('v_kortsiktigt_sparande')">🔊</span><span class="vocab-trans">short-term saving</span></div>
-        <div class="vocab-item"><span class="vocab-word">en ränta</span><span class="speaker-icon" onclick="play('v_en_ranta')">🔊</span><span class="vocab-trans">interest rate</span></div>
-        <div class="vocab-item"><span class="vocab-word">en avkastning</span><span class="speaker-icon" onclick="play('v_en_avkastning')">🔊</span><span class="vocab-trans">return</span></div>
-        <div class="vocab-item"><span class="vocab-word">växa</span><span class="speaker-icon" onclick="play('v_vaxa')">🔊</span><span class="vocab-trans">grow</span></div>
-        <div class="vocab-item"><span class="vocab-word">pengar växer</span><span class="speaker-icon" onclick="play('v_pengar_vaxer')">🔊</span><span class="vocab-trans">money grows</span></div>
+    <h4>6. Spara pengar – Saving Money</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Spara</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_spara')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">save</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Sparande</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_sparande')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">saving</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Månadsspara</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_manadsspara')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">save monthly</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Långsiktigt sparande</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_langsiktigt_sparande')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">long-term saving</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Kortsiktigt sparande</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_kortsiktigt_sparande')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">short-term saving</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Ränta</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_ranta')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">interest rate</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Avkastning</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_avkastning')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">return</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Växa</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_vaxa')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">grow</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Pengar växer</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_pengar_vaxer')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">money grows</span>
+        </li>
+    </ul>
 
-        <h4>7. Investera och Avanza – Investing & Avanza</h4>
-        <div class="vocab-item"><span class="vocab-word">investera</span><span class="speaker-icon" onclick="play('v_investera')">🔊</span><span class="vocab-trans">invest</span></div>
-        <div class="vocab-item"><span class="vocab-word">en investering</span><span class="speaker-icon" onclick="play('v_en_investering')">🔊</span><span class="vocab-trans">investment</span></div>
-        <div class="vocab-item"><span class="vocab-word">en investerare</span><span class="speaker-icon" onclick="play('v_en_investerare')">🔊</span><span class="vocab-trans">investor</span></div>
-        <div class="vocab-item"><span class="vocab-word">en fond</span><span class="speaker-icon" onclick="play('v_en_fond')">🔊</span><span class="vocab-trans">fund</span></div>
-        <div class="vocab-item"><span class="vocab-word">en aktie</span><span class="speaker-icon" onclick="play('v_en_aktie')">🔊</span><span class="vocab-trans">stock / share</span></div>
-        <div class="vocab-item"><span class="vocab-word">en indexfond</span><span class="speaker-icon" onclick="play('v_en_indexfond')">🔊</span><span class="vocab-trans">index fund</span></div>
-        <div class="vocab-item"><span class="vocab-word">en globalfond</span><span class="speaker-icon" onclick="play('v_en_globalfond')">🔊</span><span class="vocab-trans">global fund</span></div>
-        <div class="vocab-item"><span class="vocab-word">en portfölj</span><span class="speaker-icon" onclick="play('v_en_portfolj')">🔊</span><span class="vocab-trans">portfolio</span></div>
-        <div class="vocab-item"><span class="vocab-word">ett värdepapper</span><span class="speaker-icon" onclick="play('v_ett_vardepapper')">🔊</span><span class="vocab-trans">security</span></div>
-        <div class="vocab-item"><span class="vocab-word">en marknad</span><span class="speaker-icon" onclick="play('v_en_marknad')">🔊</span><span class="vocab-trans">market</span></div>
+    <h4>7. Investera och Avanza – Investing & Avanza</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Investera</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_investera')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">invest</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Investering</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_investering')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">investment</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Investerare</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_investerare')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">investor</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Fond</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_fond')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">fund</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Aktie</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_aktie')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">stock / share</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Indexfond</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_indexfond')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">index fund</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Globalfond</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_globalfond')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">global fund</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Portfölj</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_portfolj')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">portfolio</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Värdepapper</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ett_vardepapper')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">security</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Marknad</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_marknad')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">market</span>
+        </li>
+    </ul>
 
-        <h4>8. Köpa och sälja – Buying & Selling</h4>
-        <div class="vocab-item"><span class="vocab-word">köpa</span><span class="speaker-icon" onclick="play('v_kopa')">🔊</span><span class="vocab-trans">buy</span></div>
-        <div class="vocab-item"><span class="vocab-word">sälja</span><span class="speaker-icon" onclick="play('v_salja')">🔊</span><span class="vocab-trans">sell</span></div>
-        <div class="vocab-item"><span class="vocab-word">en köporder</span><span class="speaker-icon" onclick="play('v_en_koporder')">🔊</span><span class="vocab-trans">buy order</span></div>
-        <div class="vocab-item"><span class="vocab-word">en säljorder</span><span class="speaker-icon" onclick="play('v_en_saljorder')">🔊</span><span class="vocab-trans">sell order</span></div>
-        <div class="vocab-item"><span class="vocab-word">lägga en order</span><span class="speaker-icon" onclick="play('v_lagga_en_order')">🔊</span><span class="vocab-trans">place an order</span></div>
-        <div class="vocab-item"><span class="vocab-word">välja</span><span class="speaker-icon" onclick="play('v_valja')">🔊</span><span class="vocab-trans">choose</span></div>
-        <div class="vocab-item"><span class="vocab-word">söka efter</span><span class="speaker-icon" onclick="play('v_soka_efter')">🔊</span><span class="vocab-trans">search for</span></div>
-        <div class="vocab-item"><span class="vocab-word">belopp</span><span class="speaker-icon" onclick="play('v_belopp')">🔊</span><span class="vocab-trans">amount</span></div>
-        <div class="vocab-item"><span class="vocab-word">antal</span><span class="speaker-icon" onclick="play('v_antal')">🔊</span><span class="vocab-trans">number / quantity</span></div>
-        <div class="vocab-item"><span class="vocab-word">pris</span><span class="speaker-icon" onclick="play('v_pris')">🔊</span><span class="vocab-trans">price</span></div>
-        <div class="vocab-item"><span class="vocab-word">kurs</span><span class="speaker-icon" onclick="play('v_kurs')">🔊</span><span class="vocab-trans">price / rate</span></div>
+    <h4>8. Köpa och sälja – Buying & Selling</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Köpa</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_kopa')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">buy</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Sälja</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_salja')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">sell</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Köporder</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_koporder')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">buy order</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Säljorder</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_saljorder')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">sell order</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Lägga en order</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_lagga_en_order')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">place an order</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Välja</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_valja')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">choose</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Söka efter</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_soka_efter')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">search for</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Belopp</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_belopp')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">amount</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Antal</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_antal')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">number / quantity</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Pris</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_pris')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">price</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Kurs</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_kurs')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">price / rate</span>
+        </li>
+    </ul>
 
-        <h4>9. Fondavgifter och risker – Fund Fees & Risks</h4>
-        <div class="vocab-item"><span class="vocab-word">en avgift</span><span class="speaker-icon" onclick="play('v_en_avgift')">🔊</span><span class="vocab-trans">a fee</span></div>
-        <div class="vocab-item"><span class="vocab-word">låg avgift</span><span class="speaker-icon" onclick="play('v_lag_avgift')">🔊</span><span class="vocab-trans">low fee</span></div>
-        <div class="vocab-item"><span class="vocab-word">hög avgift</span><span class="speaker-icon" onclick="play('v_hog_avgift')">🔊</span><span class="vocab-trans">high fee</span></div>
-        <div class="vocab-item"><span class="vocab-word">en risk</span><span class="speaker-icon" onclick="play('v_en_risk')">🔊</span><span class="vocab-trans">a risk</span></div>
-        <div class="vocab-item"><span class="vocab-word">risknivå</span><span class="speaker-icon" onclick="play('v_riskniva')">🔊</span><span class="vocab-trans">risk level</span></div>
-        <div class="vocab-item"><span class="vocab-word">värde</span><span class="speaker-icon" onclick="play('v_varde')">🔊</span><span class="vocab-trans">value</span></div>
-        <div class="vocab-item"><span class="vocab-word">minska</span><span class="speaker-icon" onclick="play('v_minska')">🔊</span><span class="vocab-trans">decrease</span></div>
-        <div class="vocab-item"><span class="vocab-word">öka</span><span class="speaker-icon" onclick="play('v_oka')">🔊</span><span class="vocab-trans">increase</span></div>
-        <div class="vocab-item"><span class="vocab-word">gå upp</span><span class="speaker-icon" onclick="play('v_ga_upp')">🔊</span><span class="vocab-trans">go up</span></div>
-        <div class="vocab-item"><span class="vocab-word">gå ner</span><span class="speaker-icon" onclick="play('v_ga_ner')">🔊</span><span class="vocab-trans">go down</span></div>
+    <h4>9. Fondavgifter och risker – Fund Fees & Risks</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Avgift</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_avgift')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a fee</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Låg avgift</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_lag_avgift')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">low fee</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Hög avgift</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_hog_avgift')">🔊</button>
+            <span class="vocab-tag">(phrase)</span>
+            <span class="vocab-trans">high fee</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Risk</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_en_risk')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">a risk</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Risknivå</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_riskniva')">🔊</button>
+            <span class="vocab-tag">(en-ord, noun)</span>
+            <span class="vocab-trans">risk level</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Värde</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_varde')">🔊</button>
+            <span class="vocab-tag">(ett-ord, noun)</span>
+            <span class="vocab-trans">value</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Minska</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_minska')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">decrease</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Öka</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_oka')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">increase</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Gå upp</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ga_upp')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">go up</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Gå ner</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_ga_ner')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">go down</span>
+        </li>
+    </ul>
 
-        <h4>10. Vanliga verb – Common Verbs</h4>
-        <div class="vocab-item"><span class="vocab-word">öppna</span><span class="speaker-icon" onclick="play('v_oppna')">🔊</span><span class="vocab-trans">open</span></div>
-        <div class="vocab-item"><span class="vocab-word">stänga</span><span class="speaker-icon" onclick="play('v_stanga')">🔊</span><span class="vocab-trans">close</span></div>
-        <div class="vocab-item"><span class="vocab-word">använda</span><span class="speaker-icon" onclick="play('v_anvanda')">🔊</span><span class="vocab-trans">use</span></div>
-        <div class="vocab-item"><span class="vocab-word">betala</span><span class="speaker-icon" onclick="play('v_betala')">🔊</span><span class="vocab-trans">pay</span></div>
-        <div class="vocab-item"><span class="vocab-word">köpa</span><span class="speaker-icon" onclick="play('v_kopa_verb')">🔊</span><span class="vocab-trans">buy</span></div>
-        <div class="vocab-item"><span class="vocab-word">sälja</span><span class="speaker-icon" onclick="play('v_salja_verb')">🔊</span><span class="vocab-trans">sell</span></div>
-        <div class="vocab-item"><span class="vocab-word">spara</span><span class="speaker-icon" onclick="play('v_spara_verb')">🔊</span><span class="vocab-trans">save</span></div>
-        <div class="vocab-item"><span class="vocab-word">investera</span><span class="speaker-icon" onclick="play('v_investera_verb')">🔊</span><span class="vocab-trans">invest</span></div>
-        <div class="vocab-item"><span class="vocab-word">välja</span><span class="speaker-icon" onclick="play('v_valja_verb')">🔊</span><span class="vocab-trans">choose</span></div>
-        <div class="vocab-item"><span class="vocab-word">kontrollera</span><span class="speaker-icon" onclick="play('v_kontrollera')">🔊</span><span class="vocab-trans">check</span></div>
-        <div class="vocab-item"><span class="vocab-word">förstå</span><span class="speaker-icon" onclick="play('v_forsta')">🔊</span><span class="vocab-trans">understand</span></div>
-        <div class="vocab-item"><span class="vocab-word">lära sig</span><span class="speaker-icon" onclick="play('v_lara_sig')">🔊</span><span class="vocab-trans">learn</span></div>
-
+    <h4>10. Vanliga verb – Common Verbs</h4>
+    <ul class="vocab-list">
+        <li class="vocab-item">
+            <span class="vocab-word">Öppna</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_oppna')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">open</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Stänga</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_stanga')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">close</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Använda</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_anvanda')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">use</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Betala</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_betala')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">pay</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Köpa</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_kopa_verb')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">buy</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Sälja</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_salja_verb')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">sell</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Spara</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_spara_verb')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">save</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Investera</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_investera_verb')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">invest</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Välja</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_valja_verb')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">choose</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Kontrollera</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_kontrollera')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">check</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Förstå</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_forsta')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">understand</span>
+        </li>
+        <li class="vocab-item">
+            <span class="vocab-word">Lära sig</span>
+            <button class="audio-btn" title="Listen" onclick="play('v_lara_sig')">🔊</button>
+            <span class="vocab-tag">(verb)</span>
+            <span class="vocab-trans">learn</span>
+        </li>
+    </ul>
+</section>
         <a href="vocabulary.html" class="practice-btn">Start Practice 🃏</a>
 
         <div class="nav-footer">
