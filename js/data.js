@@ -189,5 +189,128 @@ const vocabDatabase = {
         { word: "Burk", trans: "Can" },
         { word: "Återvinna", trans: "Recycle" },
         { word: "Pengar tillbaka", trans: "Money back / Refund" }
+    ]，
+
+   "ep4": [
+        // 1. Bankgrunder – Bank Basics
+        { word: "en bank", trans: "a bank" },
+        { word: "ett bankkonto", trans: "a bank account" },
+        { word: "ett konto", trans: "an account" },
+        { word: "en kund", trans: "a customer" },
+        { word: "en bankkund", trans: "a bank customer" },
+        { word: "en bankanställd", trans: "a bank employee" },
+        { word: "en banktjänsteman", trans: "a bank officer" },
+        { word: "en tjänst", trans: "a service" },
+        { word: "en bankapp", trans: "a banking app" },
+        { word: "mobilbanken", trans: "mobile banking" },
+
+        // 2. Olika typer av konton – Types of Accounts
+        { word: "ett lönekonto", trans: "salary account" },
+        { word: "ett transaktionskonto", trans: "transaction account" },
+        { word: "ett privatkonto", trans: "personal account" },
+        { word: "ett sparkonto", trans: "savings account" },
+        { word: "ett ISK-konto", trans: "investment savings account" },
+        { word: "ett investeringskonto", trans: "investment account" },
+        { word: "ett pensionskonto", trans: "pension account" },
+
+        // 3. Lön och vardagsekonomi – Salary & Daily Money
+        { word: "en lön", trans: "salary" },
+        { word: "en månadslön", trans: "monthly salary" },
+        { word: "få lön", trans: "receive salary" },
+        { word: "sätta in pengar", trans: "deposit money" },
+        { word: "ta ut pengar", trans: "withdraw money" },
+        { word: "överföra pengar", trans: "transfer money" },
+        { word: "en överföring", trans: "a transfer" },
+        { word: "ett saldo", trans: "balance" },
+        { word: "ett kontoutdrag", trans: "bank statement" },
+        { word: "tillgängliga pengar", trans: "available money" },
+
+        // 4. Betala räkningar – Paying Bills
+        { word: "en räkning", trans: "a bill" },
+        { word: "en faktura", trans: "an invoice" },
+        { word: "betala en räkning", trans: "pay a bill" },
+        { word: "en betalning", trans: "a payment" },
+        { word: "betalningar", trans: "payments" },
+        { word: "ett belopp", trans: "an amount" },
+        { word: "en mottagare", trans: "a recipient" },
+        { word: "ett bankgiro", trans: "bank giro number" },
+        { word: "ett plusgiro", trans: "plus giro number" },
+        { word: "ett OCR-nummer", trans: "OCR reference number" },
+        { word: "förfallodatum", trans: "due date" },
+        { word: "godkänna", trans: "approve" },
+
+        // 5. BankID och digitala tjänster – BankID & Digital Banking
+        { word: "BankID", trans: "digital ID" },
+        { word: "logga in", trans: "log in" },
+        { word: "logga ut", trans: "log out" },
+        { word: "identifiera sig", trans: "identify oneself" },
+        { word: "signera", trans: "sign" },
+        { word: "en säkerhetskod", trans: "security code" },
+        { word: "ett lösenord", trans: "password" },
+        { word: "säker", trans: "safe / secure" },
+        { word: "försiktig", trans: "careful" },
+        { word: "ett bedrägeri", trans: "fraud" },
+
+        // 6. Spara pengar – Saving Money
+        { word: "spara", trans: "save" },
+        { word: "ett sparande", trans: "saving" },
+        { word: "månadsspara", trans: "save monthly" },
+        { word: "långsiktigt sparande", trans: "long-term saving" },
+        { word: "kortsiktigt sparande", trans: "short-term saving" },
+        { word: "en ränta", trans: "interest rate" },
+        { word: "en avkastning", trans: "return" },
+        { word: "växa", trans: "grow" },
+        { word: "pengar växer", trans: "money grows" },
+
+        // 7. Investera och Avanza – Investing & Avanza
+        { word: "investera", trans: "invest" },
+        { word: "en investering", trans: "investment" },
+        { word: "en investerare", trans: "investor" },
+        { word: "en fond", trans: "fund" },
+        { word: "en aktie", trans: "stock / share" },
+        { word: "en indexfond", trans: "index fund" },
+        { word: "en globalfond", trans: "global fund" },
+        { word: "en portfölj", trans: "portfolio" },
+        { word: "ett värdepapper", trans: "security" },
+        { word: "en marknad", trans: "market" },
+
+        // 8. Köpa och sälja – Buying & Selling
+        { word: "köpa", trans: "buy" },
+        { word: "sälja", trans: "sell" },
+        { word: "en köporder", trans: "buy order" },
+        { word: "en säljorder", trans: "sell order" },
+        { word: "lägga en order", trans: "place an order" },
+        { word: "välja", trans: "choose" },
+        { word: "söka efter", trans: "search for" },
+        { word: "belopp", trans: "amount" },
+        { word: "antal", trans: "number / quantity" },
+        { word: "pris", trans: "price" },
+        { word: "kurs", trans: "price / rate" },
+
+        // 9. Fondavgifter och risker – Fund Fees & Risks
+        { word: "en avgift", trans: "a fee" },
+        { word: "låg avgift", trans: "low fee" },
+        { word: "hög avgift", trans: "high fee" },
+        { word: "en risk", trans: "a risk" },
+        { word: "risknivå", trans: "risk level" },
+        { word: "värde", trans: "value" },
+        { word: "minska", trans: "decrease" },
+        { word: "öka", trans: "increase" },
+        { word: "gå upp", trans: "go up" },
+        { word: "gå ner", trans: "go down" },
+
+        // 10. Vanliga verb – Common Verbs
+        { word: "öppna", trans: "open" },
+        { word: "stänga", trans: "close" },
+        { word: "använda", trans: "use" },
+        { word: "betala", trans: "pay" },
+        { word: "köpa", trans: "buy" },
+        { word: "sälja", trans: "sell" },
+        { word: "spara", trans: "save" },
+        { word: "investera", trans: "invest" },
+        { word: "välja", trans: "choose" },
+        { word: "kontrollera", trans: "check" },
+        { word: "förstå", trans: "understand" },
+        { word: "lära sig", trans: "learn" }
     ]
 };
