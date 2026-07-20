@@ -345,25 +345,33 @@
             </p>
         </div>
 
-        <!-- 🚀 Tabs Selection -->
+      <!-- 🚀 Tabs Selection -->
         <div class="level-tabs">
+            <!-- 核心教学模块 -->
             <div class="tab-group-main">
-                <button class="tab-btn active" onclick="switchLevel('intro', event)">🌟 Introductory</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('beginner', event)">🔒 🌱 Beginner</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('intermediate', event)">🔒 🚀 Intermediate</button>
-                <button class="tab-btn locked-tab" onclick="switchLevel('advanced', event)">🔒 🏆 Advanced</button>
+                <!-- 1. 对话模块 -->
+                <button class="tab-btn active" onclick="switchLevel('conversations', event)">💬 Conversations</button>
+                
+                <!-- 2. 短篇故事模块 -->
+                <button class="tab-btn" onclick="switchLevel('stories', event)">📖 Short Stories</button>
+                
+                <!-- 3. 预留模块（锁定状态） -->
+                <button class="tab-btn locked-tab" disabled style="opacity: 0.6; cursor: not-allowed;">🔒 Others (Coming Soon)</button>
             </div>
+            
             <div class="tab-divider"></div>
+            
+            <!-- 辅助学习工具 -->
             <div class="tab-group-support">
                 <button class="tab-btn quiz-style" onclick="switchLevel('quizzes', event)">🧩 Review Quizzes</button>
                 <button class="tab-btn about-style" onclick="switchLevel('about', event)">ℹ️ About & Characters</button>
-                <a href="vocabulary/vocabulary.html" class="tab-btn vocab-style" style="text-decoration:none; color:inherit;">📖 Vocabulary</a>
+                <a href="vocabulary/vocabulary.html" class="tab-btn vocab-style" style="text-decoration:none; color:inherit;">📚 Vocabulary</a>
             </div>
         </div>
 
-        <!-- 1. Introductory Content -->
-        <div id="level-intro" class="level-content active">
-            <h3 style="color: #2e5a44; margin-bottom: 20px;">📚 Episodes</h3>
+        <!-- 1. Conversations 模块内容 -->
+        <div id="level-conversations" class="level-content active">
+            <h3 style="color: #2e5a44; margin-bottom: 20px;">🗣️ Daily Conversations</h3>
             <ul class="episode-list" style="grid-template-columns: 1fr;">
                 <li class="episode-item">
                     <a href="episodes/episode1.html"><strong>Ep 1:</strong> Hej Sweden! ✈️ (At the Airport)</a>
@@ -374,8 +382,21 @@
                 <li class="episode-item">
                     <a href="episodes/episode3.html"><strong>Ep 3:</strong> En dag i mataffären 🛒 (At the Supermarket)</a>
                 </li> 
-              <li class="episode-item">
+                <li class="episode-item">
                     <a href="episodes/episode4.html"><strong>Ep 4:</strong> Banken i Sverige 🏦 (At the Bank)</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 2. Short Stories 模块内容 -->
+        <div id="level-stories" class="level-content">
+            <h3 style="color: #2e5a44; margin-bottom: 20px;">📚 Short Stories</h3>
+            <ul class="episode-list" style="grid-template-columns: 1fr;">
+                <li class="episode-item">
+                    <a href="stories/story1.html"><strong>Story 1:</strong> En fika i Stockholm ☕</a>
+                </li>
+                <li class="episode-item">
+                    <a href="stories/story2.html"><strong>Story 2:</strong> Midsommar i skärgården 🌸</a>
                 </li>
             </ul>
         </div>
